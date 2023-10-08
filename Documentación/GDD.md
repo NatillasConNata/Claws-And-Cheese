@@ -72,7 +72,7 @@ Los dos jugadores se deberán coordinar para resolver los puzles y avanzar a tra
 
 ## Estilo Visual 
 Pixel Art 2D 
-![Megaman](/ImagesDocumentation/Mega Man 2 mockup! #pixelart #pixelarts #pixelartist #pixelartapp #pixelart #pixel #pixels #indiedev #gamedev #game #games #gaming #gamer #videogame #videogames #retrogaming #retrogames #retrogame #gameart #gameartist #ga)
+![Megaman2](/ImagesDocumentation/Mega Man 2 mockup.jpg)
 
 ## Alcance 
 El alcance será de una sola entrega para probar si los juegos cooperativos funcionan, si el resultado conseguido es bueno se irá creando más juegos, dlcs y merchandising. 
