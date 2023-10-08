@@ -34,18 +34,18 @@ Santiago Varela Rey
 
 
 *[Introducción](#item1)   
-*[Guión](#item2) 
-*[Mecánicas del juego](#item3) 
-*[Estados del juego](#item4)
-*[Interfaz](#item5)
-*[Niveles](#item6)
-*[Progreso del juego](#item7)
-*[Personajes](#item8)
-*[Ítems](#item9)
-*[Sonidos y música](#item10)
-*[Arte y concept](#item11)
-*[Miembros del equipo](#item12)
-*[Anexo](#item13)
+*[Guión](#item2)   
+*[Mecánicas del juego](#item3)    
+*[Estados del juego](#item4)   
+*[Interfaz](#item5)   
+*[Niveles](#item6)   
+*[Progreso del juego](#item7)   
+*[Personajes](#item8)   
+*[Ítems](#item9)   
+*[Sonidos y música](#item10)   
+*[Arte y concept](#item11)   
+*[Miembros del equipo](#item12)   
+*[Anexo](#item13)   
 
 
 
