@@ -250,13 +250,13 @@ El progreso del juego va a ser lineal porque se necesita a los dos personajes pa
 <a name=item8></a>  
 # Personajes 
 
-8.1. Jugador 
+## Jugador 
 
 Los dos jugadores controlarán a los personajes de León y Ratón, cuyas ventajas y desventajas se explicaron anteriormente.  
  
 El objetivo de estos es escapar del circo. 
 
-8.3. NPCs 
+## NPCs 
 
 Todavía por implementar 
 
