@@ -32,6 +32,7 @@ Santiago Varela Rey
 
 Índice 
 
+
 *[Introducción](#item1)   
 *[Guión](#item2) 
 *[Mecánicas del juego](#item3) 
