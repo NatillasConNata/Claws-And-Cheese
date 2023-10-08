@@ -71,7 +71,7 @@ Para todos los públicos, especialmente para el público infantil y joven.
 Los dos jugadores se deberán coordinar para resolver los puzles y avanzar a través de los niveles. Los personajes podrán interactuar con elementos del escenario (botones palancas etc.) y saltar. Además, cada uno tendrá un tamaño y peso distinto, lo cual les permitirá acceder a lugares diferentes e interactuar con elementos distintos. 
 
 ## Estilo Visual 
-Pixel Art 2D 
+Pixel Art 2D   
 ![Megaman2](/ImagesDocumentation/Mega Man 2 mockup.jpg)
 
 ## Alcance 
