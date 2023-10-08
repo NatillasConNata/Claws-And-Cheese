@@ -18,7 +18,7 @@ Natalia Martínez Clemente
 Santiago Varela Rey    
    
 
-##Índice    
+## Índice    
 *[Introducción](#item1)   
 *[Guión](#item2)   
 *[Mecánicas del juego](#item3)    
@@ -81,7 +81,7 @@ El alcance será de una sola entrega para probar si los juegos cooperativos func
 PC. Estará disponible en Steam 
 
 <a name=item2></a> 
-#Guion 
+# Guion 
 
 >Cinemática inicial: León empieza el juego encerrado en una jaula, triste y pensativo. Se escuchan a lo lejos sonidos de niños riéndose y de gente sacando fotos. Entonces Ratón se le acerca y le dice: “Mmm no se te ve muy bien aquí. Quizás deberías salir a estirar las patas.” A lo que León contesta: “Eso querría. Pero soy muy grande y llamo demasiado la atención. Jamás podría salir de aquí”. Ratón contesta: “Y yo soy muy pequeño, hay puertas y obstáculos que no puedo derribar.” Tras unos segundos a ambos animales se le ocurre una idea y dicen a la vez “HAGÁMOSLO JUNTOS”.  
 
@@ -125,11 +125,11 @@ Los jugadores tendrán un personaje en concreto que son:
 
 **Ratón**: Sus características principales es ser pequeño permitiendo así acceder a lugares que no serían accesibles, también tiene la mecánica de morder haciendo que pueda cortar objetos como unos cables de red. 
 
-Las desventajas del ratón es que no es muy fuerte haciendo que no pueda romper casi ningún objeto del entorno, también no puede realizar distracciones haciendo que tenga que esperar a que el león ruja. 
+  Las desventajas del ratón es que no es muy fuerte haciendo que no pueda romper casi ningún objeto del entorno, también no puede realizar distracciones haciendo que tenga que esperar a que el león ruja. 
 
 **León**: Las características principales es que tiene una gran fuerza permitiendo romper objetos como puertas o cajas, también puede hacer un gran rugido haciendo que pueda crear distracciones o asustar a alguien. 
 
-Las desventajas del león son muy grandes haciendo que solo pueda acceder áreas en concreto, también el león no pasa desapercibido por su gran tamaño haciendo que tenga que esperar al ratón para despejar el sitio.  
+  Las desventajas del león son muy grandes haciendo que solo pueda acceder áreas en concreto, también el león no pasa desapercibido por su gran tamaño haciendo que tenga que esperar al ratón para despejar el sitio.  
 
 ## Mecánicas de Niveles 
 
@@ -151,7 +151,7 @@ Las interfaces serán de tipo minimalista las distintas interfaces que tendremos
 Es el menú previo a la partida, cuenta con un menú de ajustes (brillo, volumen) y un botón de iniciar partida, el cuál, al presionarlo, lleva a un menú de selección de personaje y posteriormente inicia la partida.    
 ~~~
 ~~~
-**Menú de opciones durante la partida **   
+**Menú de opciones durante la partida**   
 Es un menú que al que el jugador puede acceder en medio de la partida con el cuál accede a los ajustes de antes 
 ~~~
 ~~~
