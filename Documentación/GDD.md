@@ -1,38 +1,24 @@
  
 
-Juegos en Red- Grupo 3 | Don Kam-Arón 
+# Juegos en Red- Grupo 3 | Don Kam-Arón   
 
-“Enjoying the past, living the future” 
-
- 
-
-Garras y Queso 
+# “Enjoying the past, living the future”    
 
  
 
- 
-
-Román Batanero Mata 
-
-Migue Ángel Jiménez Montemayor 
-
-Natalia Martínez Clemente 
-
-Santiago Varela Rey 
+# Garras y Queso    
 
  
 
  
 
- 
+Román Batanero Mata    
+Migue Ángel Jiménez Montemayor    
+Natalia Martínez Clemente    
+Santiago Varela Rey    
+   
 
- 
-
-  
-
-Índice 
-
-
+##Índice    
 *[Introducción](#item1)   
 *[Guión](#item2)   
 *[Mecánicas del juego](#item3)    
@@ -62,41 +48,26 @@ Santiago Varela Rey
 # Introducción 
 
 ## Título 
+Garras y queso
 
- 
-
-## Concepto principal 
-
- 
-
+## Concepto principal    
 El juego se desarrolla en un circo/zoo, donde nuestros dos protagonistas tendrán que escapar utilizando su ingenio y sus habilidades para superar los obstáculos. Pero tendrán que tener cuidado, porque no podrán hacerlo cada uno por su cuenta. Necesitarán la cooperación entre ambos para poder huir de tan terrible lugar, pues habrá pruebas donde uno solo no podrá superarlas. 
 
- 
-
 ## Características Principales 
+- Dos personajes, cada uno con diferentes habilidades.    
+- Niveles con puzles a resolver entre los dos personajes.    
+- Personajes antropomórficos/Personajes animales     
+- Los niveles ya estarán predefinidos, con los puzles hechos a mano y personalizados.    
+- Estilo pixel Art con colores muy vivos.   
+- Cámara general que muestra todo el nivel. Los niveles no serán muy grandes.    
 
-    Dos personajes, cada uno con diferentes habilidades. 
-
-    Niveles con puzles a resolver entre los dos personajes. 
-
-    Personajes antropomórficos/Personajes animales  
-
-    Los niveles ya estarán predefinidos, con los puzles hechos a mano y personalizados. 
-
-    Estilo pixel Art con colores muy vivos. 
-
-    Cámara general que muestra todo el nivel. Los niveles no serán muy grandes. 
-
-## Género 
-
+## Género    
 Plataformas 2D cooperativo, puzles.  
 
 ## Propósito y Público Objetivo 
-
-Para todos los públicos, especialmente para el público infantil y joven. 
+Para todos los públicos, especialmente para el público infantil y joven.    
 
 ## Jugabilidad 
-
 Los dos jugadores se deberán coordinar para resolver los puzles y avanzar a través de los niveles. Los personajes podrán interactuar con elementos del escenario (botones palancas etc.) y saltar. Además, cada uno tendrá un tamaño y peso distinto, lo cual les permitirá acceder a lugares diferentes e interactuar con elementos distintos. 
 
   
