@@ -267,7 +267,7 @@ No hay un inventario como tal. Sin embargo, sí que los personajes podrán recog
 
  
 <a name=item10></a>  
- Música y Sonidos 
+# Música y Sonidos 
 
 Para la música, alternamos entre música alegre y música ambiental de circo. 
 
