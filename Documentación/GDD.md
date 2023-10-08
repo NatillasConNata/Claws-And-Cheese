@@ -146,29 +146,53 @@ El juego tiene 5 niveles, cada uno ambientado en una zona del circo/zoo distinto
 <a name=item5></a>  
 # Interfaz 
 
-Las interfaces serán de tipo minimalista las distintas interfaces que tendremos son: 
 
 
->**Menú principal**   
-Es el menú previo a la partida, cuenta con un menú de ajustes (brillo, volumen) y un botón de iniciar partida, el cuál, al presionarlo, lleva a un menú de selección de personaje y posteriormente inicia la partida.    
+   
 
 
->**Menú de opciones durante la partida**   
-Es un menú que al que el jugador puede acceder en medio de la partida con el cuál accede a los ajustes de antes 
 
->**Ayudas**   
-El jugador empieza en un tutorial para que aprenda las mecánicas del juego.  Además, cuando halla un objeto interactuable en el escenario aparecerá un texto que indique qué tecla presionar para hacerlo. 
+
+
+
+
+
+
+Las interfaces serán de tipo minimalista. Las distintas interfaces que tendremos son: 
+
+>**Menú principal**  
+Es el menú previo a la partida, cuenta con un menú de ajustes (brillo, volumen) y un botón de iniciar partida, el cual, al presionarlo, lleva a un menú de selección de personaje y posteriormente inicia la partida. 
+![MenuPpal](/Documentación/ImagesDocumentation/MenuPpal.png "Menú principal del juego")   
+
+
+
+>**Menú de opciones**   
+Es un menú al que el jugador puede acceder en antes de comenzar la partida con el cuál accede a los ajustes. Por ahora los únicos ajustes que habrá serán el volumen del juego y la luminosidad del mismo.  
+![MenuOpciones](/Documentación/ImagesDocumentation/MenúOpciones.png "Menú de opciones")   
+
+
+>**Ayudas**
+El jugador empieza en un tutorial para que aprenda las mecánicas del juego.  Además, cuando haya un objeto interactuable en el escenario aparecerá un texto que indique qué tecla presionar para hacerlo. 
 
 >**Pantalla de Carga**   
-Las pantallas de carga serán del león y de la rata contando un chiste haciendo que su relación aumente o no dependiendo del chiste  
+Las pantallas de carga serán del león y de la rata contando un chiste haciendo que su relación aumente o no dependiendo del chiste 
+ ![PantallaCarga](/Documentación/ImagesDocumentation/PantallaCarga.png "PantallaCarga")   
+
+
+>**Selección del personaje**  
+Cada jugador podrá elegir a un personaje del juego (sin repetir). Tras la elección, tendrán que pulsar un botón para iniciar la partida 
+ ![SeleccionJugador](/Documentación/ImagesDocumentation/SeleccionJugador.png "SeleccionJugador")   
 
 
 >**Créditos**   
 Al finalizar el juego, se muestran los créditos al equipo de desarrollo. 
+ ![Creditos](/Documentación/ImagesDocumentation/Creditos.png "Creditos")   
 
 
->**Chat**   
-Durante los jugadores tendrán disponible un desplegable que muestre un chat de comunicación. 
+>**In Game**   
+El juego tendrá dos versiones, una versión offline en la que la pantalla se dividirá a la mitad para que ambos jugadores puedan jugar cada uno viendo su propio campo de visión. Y un modo online donde cada jugador verá su pantalla. Además, el modo online contará con un chat para que los jugadores puedan hablar entre ellos 
+ ![InGame](/Documentación/ImagesDocumentation/InGame.png "InGame")   
+
 
 
 <a name=item6></a>  
