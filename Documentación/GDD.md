@@ -139,6 +139,7 @@ El juego tiene 5 niveles, cada uno ambientado en una zona del circo/zoo distinto
 # Estados del Juego 
 
  
+![EstadosDelJuego](/Documentación/ImagesDocumentation/EstadosDelJuego.png "Langostas4Ever")
 
  
 <a name=item5></a>  
