@@ -32,8 +32,8 @@ Santiago Varela Rey
 
 Índice 
 
-*[contenido 1](#item1)   
-
+*[Introducción](#item1)   
+*[Guión](#item2) 
 ​​ 
 
 ​​ 
@@ -101,6 +101,7 @@ El alcance será de una sola entrega para probar si los juegos cooperativos func
 
 PC. Estará disponible en Steam 
 
+<a name=item2></a> 
 2. Guion 
 
  
