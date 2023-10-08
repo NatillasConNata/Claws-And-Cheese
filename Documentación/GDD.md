@@ -72,7 +72,7 @@ Los dos jugadores se deberán coordinar para resolver los puzles y avanzar a tra
 
 ## Estilo Visual 
 Pixel Art 2D   
-![Megaman2](/Documentation/ImagesDocumentation/Mega Man 2 mockup.jpg "https://pin.it/5t7QzyY")
+![Megaman2](https://github.com/4rn0m/Juegos-en-Red/edit/NatillasConNata-patch-1/Documentaci%C3%B3n/ImagesDocumentation/Mega Man 2 mockup.jpg "https://pin.it/5t7QzyY")
 
 ## Alcance 
 El alcance será de una sola entrega para probar si los juegos cooperativos funcionan, si el resultado conseguido es bueno se irá creando más juegos, dlcs y merchandising. 
