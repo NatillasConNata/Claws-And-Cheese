@@ -31,62 +31,17 @@ Santiago Varela Rey
   
 
 Índice 
-1. [Introducción](#id1)
-   
+
+*[contenido 1](#item1)   
 
 ​​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
-
-​ 
 
 ​​ 
 
  
 
-  
-<div id='id1' />
-1. Introducción 
+<a name=item1></a>  
+# Introducción 
 
 1.1. Título 
 
