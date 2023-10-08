@@ -34,7 +34,24 @@ Santiago Varela Rey
 
 *[Introducción](#item1)   
 *[Guión](#item2) 
-​​ 
+*[Mecánicas del juego](#item3) 
+*[Estados del juego](#item4)
+*[Interfaz](#item5)
+*[Niveles](#item6)
+*[Progreso del juego](#item7)
+*[Personajes](#item8)
+*[Ítems](#item9)
+*[Sonidos y música](#item10)
+*[Arte y concept](#item11)
+*[Miembros del equipo](#item12)
+*[Anexo](#item13)
+
+
+
+
+
+
+
 
 ​​ 
 
@@ -43,11 +60,11 @@ Santiago Varela Rey
 <a name=item1></a>  
 # Introducción 
 
-1.1. Título 
+## Título 
 
  
 
-1.2. Concepto principal 
+## Concepto principal 
 
  
 
@@ -55,7 +72,7 @@ El juego se desarrolla en un circo/zoo, donde nuestros dos protagonistas tendrá
 
  
 
-1.3. Características Principales 
+## Características Principales 
 
     Dos personajes, cada uno con diferentes habilidades. 
 
@@ -69,21 +86,21 @@ El juego se desarrolla en un circo/zoo, donde nuestros dos protagonistas tendrá
 
     Cámara general que muestra todo el nivel. Los niveles no serán muy grandes. 
 
-1.4. Género 
+## Género 
 
 Plataformas 2D cooperativo, puzles.  
 
-1.5. Propósito y Público Objetivo 
+## Propósito y Público Objetivo 
 
 Para todos los públicos, especialmente para el público infantil y joven. 
 
-1.6. Jugabilidad 
+## Jugabilidad 
 
 Los dos jugadores se deberán coordinar para resolver los puzles y avanzar a través de los niveles. Los personajes podrán interactuar con elementos del escenario (botones palancas etc.) y saltar. Además, cada uno tendrá un tamaño y peso distinto, lo cual les permitirá acceder a lugares diferentes e interactuar con elementos distintos. 
 
   
 
-1.7. Estilo Visual 
+## Estilo Visual 
 
 Pixel Art 2D 
 
@@ -93,16 +110,16 @@ Pixel Art 2D
 
  
 
-1.8. Alcance 
+## Alcance 
 
 El alcance será de una sola entrega para probar si los juegos cooperativos funcionan, si el resultado conseguido es bueno se irá creando más juegos, dlcs y merchandising. 
 
-1.9. Plataforma 
+## Plataforma 
 
 PC. Estará disponible en Steam 
 
 <a name=item2></a> 
-2. Guion 
+#Guion 
 
  
 
@@ -123,10 +140,10 @@ Cinemática final: al atravesar el muelle León y Ratón se fijan en una lancha 
  
 
  
+<a name=item3></a>  
+# Mecánicas del Juego 
 
-3. Mecánicas del Juego 
-
-3.1. Mecánicas del Juego 
+## Mecánicas del Juego 
 
 Cámara 2D vista lateral, se observa todo el nivel donde están los jugadores. 
 
@@ -152,7 +169,7 @@ Intensidad del juego: la intensidad del juego será moderada, tirando a ligera. 
 
 Recursos: en el juego existirán zonas donde cada jugador tendrá que hacer su papel, como puede ser entran por agujeros pequeños, presionar botones, desbloquear códigos ocultos, llevar un objeto a un lugar determinado, romper cables, etc. 
 
-3.2. Mecánicas del Jugador 
+## Mecánicas del Jugador 
 
 Los jugadores tendrán un personaje en concreto que son: 
 
@@ -164,17 +181,18 @@ León: Las características principales es que tiene una gran fuerza permitiendo
 
 Las desventajas del león son muy grandes haciendo que solo pueda acceder áreas en concreto, también el león no pasa desapercibido por su gran tamaño haciendo que tenga que esperar al ratón para despejar el sitio.  
 
-3.3. Mecánicas de Niveles 
+## Mecánicas de Niveles 
 
 El juego tiene 5 niveles, cada uno ambientado en una zona del circo/zoo distinto. Al acabar un nivel, se activa un checkpoint por si uno de los jugadores muere y se reinicia el nivel. 
 
-4. Estados del Juego 
+<a name=item4></a>  
+# Estados del Juego 
 
  
 
  
-
-5. Interfaz 
+<a name=item5></a>  
+# Interfaz 
 
 Las interfaces serán de tipo minimalista las distintas interfaces que tendremos son: 
 
@@ -206,7 +224,8 @@ Chat:
 
        -       Durante los jugadores tendrán disponible un desplegable que muestre un chat de 		comunicación. 
 
-6. Niveles  
+<a name=item6></a>  
+# Niveles  
 
 El videojuego de momento tendrá 5 niveles  
 
@@ -219,16 +238,16 @@ El videojuego de momento tendrá 5 niveles
 Mapa esquemático de los niveles 
 
  
-
-7. Progreso del Juego 
+<a name=item7></a>  
+# Progreso del Juego 
 
 El progreso del juego va a ser lineal porque se necesita a los dos personajes para superar los distintos retos. 
 
  
 
  
-
-8. Personajes 
+<a name=item8></a>  
+# Personajes 
 
 8.1. Jugador 
 
@@ -240,27 +259,29 @@ El objetivo de estos es escapar del circo.
 
 Todavía por implementar 
 
-9. Ítems 
+<a name=item9></a>  
+# Ítems 
 
 No hay un inventario como tal. Sin embargo, sí que los personajes podrán recoger objetos (llaves, códigos de acceso etc.) para abrir puertas o desactivar alarmas. El recoger estos objetos aparecerá un icono que indique que se ha obtenido y desaparecerá en cuanto se use. 
 
  
-
-10. Música y Sonidos 
+<a name=item10></a>  
+ Música y Sonidos 
 
 Para la música, alternamos entre música alegre y música ambiental de circo. 
 
 Todas las licencias de la música serán CC0 o CCBy. (es música de libre uso) 
 
-11. Arte y Concept 
+<a name=item11></a>  
+# Arte y Concept 
 
 Pixel Art 
 
 Concepto prototipo: 
 
  
-
-12. Miembros del Equipo 
+<a name=item12></a>  
+# Miembros del Equipo 
 
  
 
@@ -272,4 +293,5 @@ NATALIA MARTÍNEZ CLEMENTE
 
 SANTIAGO VARELA REY 
 
-13. Anexos 
+<a name=item13></a>  
+# Anexos 
