@@ -167,7 +167,9 @@ Es el menú previo a la partida, cuenta con un menú de ajustes (brillo, volumen
 
 
 >**Menú de opciones**   
-Es un menú al que el jugador puede acceder en antes de comenzar la partida con el cuál accede a los ajustes. Por ahora los únicos ajustes que habrá serán el volumen del juego y la luminosidad del mismo.  
+Es un menú al que el jugador puede acceder en antes de comenzar la partida con el cuál accede a los ajustes. Por ahora los únicos ajustes que habrá serán el volumen del juego y la luminosidad del mismo.
+
+
 ![MenuOpciones](/Documentación/ImagesDocumentation/MenúOpciones.png "Menú de opciones")   
 
 
@@ -175,22 +177,30 @@ Es un menú al que el jugador puede acceder en antes de comenzar la partida con 
 El jugador empieza en un tutorial para que aprenda las mecánicas del juego.  Además, cuando haya un objeto interactuable en el escenario aparecerá un texto que indique qué tecla presionar para hacerlo. 
 
 >**Pantalla de Carga**   
-Las pantallas de carga serán del león y de la rata contando un chiste haciendo que su relación aumente o no dependiendo del chiste 
+Las pantallas de carga serán del león y de la rata contando un chiste haciendo que su relación aumente o no dependiendo del chiste
+
+
  ![PantallaCarga](/Documentación/ImagesDocumentation/PantallaCarga.png "PantallaCarga")   
 
 
 >**Selección del personaje**  
-Cada jugador podrá elegir a un personaje del juego (sin repetir). Tras la elección, tendrán que pulsar un botón para iniciar la partida 
+Cada jugador podrá elegir a un personaje del juego (sin repetir). Tras la elección, tendrán que pulsar un botón para iniciar la partida
+
+
  ![SeleccionJugador](/Documentación/ImagesDocumentation/SeleccionJugador.png "SeleccionJugador")   
 
 
 >**Créditos**   
-Al finalizar el juego, se muestran los créditos al equipo de desarrollo. 
+Al finalizar el juego, se muestran los créditos al equipo de desarrollo.
+
+
  ![Creditos](/Documentación/ImagesDocumentation/Creditos.png "Creditos")   
 
 
 >**In Game**   
-El juego tendrá dos versiones, una versión offline en la que la pantalla se dividirá a la mitad para que ambos jugadores puedan jugar cada uno viendo su propio campo de visión. Y un modo online donde cada jugador verá su pantalla. Además, el modo online contará con un chat para que los jugadores puedan hablar entre ellos 
+El juego tendrá dos versiones, una versión offline en la que la pantalla se dividirá a la mitad para que ambos jugadores puedan jugar cada uno viendo su propio campo de visión. Y un modo online donde cada jugador verá su pantalla. Además, el modo online contará con un chat para que los jugadores puedan hablar entre ellos
+
+
  ![InGame](/Documentación/ImagesDocumentation/InGame.png "InGame")   
 
 
