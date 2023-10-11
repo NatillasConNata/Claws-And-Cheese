@@ -161,7 +161,9 @@ El juego tiene 5 niveles, cada uno ambientado en una zona del circo/zoo distinto
 Las interfaces serán de tipo minimalista. Las distintas interfaces que tendremos son: 
 
 >**Menú principal**  
-Es el menú previo a la partida, cuenta con un menú de ajustes (brillo, volumen) y un botón de iniciar partida, el cual, al presionarlo, lleva a un menú de selección de personaje y posteriormente inicia la partida. 
+Es el menú previo a la partida, cuenta con un menú de ajustes (brillo, volumen) y un botón de iniciar partida, el cual, al presionarlo, lleva a un menú de selección de personaje y posteriormente inicia la partida.
+
+
 ![MenuPpal](/Documentación/ImagesDocumentation/MenuPpal.png "Menú principal del juego")   
 
 
