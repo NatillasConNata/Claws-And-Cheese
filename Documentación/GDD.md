@@ -213,7 +213,7 @@ El juego tendrá dos versiones, una versión offline en la que la pantalla se di
 El videojuego de momento tendrá 5 niveles  
 
  
-
+![SketchMap](/Documentación/ImagesDocumentation/mapa_zoo.png "Sketch Map") 
  
 
  
