@@ -128,11 +128,11 @@ Cámara 2D vista lateral, se observa todo el nivel donde están los jugadores.
 
 Los jugadores tendrán un personaje en concreto que son: 
 
-**Ratón**: Sus características principales es ser pequeño permitiendo así acceder a lugares que no serían accesibles, también tiene la mecánica de morder haciendo que pueda cortar objetos como unos cables de red. 
+**Queso**: Sus características principales es ser pequeño permitiendo así acceder a lugares que no serían accesibles, Queso salta un 50% más que Garras (, también tiene la mecánica de morder haciendo que pueda cortar objetos como unos cables de red. 
 
   Las desventajas del ratón es que no es muy fuerte haciendo que no pueda romper casi ningún objeto del entorno, también no puede realizar distracciones haciendo que tenga que esperar a que el león ruja. 
 
-**León**: Las características principales es que tiene una gran fuerza permitiendo romper objetos como puertas o cajas, también puede hacer un gran rugido haciendo que pueda crear distracciones o asustar a alguien. 
+**Garras**: Las características principales es que tiene una gran fuerza permitiendo romper objetos como puertas o cajas, también puede hacer un gran rugido haciendo que pueda crear distracciones o asustar a alguien. 
 
   Las desventajas del león son muy grandes haciendo que solo pueda acceder áreas en concreto, también el león no pasa desapercibido por su gran tamaño haciendo que tenga que esperar al ratón para despejar el sitio.  
 
@@ -144,6 +144,10 @@ habilidades del personaje que tengan para resolver los puzles y avanzar a la lib
 Los niveles en cuestión se dividen en zonas, las cuales son: ‘zona de jaulas’, ‘sabana’, ‘circo’, ‘aviario’
 y ‘acuario y muelles’. Cada nivel estará ambientado en la zona concreta y los puzles intentarán estar
 ligados del mismo modo a esa zona, siendo puzles temáticos (no todos los puzles serán temáticos).
+
+Plataforma de peso: hay plataformas normales y plataformas metálicas. Las plataformas metálicas solo pueden ser activadas con objetos metálicos o por Garras. Las plataformas normales pueden ser activadas por cualquier personaje u objeto.
+
+Cajas/Objetos móviles: hay cajas normales y cajas metálicas. Las cajas metálicas solo las puede mover Garras, las cajas normales las puede mover cualquier personaje.
 
 <a name=item4></a>  
 # Estados del Juego 
