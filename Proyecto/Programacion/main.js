@@ -7,7 +7,7 @@ function resizeApp()//NO TOCAR POR LO QUE MÁS QUERÁIS NI SIQUIERA YO SÉ CÓMO
 
     // Asegurar de que se mantenga el Ratio con el Tamaño de la Ventana
     let div = document.getElementById('lienzo juego'); 
-    div.style.width = (window.innerHeight * game_ratio) + 'px'; 
+    div.style.width = (window.innerHeight /** game_ratio*/) + 'px'; 
     div.style.height = window.innerHeight + 'px'; 
 
     // Comprobar que el DPI del Dispositivo se adapte al Ratio

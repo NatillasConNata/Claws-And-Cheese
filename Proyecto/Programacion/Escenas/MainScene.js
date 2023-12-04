@@ -14,7 +14,7 @@ class MainScene extends Phaser.Scene{
     create ()
     {
         console.log("imagen aviario");
-        this.add.image(-10, -10, 'Aviario').setScale(0.1).refreshBody();;
+        this.add.image(0, 0, 'Aviario').setScale(0.1).refreshBody();
     }
 
     update ()

@@ -9,9 +9,9 @@ App.prototype.start = function(){
     scenes.push(MainScene);
     var config = {
         type: Phaser.AUTO,
-        width: 800,
-        height: 1000,
-        backgroundColor: '#4488aa',
+        width: 1920,
+        height: 1080,
+        backgroundColor: '#44aa4d',
         physics: {
             defaul: 'arcade',
             arcade: {
