@@ -12,34 +12,37 @@
 
  
 
-Román Batanero Mata    
 Migue Ángel Jiménez Montemayor    
 Natalia Martínez Clemente    
 Santiago Varela Rey    
    
 
 ## Índice    
-*[Introducción](#item1)   
-*[Guión](#item2)   
-*[Mecánicas del juego](#item3)    
-*[Estados del juego](#item4)   
-*[Interfaz](#item5)   
-*[Niveles](#item6)   
-*[Progreso del juego](#item7)   
-*[Personajes](#item8)   
-*[Ítems](#item9)   
-*[Sonidos y música](#item10)   
-*[Arte y concept](#item11)   
-*[Miembros del equipo](#item12)   
-*[Anexo](#item13)   
+[Historial de versiones](#item0)
+[Introducción](#item1)   
+[Guión](#item2)   
+[Mecánicas del juego](#item3)    
+[Estados del juego](#item4)   
+[Interfaz](#item5)   
+[Niveles](#item6)   
+[Progreso del juego](#item7)   
+[Personajes](#item8)   
+[Ítems](#item9)   
+[Sonidos y música](#item10)   
+[Arte y concept](#item11)   
+[Miembros del equipo](#item12)   
+[Anexo](#item13)   
 
 
 
 
 
 
-
-
+<a name=item0></a>  
+# Historial de versiones
+|Nº Versión | Fecha creación | Modificaciones |   
+| -- | -- | -- |   
+|Versión 1 | 17 Oct 2023 | Versión Inicial|   
 ​​ 
 
  
@@ -281,8 +284,6 @@ Concepto prototipo:
 <a name=item12></a>  
 # Miembros del Equipo 
 ~~~
-ROMÁN BATANERO MATA 
-
 MIGUEL ANGEL JIMENEZ MONTEMAYOR 
 
 NATALIA MARTÍNEZ CLEMENTE 
