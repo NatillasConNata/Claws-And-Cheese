@@ -7,10 +7,12 @@ const App = function(){
 App.prototype.start = function(){
     let scenes=[];
     scenes.push(MainScene);
+    //scenes.push(Scene1);
+    scenes.push(Scene2);
     var config = {
         type: Phaser.AUTO,
-        width: 1920,
-        height: 1080,
+        width: 2250,
+        height: 1200,
         backgroundColor: '#44aa4d',
         physics: {
             defaul: 'arcade',
