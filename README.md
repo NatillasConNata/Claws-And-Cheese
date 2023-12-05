@@ -7,6 +7,7 @@
  
 
 # Garras y Queso    
+#GDD V2
 
  
 
@@ -29,7 +30,6 @@ Santiago Varela Rey
 [Personajes](#item8)   
 [Ítems](#item9)   
 [Sonidos y música](#item10)   
-[Arte y concept](#item11)   
 [Miembros del equipo](#item12)   
 [Anexo](#item13)   
 
@@ -40,12 +40,12 @@ Santiago Varela Rey
 
 <a name=item0></a>  
 # Historial de versiones
-|Nº Versión | Fecha creación | Modificaciones |   
-| -- | -- | -- |   
-|Versión 1 | 17 Oct 2023 | Versión Inicial|   
-​​ 
+| Nº Version    | Fecha actualización | Modificaciones                                                                                                                                                                                                                      |
+| :-------------: | :-------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Versión 1     | 17 Oct 2023         | Versión Inicial                                                                                                                                                                                                                     |
+| Versión 2<br> | 05 Dic 2023         | Eliminadas escenas de carga interactivas, eliminado archivos de guardado, actualizados movimientos personajes, Eliminados ciertos niveles del juego, actualizacón habilidades personajes, actualización mapa esquemático de niveles, eliminado arte y concept |
 
- 
+
 
 <a name=item1></a>  
 # Introducción 
@@ -91,37 +91,23 @@ PC. Estará disponible en Steam
 <a name=item2></a> 
 # Guion 
 
->Cinemática inicial: León empieza el juego encerrado en una jaula, triste y pensativo. Se escuchan a lo lejos sonidos de niños riéndose y de gente sacando fotos. Entonces Ratón se le acerca y le dice: “Mmm no se te ve muy bien aquí. Quizás deberías salir a estirar las patas.” A lo que León contesta: “Eso querría. Pero soy muy grande y llamo demasiado la atención. Jamás podría salir de aquí”. Ratón contesta: “Y yo soy muy pequeño, hay puertas y obstáculos que no puedo derribar.” Tras unos segundos a ambos animales se le ocurre una idea y dicen a la vez “HAGÁMOSLO JUNTOS”.  
-
-A lo largo del juego habrá pequeños diálogos entre los dos personajes al pasar de nivel. 
-
->Diálogo 1: Ratón: “Oye, oye León si un caballo, un perro y una gallina tienen 14 meses de edad, ¿cuál de los tres es más mayor?”. León: “Pues... supongo que todos tienen la misma edad, ¿no?” Ratón: ¡La gallina, porque tiene 14 mese... y pico!” 
-
->Diálogo 2: León: “Venga Ratón a ver si sabes que es lo que hace un perro con un taladro”. Ratón: “Ehhh... pues ni idea.” León: “¡Ta-ladrando!” 
-
->Diálogo 3: Ratón: “A que no sabes por qué los elefantes no usan el ordenador” León: “No lo sé, pero creo que ningún animal suele usar ordenadores”. Ratón: “¡Porque le tienen miedo al mouse!” 
-
->Diálogo 4: León: “¿Sabes que hace una abeja en el gimnasio?” Ratón: “A ver...” León: “¡Pues zumba, que va a hacer!” 
-
->Cinemática final: al atravesar el muelle León y Ratón se fijan en una lancha que hay amarrada. León dice: “Con eso escaparemos.” “¡Si, mi capitán!” responde Ratón, “¿Sabes navegar?” “No” contesta León, “Pero lo averiguaremos”. Y así se marchan navegando hacia le horizonte.    
+A lo largo del juego se verán pantallas de carga entre escenas (imágenes estáticas) de los dos personajes juntos.     
  
 <a name=item3></a>  
 # Mecánicas del Juego 
 
 ## Mecánicas del Juego 
-Cámara 2D vista lateral, se observa todo el nivel donde están los jugadores. 
+Cámara 2D vista lateral, ada jugador observa lo que tiene en rango dentro de su cámara. 
 - Controles en local: 
   - Movimiento lateral: ad , ←→   
-  - Salto: w , ↑ 
-  - Bajar: s, ↓ 
+  - Salto, subir escaleras (solo el ratón): w , ↑ 
+  - Bajar escaleras (solo el ratón): s, ↓ 
   - Interactuar: E, P 
   - Habilidad: Q, O 
 
-- Guardado y Carga: Existirán distintos checkpoints, uno por nivel justo a la entrada de este. También habrá un archivo que guarde el progreso del juego. 
-
 - Jugabilidad: el juego está planteado para que se juegue una sola vez. Pues al repetir el juego los niveles serán los mismos y los puzles también. Por lo tanto, este juego no favorece a la Re-jugabilidad. 
 
-- Niveles: este juego se compone de 5 niveles: El primer nivel donde tendrán que escapar de la zona de jaulas. En el siguiente nivel tienen que escapar de la zona del zoo de la sabana. Tras esto pasarán a la zona del circo. Después de la zona del circo pasarán a la zona de picnic y pájaros. Y finalmente llegarán a la zona del Aquarium y el muelle, donde terminará el juego. 
+- Niveles: este juego se compone de 3 niveles: El primer nivel donde tendrán que escapar de la zona de jaulas. Después pasarán a la zona de picnic y pájaros. Y finalmente llegarán a la zona del Aquarium y el muelle, donde terminará el juego. 
 
 - Intensidad del juego: la intensidad del juego será moderada, tirando a ligera. Cualquier persona podría jugarlo sin problemas. 
 
@@ -131,26 +117,24 @@ Cámara 2D vista lateral, se observa todo el nivel donde están los jugadores.
 
 Los jugadores tendrán un personaje en concreto que son: 
 
-**Queso**: Sus características principales es ser pequeño permitiendo así acceder a lugares que no serían accesibles, Queso salta un 50% más que Garras (, también tiene la mecánica de morder haciendo que pueda cortar objetos como unos cables de red. 
+**Queso**: Sus características principales es ser pequeño permitiendo así acceder a lugares que no serían accesibles, Queso salta más que Garras ,también tiene la mecánica de morder haciendo que pueda cortar objetos como unos cables de red. 
 
-  Las desventajas del ratón es que no es muy fuerte haciendo que no pueda romper casi ningún objeto del entorno, también no puede realizar distracciones haciendo que tenga que esperar a que el león ruja. 
+  Las desventajas del ratón es que no es muy fuerte haciendo que no pueda mover casi ningún objeto del entorno. 
 
-**Garras**: Las características principales es que tiene una gran fuerza permitiendo romper objetos como puertas o cajas, también puede hacer un gran rugido haciendo que pueda crear distracciones o asustar a alguien. 
+**Garras**: Las características principales es que tiene una gran fuerza permitiendo mover objetos como puertas o cajas. 
 
   Las desventajas del león son muy grandes haciendo que solo pueda acceder áreas en concreto, también el león no pasa desapercibido por su gran tamaño haciendo que tenga que esperar al ratón para despejar el sitio.  
 
 ## Mecánicas de Niveles 
 
-El juego tiene 5 niveles, cada uno ambientado en una zona del circo/zoo distinto. Al acabar un nivel, se activa un checkpoint por si uno de los jugadores muere y se reinicia el nivel.  
-En cada nivel existirán distintos tipos de mecánicas que obligarán a los jugadores a utilizar las
-habilidades del personaje que tengan para resolver los puzles y avanzar a la libertad.
-Los niveles en cuestión se dividen en zonas, las cuales son: ‘zona de jaulas’, ‘sabana’, ‘circo’, ‘aviario’
-y ‘acuario y muelles’. Cada nivel estará ambientado en la zona concreta y los puzles intentarán estar
-ligados del mismo modo a esa zona, siendo puzles temáticos (no todos los puzles serán temáticos).
+El juego tiene 3 niveles, cada uno ambientado en una zona del zoo distinto.  
+En cada nivel existirán distintos tipos de mecánicas que obligarán a los jugadores a utilizar las habilidades del personaje que tengan para resolver los puzles y avanzar a la libertad.   
+Los niveles en cuestión se dividen en zonas, las cuales son: ‘zona de jaulas’, ‘aviario’ y ‘acuario y muelles’.   
+Cada nivel estará ambientado en la zona concreta y los puzles intentarán estar ligados del mismo modo a esa zona, siendo puzles temáticos (no todos los puzles serán temáticos).
 
-Plataforma de peso: hay plataformas normales y plataformas metálicas. Las plataformas metálicas solo pueden ser activadas con objetos metálicos o por Garras. Las plataformas normales pueden ser activadas por cualquier personaje u objeto.
+Plataforma de peso: hay plataformas normales y plataformas metálicas. Las plataformas metálicas solo pueden ser activadas con objetos pesados o por Garras. Las plataformas normales pueden ser activadas por cualquier personaje u objeto.
 
-Cajas/Objetos móviles: hay cajas normales y cajas metálicas. Las cajas metálicas solo las puede mover Garras, las cajas normales las puede mover cualquier personaje.
+Cajas/Objetos móviles: hay cajas normales. Las cajas solo las puede mover Garras.
 
 <a name=item4></a>  
 # Estados del Juego 
@@ -184,17 +168,14 @@ Es un menú al que el jugador puede acceder en antes de comenzar la partida con 
 El jugador empieza en un tutorial para que aprenda las mecánicas del juego.  Además, cuando haya un objeto interactuable en el escenario aparecerá un texto que indique qué tecla presionar para hacerlo. 
 
 >**Pantalla de Carga**   
-Las pantallas de carga serán del león y de la rata contando un chiste haciendo que su relación aumente o no dependiendo del chiste
+Las pantallas de carga serán del león y de la rata juntos.
 
 
  ![PantallaCarga](/Documentación/ImagesDocumentation/PantallaCarga.png "PantallaCarga")   
 
 
 >**Selección del personaje**  
-Cada jugador podrá elegir a un personaje del juego (sin repetir). Tras la elección, tendrán que pulsar un botón para iniciar la partida
-
-
- ![SeleccionJugador](/Documentación/ImagesDocumentation/SeleccionJugador.png "SeleccionJugador")   
+Cada jugador podrá elegir a un personaje del juego pulsando las teclas asignadas a cada personaje.  
 
 
 >**Créditos**   
@@ -215,10 +196,10 @@ El juego tendrá dos versiones, una versión offline en la que la pantalla se di
 <a name=item6></a>  
 # Niveles  
 
-El videojuego de momento tendrá 5 niveles  
+El videojuego de momento tendrá 3 niveles  
 
  
-![Niveles](/Documentación/ImagesDocumentation/Niveles.png)    
+![Niveles](/Documentación/ImagesDocumentation/NivelesV2.png)    
  
 
 Mapa esquemático de los niveles 
@@ -228,9 +209,8 @@ Mapa esquemático de los niveles
 # Progreso del Juego 
 
 El progreso del juego va a ser lineal porque se necesita a los dos personajes para superar los distintos retos.   
-Esto quiere decir que para poder avanzar necesitas realizar los puzles en un mismo orden y con la
-colaboración entre los dos jugadores. Si no se cumplen los dos requisitos, no se puede avanzar en el
-juego.   
+Esto quiere decir que para poder avanzar necesitas realizar los puzles en un mismo orden y con la colaboración entre los dos jugadores.   
+Si no se cumplen los dos requisitos, no se puede avanzar en el juego.   
 
  
 <a name=item8></a>  
@@ -240,12 +220,11 @@ juego.
 
 Los dos jugadores controlarán a los personajes de León y Ratón, cuyas ventajas y desventajas se explicaron anteriormente.  
  
-El objetivo de estos es escapar del circo.   
-León: Es un animal muy grande que llama la atención de las personas y otros animales. Esta cualidad
-permite a los jugadores distraer en ciertos momentos del juego para poder realizar otras acciones.
+El objetivo de estos es escapar del zoo.   
+León: Es un animal muy grande que llama la atención de las personas y otros animales.
 Además de ser llamativo, el león es un animal muy fuerte, otra cualidad que se explotará en el juego
 para mover objetos grandes del escenario, como pueden ser cajas o carros. Esto sería útil para los
-jugadores en interruptores de peso o para alcanzar lugares a los que no llegaban.
+jugadores en interruptores de peso o para alcanzar lugares a los que no llegaban.   
 Ratón: Es un animal muy pequeño, lo que le permite moverse por espacios reducidos, como tuberías,
 para llegar a otras salas. Además, tiene unos dientes grandes y afilados que le permiten cortar los
 cables o las cuerdas que se encuentre por el escenario.   
@@ -269,16 +248,9 @@ madera o cables en cajas de luz.
 <a name=item10></a>  
 # Música y Sonidos 
 
-Para la música, alternamos entre música alegre y música ambiental de circo. 
+Para la música, alternamos entre música alegre y música ambiental de zoo. 
 
 Todas las licencias de la música serán CC0 o CCBy. (es música de libre uso) 
-
-<a name=item11></a>  
-# Arte y Concept 
-
-Pixel Art 
-
-Concepto prototipo: 
 
  
 <a name=item12></a>  
@@ -293,3 +265,4 @@ SANTIAGO VARELA REY
 
 <a name=item13></a>  
 # Anexos 
+Sprites botones del juego: https://pixellarion-games.itch.io/pixelart-buttons   
