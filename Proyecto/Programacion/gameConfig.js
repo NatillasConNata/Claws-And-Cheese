@@ -9,11 +9,12 @@ App.prototype.start = function(){
     scenes.push(MainScene);
     //scenes.push(Scene1);
     scenes.push(Scene2);
+    scenes.push(Credits);
     var config = {
         type: Phaser.AUTO,
-        width: 2250,
-        height: 1200,
-        backgroundColor: '#44aa4d',
+        width: 1900 ,
+        height: 950 ,
+        backgroundColor: '#FADA3C',
         physics: {
             defaul: 'arcade',
             arcade: {
