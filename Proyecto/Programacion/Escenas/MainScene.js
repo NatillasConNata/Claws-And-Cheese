@@ -53,12 +53,12 @@ class MainScene extends Phaser.Scene{
     //START BUTTON
     startButton.on('pointerdown', function () {
         this.scene.stop('MainScene');/**************** */
-        this.scene.start('Scene2', Scene2, true, { x: 400, y: 300 });
+        this.scene.start('Scene1', Scene1, true, { x: 400, y: 300 });
     
     },this);
     startButton2.on('pointerdown', function () {
         this.scene.stop('MainScene');/**************** */
-        this.scene.start('Scene2', Scene2, true, { x: 400, y: 300 });
+        this.scene.start('Scene1', Scene1, true, { x: 400, y: 300 });
     
     },this);
     //OPTIONS BUTTON

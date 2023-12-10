@@ -1,6 +1,6 @@
 class Scene3 extends Phaser.Scene {
     constructor() {
-        super({ key: 'Acuarioymuelles', active: false });
+        super({ key: 'Scene3', active: false });
         this.BASE_PATH = 'Proyecto/Arte/Bocetos/';
     }
 
@@ -265,9 +265,9 @@ if (hasKey) {
 }
 }
 // Constantes de dimensiones
-Acuarioymuelles.GAME_WIDTH = 720;
-Acuarioymuelles.GAME_HEIGHT = 640;
-Acuarioymuelles.RATON_WIDTH = 116;
-Acuarioymuelles.RATON_HEIGHT = 94;
-Acuarioymuelles.LEON_WIDTH = 127;
-Acuarioymuelles.LEON_HEIGHT = 110;
+Scene3.GAME_WIDTH = 720;
+Scene3.GAME_HEIGHT = 640;
+Scene3.RATON_WIDTH = 116;
+Scene3.RATON_HEIGHT = 94;
+Scene3.LEON_WIDTH = 127;
+Scene3.LEON_HEIGHT = 110;
