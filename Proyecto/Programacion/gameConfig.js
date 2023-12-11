@@ -7,7 +7,7 @@ const App = function(){
 App.prototype.start = function(){
     let scenes=[];
     scenes.push(MainScene);
-    scenes.push(Scene1);
+   // scenes.push(Scene1);
     scenes.push(Scene2);
     //scenes.push(Scene3);
     scenes.push(Credits);

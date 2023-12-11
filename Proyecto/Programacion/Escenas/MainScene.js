@@ -33,14 +33,16 @@ class MainScene extends Phaser.Scene{
         })
 
     }
+    startButton;
+    startButton2;
     create ()
     {
         //console.log("imagen aviario");
         //AÑADIR IMÁGENES NORMALES
         this.add.image(0, 0, 'Aviario').setOrigin(0,0).setScale(0.16);
         //nineslice (poxX, posY, obj, sprite, tamañoX, tamañoY, px mantenidos izq., px mantenidos drch. , px mantenidos arriba, px mantenidos abajo )
-        var startButton = this.add.nineslice(500, 500, 'Buttons', 36, 144,138,  4,4,4,7).setInteractive();
-        var startButton2 = this.add.nineslice(644, 500, 'Buttons', 37,  144,138,  4,4,4,7).setInteractive();
+        startButton = this.add.nineslice(500, 500, 'Buttons', 36, 144,138,  4,4,4,7).setInteractive();
+        startButton2 = this.add.nineslice(644, 500, 'Buttons', 37,  144,138,  4,4,4,7).setInteractive();
         var optionsButton = this.add.nineslice(800, 500, 'Buttons', 38, 144,138,  4,4,4,7).setInteractive();
         var optionsButton2 = this.add.nineslice(944, 500, 'Buttons', 39,  144,138,  4,4,4,7).setInteractive();
         var creditButton = this.add.nineslice(500, 650, 'Buttons', 32, 144,138,  4,4,4,7).setInteractive();
@@ -53,12 +55,12 @@ class MainScene extends Phaser.Scene{
     //START BUTTON
     startButton.on('pointerdown', function () {
         this.scene.stop('MainScene');/**************** */
-        this.scene.start('Scene1', Scene1, true, { x: 400, y: 300 });
+        this.scene.start('Scene2', Scene2, true, { x: 400, y: 300 });
     
     },this);
     startButton2.on('pointerdown', function () {
         this.scene.stop('MainScene');/**************** */
-        this.scene.start('Scene1', Scene1, true, { x: 400, y: 300 });
+        this.scene.start('Scene2', Scene2, true, { x: 400, y: 300 });
     
     },this);
     //OPTIONS BUTTON
