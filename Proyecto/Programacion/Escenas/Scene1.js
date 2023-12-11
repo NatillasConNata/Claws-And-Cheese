@@ -163,6 +163,9 @@ class Scene1 extends Phaser.Scene{
                 }
             }
         });
+    
+    }
+
     update ()
     {
         if (cursors.left.isDown) {      //parámetros ratón
@@ -200,47 +203,48 @@ class Scene1 extends Phaser.Scene{
             player.anims.play('bite', true);
         }
 
-   function collectKey1(player, key1) {
-        key1.disableBody(true, true);
-        hasKey1 = true; // Variable para controlar si el jugador tiene la llave
-    
-        if (hasKey1) {
-            this.physics.world.removeCollider(collider1);
-        }
-    }
-
-    function collectKey2(player, key2) {
-        key2.disableBody(true, true);
-        hasKey2 = true; // Variable para controlar si el jugador tiene la llave
-    
-        if (hasKey2) {
-            this.physics.world.removeCollider(collider2);
-        }
-    }
-
-    function checkOverlap(spriteA, groupB) {
-        var boundsA = spriteA.getBounds();
-        var objectsB = groupB.getChildren();
-        for (var i = 0; i < objectsB.length; i++) {
-            var boundsB = objectsB[i].getBounds();
-            if (Phaser.Geom.Intersects.RectangleToRectangle(boundsA, boundsB)) {
-                return true;
+        function collectKey1(player, key1){
+            key1.disableBody(true, true);
+            hasKey1 = true; // Variable para controlar si el jugador tiene la llave
+        
+            if (hasKey1) {
+                this.physics.world.removeCollider(collider1);
             }
         }
-        return false;
-    } 
-}
 
-// Constantes de dimensiones
-Scene1.GAME_WIDTH = 3744;   //Los píxeles que ocupa
-Scene1.GAME_HEIGHT = 1080;  // la imagen de fondo
+        function collectKey2(player, key2) {
+            key2.disableBody(true, true);
+            hasKey2 = true; // Variable para controlar si el jugador tiene la llave
+        
+            if (hasKey2) {
+                this.physics.world.removeCollider(collider2);
+            }
+        }
 
-Scene1.RATON_WIDTH = 58;   //Los píxeles que ocupa
-Scene1.RATON_HEIGHT = 47;   // la imagen del ratón
-//NOTA: He hecho al ratón la mitad de grande de lo que era en la escena 3
-// porque es un ratón, en el doc ponía que al ser ratón podría pasar por sitios pequeños etc.
+        function checkOverlap(spriteA, groupB) {
+            var boundsA = spriteA.getBounds();
+            var objectsB = groupB.getChildren();
+            for (var i = 0; i < objectsB.length; i++) {
+                var boundsB = objectsB[i].getBounds();
+                if (Phaser.Geom.Intersects.RectangleToRectangle(boundsA, boundsB)) {
+                    return true;
+                }
+            }
+            return false;
+        } 
 
-Scene1.LEON_WIDTH = 127;    //Los píxeles que ocupan
-Scene1.LEON_HEIGHT = 110;   // la imagen del león
+      // Constantes de dimensiones
+        Scene1.GAME_WIDTH = 3744;   //Los píxeles que ocupa
+        Scene1.GAME_HEIGHT = 1080;  // la imagen de fondo
+
+        Scene1.RATON_WIDTH = 58;   //Los píxeles que ocupa
+        Scene1.RATON_HEIGHT = 47;   // la imagen del ratón
+        //NOTA: He hecho al ratón la mitad de grande de lo que era en la escena 3
+        // porque es un ratón, en el doc ponía que al ser ratón podría pasar por sitios pequeños etc.
+
+        Scene1.LEON_WIDTH = 127;    //Los píxeles que ocupan
+        Scene1.LEON_HEIGHT = 110;   // la imagen del león
+      
     }
+
 }
