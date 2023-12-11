@@ -200,7 +200,7 @@ class Scene1 extends Phaser.Scene{
             player.anims.play('bite', true);
         }
 
-   collectKey1(player, key1) {
+   function collectKey1(player, key1) {
         key1.disableBody(true, true);
         hasKey1 = true; // Variable para controlar si el jugador tiene la llave
     
@@ -209,7 +209,7 @@ class Scene1 extends Phaser.Scene{
         }
     }
 
-    collectKey2(player, key2) {
+    function collectKey2(player, key2) {
         key2.disableBody(true, true);
         hasKey2 = true; // Variable para controlar si el jugador tiene la llave
     
@@ -218,7 +218,7 @@ class Scene1 extends Phaser.Scene{
         }
     }
 
-    checkOverlap(spriteA, groupB) {
+    function checkOverlap(spriteA, groupB) {
         var boundsA = spriteA.getBounds();
         var objectsB = groupB.getChildren();
         for (var i = 0; i < objectsB.length; i++) {
@@ -242,4 +242,5 @@ Scene1.RATON_HEIGHT = 47;   // la imagen del ratón
 
 Scene1.LEON_WIDTH = 127;    //Los píxeles que ocupan
 Scene1.LEON_HEIGHT = 110;   // la imagen del león
-
+    }
+}
