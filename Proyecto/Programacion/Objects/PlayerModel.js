@@ -5,7 +5,8 @@ class PlayerModel extends Phaser.GameObjects.Sprite { //modelo base para cualqui
       this.scene = scene
       this.textureKey = textureKey
       this.scene.add.existing(this)
-      this.scene.physics.world.enableBody(this, 0)//ir a fisicas del mundo(gameconfig) y asignarselas al objeto
+      this.scene.physics.world.enableBody(this, 0)//activar body en el personaje
+      //this.body.setGravity(0 , 160)//Cambiar esto por que le afecten fisicas del config
       this.type = type
       this.isDead = false 
     }

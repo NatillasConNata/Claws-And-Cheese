@@ -43,15 +43,15 @@ window.addEventListener('load', () => {
     scenes.push(Credits);
     let config = {
         type: Phaser.AUTO,
-        width: 1900,
-        height: 950,
+        width: 4000,
+        height: 2000,
         backgroundColor: 0x220283,
         physics: {
             default: 'arcade',
             arcade: {
-                debug: false,
+                debug: true,
                 gravity: {
-                    y: 30
+                    y: 5000
                 }
             }
         },

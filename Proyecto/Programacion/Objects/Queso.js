@@ -1,6 +1,6 @@
 class Queso extends PlayerModel {
   constructor(scene, x, y, textureKey) {
-    super(scene,x,y,textureKey, 'QuesoPlayer')
+    super(scene,x,y,textureKey, 'QuesoPlayer')    
 
     const animFrameRate= 10
     const anims = scene.anims
@@ -69,12 +69,14 @@ class Queso extends PlayerModel {
 
     //KEYS input
     //para el leon será ASDW
-    const{LEFT,RIGHT, UP,DOWN,} = Phaser.Input.Keyboard.KeyCodes
+    const{LEFT,RIGHT, UP,DOWN,P,O} = Phaser.Input.Keyboard.KeyCodes
     this.keys = scene.input.keyboard.addKeys({
         left:LEFT,
         right:RIGHT,
         up: UP,
-        down: DOWN
+        down: DOWN,
+        p:P,
+        o:O,
     })
   }
 
@@ -89,18 +91,18 @@ update(){
     //MOVER PERSONAJE Y ANIMSACIONES
     //pers izda
     if(keys.left.isDown){
-        this.body.setVelocityX(-speed)
+        this.body.setVelocityX(-speed*2)
         this.anims.play('queso-left',true)
     }
     //pers drcha
     else if(keys.right.isDown){
-        this.body.setVelocityX(speed)
+        this.body.setVelocityX(speed*2)
         this.anims.play('queso-right', true);
     }
     //Subir escaleras
-    else if (keys.up.isDown )
+    else if (keys.p.isDown )
     {
-        this.body.setVelocityY(-speed)
+        this.body.setVelocityY(-speed*2)
 
         this.anims.play('queso-up', true);
     }
@@ -111,17 +113,25 @@ update(){
 
         this.anims.play('queso-up', true);
     }
-    //salto
-    else if(){
+    //morder
+    else if (keys.o.isDown)
+    {
+        this.body.setVelocityY(-1)
+        this.anims.play('queso-bite-left', true);
 
     }
-
+    //salto
+    else if (keys.up.isDown && this.body.touching.down)
+    {
+        this.body.setVelocityY(-speed*50)
+    }
+   
     else{
         this.anims.stop()
     }
     //---------
 
-    this.body.velocity.normalize().scale(speed)
+    //this.body.velocity.normalize().scale(speed)
   
     
     

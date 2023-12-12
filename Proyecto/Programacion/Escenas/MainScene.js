@@ -9,7 +9,7 @@ class MainScene extends Phaser.Scene{
        //this.load.atlas('Buttons', 'Arte/Bocetos/UI/Buttons.png', 'assets/ui/nine-slice.json');
 
 
-        this.load.image('Aviario', 'Arte/Bocetos/niveles prototipos/EscenarioAviarioPixelArtV1.jpg');
+        this.load.image('Aviario', 'Arte/Bocetos/niveles prototipos/Nivel2/EscenarioAviarioPixelArtV1.jpg');
         this.load.spritesheet('Buttons', 'Arte/Bocetos/UI/Buttons.png', { frameWidth: 24, frameHeight: 23 });
         this.load.spritesheet('Queso', 'Arte/Bocetos/Sprite/Ratonwalk.png', { frameWidth: 117 , frameHeight: 94 });
 
@@ -37,7 +37,7 @@ class MainScene extends Phaser.Scene{
     {
         //console.log("imagen aviario");
         //AÑADIR IMÁGENES NORMALES
-        this.add.image(0, 0, 'Aviario').setOrigin(0,0).setScale(0.16);
+        this.add.image(0, 0, 'Aviario').setOrigin(0,0).setScale(2);
         //nineslice (poxX, posY, obj, sprite, tamañoX, tamañoY, px mantenidos izq., px mantenidos drch. , px mantenidos arriba, px mantenidos abajo )
         var startButton =  this.add.nineslice(500, 500, 'Buttons', 36, 144,138,  4,4,4,7).setInteractive();
         var startButton2 = this.add.nineslice(644, 500, 'Buttons', 37,  144,138,  4,4,4,7).setInteractive();
@@ -87,7 +87,7 @@ class MainScene extends Phaser.Scene{
             frameRate: 10,
             repeat: -1
         });
-        var Queso = this.add.sprite(window.innerWidth/2 - 600, window.innerHeight/2 + 300, 'Queso').play('QuesoLeft');
+        var Queso = this.add.sprite(200, 300, 'Queso').play('QuesoLeft');
     }
 
     update ()
