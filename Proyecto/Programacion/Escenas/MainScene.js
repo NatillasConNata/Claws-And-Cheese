@@ -1,9 +1,8 @@
-
 class MainScene extends Phaser.Scene{
     constructor(){
         super({key: 'MainScene', active:true})
     }
-
+    
     preload()
     {
        // game.plugins.add(PhaserNineSlice.Plugin);//usar pluging nineslices
@@ -33,16 +32,15 @@ class MainScene extends Phaser.Scene{
         })
 
     }
-    startButton;
-    startButton2;
+    
     create ()
     {
         //console.log("imagen aviario");
         //AÑADIR IMÁGENES NORMALES
         this.add.image(0, 0, 'Aviario').setOrigin(0,0).setScale(0.16);
         //nineslice (poxX, posY, obj, sprite, tamañoX, tamañoY, px mantenidos izq., px mantenidos drch. , px mantenidos arriba, px mantenidos abajo )
-        startButton = this.add.nineslice(500, 500, 'Buttons', 36, 144,138,  4,4,4,7).setInteractive();
-        startButton2 = this.add.nineslice(644, 500, 'Buttons', 37,  144,138,  4,4,4,7).setInteractive();
+        var startButton =  this.add.nineslice(500, 500, 'Buttons', 36, 144,138,  4,4,4,7).setInteractive();
+        var startButton2 = this.add.nineslice(644, 500, 'Buttons', 37,  144,138,  4,4,4,7).setInteractive();
         var optionsButton = this.add.nineslice(800, 500, 'Buttons', 38, 144,138,  4,4,4,7).setInteractive();
         var optionsButton2 = this.add.nineslice(944, 500, 'Buttons', 39,  144,138,  4,4,4,7).setInteractive();
         var creditButton = this.add.nineslice(500, 650, 'Buttons', 32, 144,138,  4,4,4,7).setInteractive();
@@ -51,45 +49,45 @@ class MainScene extends Phaser.Scene{
         var exitButton2 = this.add.nineslice(944, 650, 'Buttons', 35,  144,138,  4,4,4,7).setInteractive();
 
 
-    //pulsar botón cambia de escena
-    //START BUTTON
-    startButton.on('pointerdown', function () {
-        this.scene.stop('MainScene');/**************** */
-        this.scene.start('Scene2', Scene2, true, { x: 400, y: 300 });
-    
-    },this);
-    startButton2.on('pointerdown', function () {
-        this.scene.stop('MainScene');/**************** */
-        this.scene.start('Scene2', Scene2, true, { x: 400, y: 300 });
-    
-    },this);
-    //OPTIONS BUTTON
+        //pulsar botón cambia de escena
+        //START BUTTON
+        startButton.on('pointerdown', function () {
+            this.scene.stop('MainScene');/**************** */
+            this.scene.start('Scene2', Scene2, true, { x: 400, y: 300 });
+        
+        },this);
+        startButton2.on('pointerdown', function () {
+            this.scene.stop('MainScene');/**************** */
+            this.scene.start('Scene2', Scene2, true, { x: 400, y: 300 });
+        
+        },this);
+        //OPTIONS BUTTON
 
-    //CREDITS BUTTON
-    creditButton.on('pointerdown', function () {
-        this.scene.stop('MainScene');/**************** */
-        this.scene.start('Credits', Credits, true, { x: 400, y: 300 });
-    
-    },this);
-    creditButton2.on('pointerdown', function () {
-        this.scene.stop('MainScene');/**************** */
-        this.scene.start('Credits', Credits, true, { x: 400, y: 300 });
-    
-    },this);
-    //EXIT BUTTON
+        //CREDITS BUTTON
+        creditButton.on('pointerdown', function () {
+            this.scene.stop('MainScene');/**************** */
+            this.scene.start('Credits', Credits, true, { x: 400, y: 300 });
+        
+        },this);
+        creditButton2.on('pointerdown', function () {
+            this.scene.stop('MainScene');/**************** */
+            this.scene.start('Credits', Credits, true, { x: 400, y: 300 });
+        
+        },this);
+        //EXIT BUTTON
 
-    //TEXTOS POR PANTALLA 
-    var tittle = this.add.text(this.sys.game.canvas.width/10, 100, 'Garras y Queso', {fontFamily: 'v5bloques' , fontSize: 75 , fill: '#fb7756'} )
+        //TEXTOS POR PANTALLA 
+        var tittle = this.add.text(this.sys.game.canvas.width/10, 100, 'Garras y Queso', {fontFamily: 'v5bloques' , fontSize: 75 , fill: '#fb7756'} )
 
-    
-    //animaciones de personajes en pantalla
-    this.anims.create({
-        key: 'QuesoLeft',
-        frames: this.anims.generateFrameNumbers('Queso', { start: 0, end: 3 }),
-        frameRate: 10,
-        repeat: -1
-    });
-    var Queso = this.add.sprite(window.innerWidth/2 - 600, window.innerHeight/2 + 300, 'Queso').play('QuesoLeft');
+        
+        //animaciones de personajes en pantalla
+        this.anims.create({
+            key: 'QuesoLeft',
+            frames: this.anims.generateFrameNumbers('Queso', { start: 0, end: 3 }),
+            frameRate: 10,
+            repeat: -1
+        });
+        var Queso = this.add.sprite(window.innerWidth/2 - 600, window.innerHeight/2 + 300, 'Queso').play('QuesoLeft');
     }
 
     update ()
