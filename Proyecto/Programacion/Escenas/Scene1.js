@@ -42,7 +42,8 @@ class Scene1 extends Phaser.Scene{
     preload()//Se cargan los recursos
     {
         this.load.image('Jaulas', 'Arte/Bocetos/niveles prototipos/EscenarioJaulaPixelArt.png');
-        console.log("Se ha llegado a la Escena 1")
+        console.log("Se ha llegado a la Escena 1");
+        this.load.image('suelo', 'Arte/Bocetos/niveles prototipos/suelo.png');
         this.load.image('Kamaron', 'Arte/Bocetos/kamaron.png');
         this.load.spritesheet('Queso', 'Arte/Bocetos/Sprite/ratonspritesheet.png', { frameWidth: 116 , frameHeight: 97 });
         this.load.spritesheet('Garra', 'Arte/Bocetos/Sprite/leonspritesheet.png', { frameWidth: 125 , frameHeight: 110 });
@@ -50,6 +51,9 @@ class Scene1 extends Phaser.Scene{
     create ()
     {
         console.log("imagen del nivel 1 (jaulas)");
+
+        var jaulas= this.add.image(0, 0, 'Jaulas').setOrigin(0,0).setScale(0.2);
+        
         this.add.image(0, 0, 'Jaulas').setOrigin(0,0).setScale(2);
         this.add.image(10, 10, 'Kamaron').setOrigin(0,0).setScale(0.2);
 
@@ -62,7 +66,12 @@ class Scene1 extends Phaser.Scene{
         plataforms.create(2120, 625, 'suelo'); //2º contenedor
         plataforms.create(2600, 720, 'suelo'); //2º interruptor
         plataforms.create(3250, 800, 'suelo').setScale(4).refreshBody(); //plat. final
-         
+
+        key.setCollideWorldBounds(true);
+        this.physics.add.collider(key, plataforms);
+        key1.create(1540, 640, 'key');
+        key2.create(2620, 640, 'key');
+        
         caja = this.physics.add.sprite(50, 50, 'caja');
         caja.setCollideWorldBounds(true);
         this.physics.add.collider(caja, plataforms);
