@@ -4,89 +4,79 @@ class Scene3 extends Phaser.Scene {
         this.BASE_PATH = 'Proyecto/Arte/Bocetos/';
     }
 
-   
- hasKey = false;
 
- config = {
-    type: Phaser.AUTO,
-    width: 800,
-    height: 600,
-    physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: { y: 300 },
-            debug: false
-        }
-    },
-    scene: {
-        preload: preload,
-        create: create,
-        update: update
-    }
-};
+preload() {
+this.load.image('escenario', 'Arte/Bocetos/niveles prototipos/Nivel3/scene.png');
+this.load.image('caja', 'Arte/Bocetos/niveles prototipos/Nivel3/caja.png');
+this.load.image('key', 'Arte/Bocetos/niveles prototipos/Nivel3/key.png'); // Nueva imagen de la llave
+this.load.image('flag', 'Arte/Bocetos/niveles prototipos/Nivel3/bandera.png'); // Nueva imagen de la bandera
+this.load.spritesheet('QuesoPlayer', 'Arte/Bocetos/Sprite/ratonspritesheet.png', { frameWidth: 116 , frameHeight: 97 });
+this.load.image('escalera', 'Arte/Bocetos/niveles prototipos/Nivel3/escalerainv.png');
 
- game = new Phaser.Game(config);
+//Plataforma de las escenas 
+this.load.image('suelo','Arte/Bocetos/niveles prototipos/Nivel3/suelo.png');
+this.load.image('plataforma1','Arte/Bocetos/niveles prototipos/Nivel3/plataforma1.png');
 
- preload() {
-this.load.image('sky', 'assets/sky.png');
-this.load.image('ground', 'assets/platform.png');
-this.load.image('caja', 'assets/cajota.png');
-this.load.image('key', 'assets/key.png'); // Nueva imagen de la llave
-this.load.image('flag', 'assets/flag.png'); // Nueva imagen de la bandera
-this.load.spritesheet('raton', 'assets/Ratonmejordef.png', { frameWidth: 116, frameHeight: 94 });
-this.load.spritesheet('ratonescalada', 'assets/ratonEscalada.png', { frameWidth: 116, frameHeight: 94 });
-this.load.spritesheet('leon', 'assets/Leonbipedo.png', { frameWidth: 127, frameHeight: 110 });
-this.load.image('escalera', 'assets/Escalera.png');
+
+//Variables
+this.plataforms;
+this.player;
+this.player2;
+this.cursors;
+this.score = 0;
+this.scoreText;
+this.right;
+this.left;
+this.up;
+this.escalera;
+this.caja;
 }
 
 
- plataforms;
- player;
- player2;
- cursors;
- score = 0;
- scoreText;
- right;
- left;
- up;
- escalera;
- caja;
+
 //Creacion de variables nuevas 
  key;
  flag;
- create() {
-    this.add.image(400, 300, 'sky');
+  create() {
+    this.add.image(975, 475, 'escenario');
 
     plataforms = this.physics.add.staticGroup();
-    plataforms.create(400, 568, 'ground').setScale(2).refreshBody();
-    plataforms.create(600, 400, 'ground');
-    plataforms.create(50, 250, 'ground');
-    plataforms.create(750, 220, 'ground');
+    plataforms.create(975, 910, 'suelo').refreshBody();
+    plataforms.create(68, 690, 'plataforma1');
+    plataforms.create(400, 630, 'plataforma1');//Plataforma de paso 
+    plataforms.create(650, 580, 'plataforma1');//Plataforma de paso 
+    plataforms.create(850, 550, 'plataforma1');//Plataforma de paso 
+    plataforms.create(750, 400, 'plataforma1')
+    plataforms.create(590, 300, 'plataforma1')
+    plataforms.create(68, 400, 'plataforma1');//Superficie llave 
+    plataforms.create(200, 400, 'plataforma1');//Superficie llave 
+    
+    
       // Agregar llave
-    key = this.physics.add.sprite(700, 400, 'key');
+    key = this.physics.add.sprite(68, 300, 'key');
     key.setCollideWorldBounds(true);
     this.physics.add.collider(key, plataforms);
 
     escalera = this.physics.add.staticGroup();
-    escalera.create(350, 455, 'escalera').setScale(5);
+    escalera.create(970, 448, 'escalera');
 
     // Ajustar hitbox horizontalmente
-    escalera.children.iterate(function (child) {
-        child.body.setSize(child.width / 2, child.height);
-        child.body.setOffset(child.width / 4, 0);
-    });
+    //escalera.children.iterate(function (child) {
+        //child.body.setSize(child.width / 2, child.height);
+        //child.body.setOffset(child.width / 4, 0);
+    //});
 
 
-    caja = this.physics.add.sprite(350, 455, 'caja');
+    caja = this.physics.add.sprite(400, 800, 'caja');
     caja.setCollideWorldBounds(true);
     this.physics.add.collider(caja, plataforms);
 
       // Agregar bandera
 
-    flag = this.physics.add.sprite(750, 170, 'flag');
+    flag = this.physics.add.sprite(1500, 170, 'flag');
     flag.setCollideWorldBounds(true);
 
-    player = this.physics.add.sprite(100, 450, 'raton');
+    player = this.physics.add.sprite(100, 800, 'raton');
     player.setBounce(0.2);
     player.setCollideWorldBounds(true);
 
@@ -117,7 +107,7 @@ this.load.image('escalera', 'assets/Escalera.png');
         repeat: -1
     });
 
-    player2 = this.physics.add.sprite(200, 450, 'leon');
+    player2 = this.physics.add.sprite(200, 800, 'leon');
     player2.setBounce(0.2);
     player2.setCollideWorldBounds(true);
     this.physics.add.collider(player2, plataforms);
@@ -154,36 +144,58 @@ this.load.image('escalera', 'assets/Escalera.png');
     this.left = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.up = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
 
+
     this.physics.add.collider(player, plataforms);
     this.physics.add.collider(player2, plataforms);
+
     this.physics.add.collider(caja, plataforms);
     this.physics.add.collider(flag, plataforms);
     this.physics.add.collider(player, escalera);
-
     this.physics.add.overlap(player, key, collectKey, null, this);
     this.physics.add.overlap(player2, key, collectKey, null, this);
     this.physics.add.overlap(player, flag,player2, changeScene, null, this);
 
-    // Agregamos la colisión y la función de overlap para el león y la caja
     this.physics.add.collider(player2, caja, function (player2, caja) {
         var touching = player2.body.touching;
-
+        caja.body.moves = true;
         if (touching.down || touching.up || touching.left || touching.right) {
             caja.setVelocityX(0);
+            caja.body.moves = true;
         } else {
             var relativeX = player2.x - caja.x;
-            var relativeY =player2.y - caja.x;
+            var relativeY = player2.y - caja.y; // Corregir esta línea, usar 'caja.y' en lugar de 'caja.x'
             if (relativeX <= 0) {
-                if(relativeY ==0){
-                    caja.setVelocityX(160);
+                if (relativeY == 0) {
+                    caja.body.moves = true;
+                    caja.setVelocityX(0);
                 }
-                
             } else {
-                if(relativeY ==0){
-                    caja.setVelocityX(160);
+                if (relativeY == 0) {
+                    caja.body.moves = true;
+                    caja.setVelocityX(0);
                 }
-                
             }
+        }
+    });
+    this.physics.add.collider(player, caja, function (player, caja) {
+        var touching = player.body.touching;
+    
+        if (touching.down) {
+            // El ratón está sobre la caja, detener la velocidad vertical del ratón
+            player.setVelocityY(0);
+            // Además, detener la velocidad de la caja
+            caja.setVelocityY(0);
+            // Asegurar que el ratón no pueda empujar la caja
+            caja.body.moves = false;
+        }
+    
+        if (touching.left || touching.right) {
+            // El ratón choca desde los lados, detener la velocidad horizontal del ratón
+            player.setVelocityX(0);
+            // Además, detener la velocidad de la caja
+            caja.setVelocityX(0);
+            // Asegurar que el ratón no pueda empujar la caja
+            caja.body.moves = false;
         }
     });
 }
@@ -221,33 +233,30 @@ this.load.image('escalera', 'assets/Escalera.png');
 
     // Detectar pulsación de la tecla 'P' para la mordida
     if (Phaser.Input.Keyboard.JustDown(this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P))) {
-        player.anims.play('bite', true);
+        
 }
 if (this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E).isDown && checkOverlap(player, escalera)) {
         player.setVelocityY(-160);
         player.setVelocityX(0);
-        player.anims.play('ratonescalada', true);
+        
     } else if (this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q).isDown && checkOverlap(player, escalera)) {
         player.setVelocityY(160);
         player.setVelocityX(0);
-        player.anims.play('ratonescalada', true);
+        
     } else if (checkOverlap(player, escalera)) {
         player.setVelocityY(0);
         player.setVelocityX(0);
     }
 }
-
- 
-
  collectKey(player, key) {
 key.disableBody(true, true);
 hasKey = true; // Variable para controlar si el jugador tiene la llave
 }
 
- changeScene(player, flag, player2) {
+ changeScene(player, flag) {
 if (hasKey) {
     // Cambiar a la siguiente escena
-    this.scene.start('NextSceneKey'); // Reemplaza 'NextSceneKey' con el nombre de tu siguiente escena
+    this.scene.start('Credits'); // Reemplaza 'NextSceneKey' con el nombre de tu siguiente escena
 }
 }
  checkOverlap(spriteA, groupB) {
