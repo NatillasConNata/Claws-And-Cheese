@@ -44,6 +44,8 @@ class Scene1 extends Phaser.Scene{
         this.load.image('Jaulas', 'Arte/Bocetos/niveles prototipos/EscenarioJaulaPixelArt.png');
         console.log("Se ha llegado a la Escena 1")
         this.load.image('Kamaron', 'Arte/Bocetos/kamaron.png');
+        this.load.spritesheet('Queso', 'Arte/Bocetos/Sprite/ratonspritesheet.png', { frameWidth: 116 , frameHeight: 97 });
+        this.load.spritesheet('Garra', 'Arte/Bocetos/Sprite/leonspritesheet.png', { frameWidth: 125 , frameHeight: 110 });
     }
     create ()
     {
@@ -128,6 +130,20 @@ class Scene1 extends Phaser.Scene{
             frameRate: 10,
             repeat: -1
         });
+        
+        this.anims.create({
+            key: 'pushRightLion',
+            frames: this.anims.generateFrameNumbers('leon', { start: 9, end: 12 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'pushLeftLion',
+            frames: this.anims.generateFrameNumbers('leon', { start: 13, end: 16 }),
+            frameRate: 10,
+            repeat: -1
+        });
 
         cursors = this.input.keyboard.createCursorKeys();
         this.right = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
@@ -163,6 +179,8 @@ class Scene1 extends Phaser.Scene{
                 }
             }
         });
+        
+        
     
     }
 
@@ -200,7 +218,7 @@ class Scene1 extends Phaser.Scene{
 
         // Detectar pulsación de la tecla 'P' para pulsar el botón
         if (Phaser.Input.Keyboard.JustDown(this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P))) {
-            player.anims.play('bite', true);
+            player2.anims.play('push', true);
         }
 
         function collectKey1(player, key1){
@@ -232,6 +250,27 @@ class Scene1 extends Phaser.Scene{
             }
             return false;
         } 
+
+        function pushCaja(player, caja) {
+        var touching = player.body.touching;
+
+        if (touching.down || touching.up || touching.left || touching.right) {
+            caja.setVelocityX(0);
+        } else {
+            var relativeX = player.x - caja.x;
+            var relativeY = player.y - caja.y;
+
+            if (relativeX <= 0) {
+                if (relativeY == 0) {
+                    caja.setVelocityX(-160);
+                }
+            } else {
+                if (relativeY == 0) {
+                    caja.setVelocityX(160);
+                }
+            }
+        }
+            
 
       // Constantes de dimensiones
         Scene1.GAME_WIDTH = 3744;   //Los píxeles que ocupa
