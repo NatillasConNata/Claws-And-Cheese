@@ -1,6 +1,6 @@
 class Queso extends PlayerModel {
-  constructor(scene, x, y, textureKey, frame) {
-    super(scene,x,y,textureKey, 'Queso')
+  constructor(scene, x, y, textureKey) {
+    super(scene,x,y,textureKey, 'QuesoPlayer')
 
     const animFrameRate= 10
     const anims = scene.anims
@@ -15,6 +15,11 @@ class Queso extends PlayerModel {
         repeat:-1
     })
 
+    this.idleFrame = {
+        key:'queso-idle',
+        front: 4
+    }
+
     anims.create({
         key:'queso-right',
         frames: anims.generateFrameNumbers(this.textureKey,{
@@ -24,17 +29,13 @@ class Queso extends PlayerModel {
         frameRate: animFrameRate,
         repeat:-1
     })
-
-    this.idleFrame({
-        key:'queso-idle',
-        front: 4
-    })
+    
 
     anims.create({
         key:'queso-bite-left',
         frames: anims.generateFrameNumbers(this.textureKey,{
-            start: 10,
-            end: 14
+            start: 9,
+            end: 13
         }),
         frameRate: animFrameRate,
         repeat:-1
@@ -43,8 +44,8 @@ class Queso extends PlayerModel {
     anims.create({
         key:'queso-bite-right',
         frames: anims.generateFrameNumbers(this.textureKey,{
-            start: 15,
-            end: 19
+            start: 14,
+            end: 18
         }),
         frameRate: animFrameRate,
         repeat:-1
@@ -53,8 +54,8 @@ class Queso extends PlayerModel {
     anims.create({
         key:'queso-up',
         frames: anims.generateFrameNumbers(this.textureKey,{
-            start: 20,
-            end: 23
+            start: 19,
+            end: 22
         }),
         frameRate: animFrameRate,
         repeat:-1
@@ -68,12 +69,12 @@ class Queso extends PlayerModel {
 
     //KEYS input
     //para el leon será ASDW
-    const{LEFT,RIGHT, UP,DOWN} = Phaser.Input.Keyboard.KeyCodes
+    const{LEFT,RIGHT, UP,DOWN,} = Phaser.Input.Keyboard.KeyCodes
     this.keys = scene.input.keyboard.addKeys({
         left:LEFT,
         right:RIGHT,
-        up:UP,
-        down:DOWN
+        up: UP,
+        down: DOWN
     })
   }
 
@@ -85,30 +86,45 @@ update(){
 
     this.body.setVelocity(0)
     
-    //MOVER PERSONAJE
+    //MOVER PERSONAJE Y ANIMSACIONES
+    //pers izda
     if(keys.left.isDown){
         this.body.setVelocityX(-speed)
-    }
-    else if(keys.right.isDown){
-        this.body.setVelocityX(speed)
-    }
-
-    //subir escaleras
-    //---------
-
-    this.body.velocity.normalize().scale(speed)
-
-    //animaciones pers
-    if(keys.left.isDown){
         this.anims.play('queso-left',true)
     }
-    else if (keys.right.isDown)
-    {
+    //pers drcha
+    else if(keys.right.isDown){
+        this.body.setVelocityX(speed)
         this.anims.play('queso-right', true);
     }
+    //Subir escaleras
+    else if (keys.up.isDown )
+    {
+        this.body.setVelocityY(-speed)
+
+        this.anims.play('queso-up', true);
+    }
+    //bajar escaleras
+    else if (keys.down.isDown )
+    {
+        this.body.setVelocityY(speed)
+
+        this.anims.play('queso-up', true);
+    }
+    //salto
+    else if(){
+
+    }
+
     else{
         this.anims.stop()
     }
+    //---------
+
+    this.body.velocity.normalize().scale(speed)
+  
+    
+    
 
     if(this.body.velocity.x == 0 && this.body.velocity.y ==0){
         this.setFrame(this.idleFrame.front)

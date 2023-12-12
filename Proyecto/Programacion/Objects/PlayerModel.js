@@ -1,4 +1,4 @@
-class PlayerModel extends Phaser.GameObjects.Sprite { //playerModel
+class PlayerModel extends Phaser.GameObjects.Sprite { //modelo base para cualquier personaje del juego, jugadores u otros
     constructor(scene, x,y,textureKey, type) {
       super(scene, x,y,textureKey)
 

@@ -10,7 +10,7 @@ class Scene2 extends Phaser.Scene{
         this.load.image('Aviario', 'Arte/Bocetos/niveles prototipos/EscenarioAviarioPixelArtV1.jpg');
         console.log("he llegado hasta Scene2")
         this.load.image('Kamaron', 'Arte/Bocetos/kamaron.png');
-        this.load.spritesheet('Queso', 'Arte/Bocetos/Sprite/ratonspritesheet.png', { frameWidth: 116 , frameHeight: 97 });
+        this.load.spritesheet('QuesoPlayer', 'Arte/Bocetos/Sprite/ratonspritesheet.png', { frameWidth: 116 , frameHeight: 97 });
 
         this.player1
         this.keys
@@ -22,9 +22,9 @@ class Scene2 extends Phaser.Scene{
         var aviario= this.add.image(0, 0, 'Aviario').setOrigin(0,0).setScale(0.2);
         this.add.image(10, 10, 'Kamaron').setOrigin(0,0).setScale(0.2);
 
-        this.player1 = new Queso(this,200,200,'ratonspritesheet');
-        this.physics.add.collider(this.player1,aviario)
-        this.player1.body.setColliderWorldBounds(true)
+        this.player1 = new Queso(this,200,200,'QuesoPlayer');
+        //this.physics.add.collider(this.player1,aviario)
+        this.player1.body.setCollideWorldBounds(true)
     }
 
     update (time)
