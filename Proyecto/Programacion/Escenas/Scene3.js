@@ -30,35 +30,36 @@ this.left;
 this.up;
 this.escalera;
 this.caja;
+this.key;
+this.flag;
 }
 
 
 
 //Creacion de variables nuevas 
- key;
- flag;
+
   create() {
     this.add.image(975, 475, 'escenario');
 
-    plataforms = this.physics.add.staticGroup();
-    plataforms.create(975, 910, 'suelo').refreshBody();
-    plataforms.create(68, 690, 'plataforma1');
-    plataforms.create(400, 630, 'plataforma1');//Plataforma de paso 
-    plataforms.create(650, 580, 'plataforma1');//Plataforma de paso 
-    plataforms.create(850, 550, 'plataforma1');//Plataforma de paso 
-    plataforms.create(750, 400, 'plataforma1')
-    plataforms.create(590, 300, 'plataforma1')
-    plataforms.create(68, 400, 'plataforma1');//Superficie llave 
-    plataforms.create(200, 400, 'plataforma1');//Superficie llave 
+    this.plataforms = this.physics.add.staticGroup();
+    this.plataforms.create(975, 910, 'suelo').refreshBody();
+    this.plataforms.create(68, 690, 'plataforma1');
+    this.plataforms.create(400, 630, 'plataforma1');//Plataforma de paso 
+    this.plataforms.create(650, 580, 'plataforma1');//Plataforma de paso 
+    this.plataforms.create(850, 550, 'plataforma1');//Plataforma de paso 
+    this.plataforms.create(750, 400, 'plataforma1')
+    this.plataforms.create(590, 300, 'plataforma1')
+    this.plataforms.create(68, 400, 'plataforma1');//Superficie llave 
+    this.plataforms.create(200, 400, 'plataforma1');//Superficie llave 
     
     
       // Agregar llave
-    key = this.physics.add.sprite(68, 300, 'key');
-    key.setCollideWorldBounds(true);
+    this.key = this.physics.add.sprite(68, 300, 'key');
+    this.key.setCollideWorldBounds(true);
     this.physics.add.collider(key, plataforms);
 
-    escalera = this.physics.add.staticGroup();
-    escalera.create(970, 448, 'escalera');
+    this.escalera = this.physics.add.staticGroup();
+    this.escalera.create(970, 448, 'escalera');
 
     // Ajustar hitbox horizontalmente
     //escalera.children.iterate(function (child) {
@@ -67,18 +68,18 @@ this.caja;
     //});
 
 
-    caja = this.physics.add.sprite(400, 800, 'caja');
-    caja.setCollideWorldBounds(true);
+    this.caja = this.physics.add.sprite(400, 800, 'caja');
+    this.caja.setCollideWorldBounds(true);
     this.physics.add.collider(caja, plataforms);
 
       // Agregar bandera
 
-    flag = this.physics.add.sprite(1500, 170, 'flag');
-    flag.setCollideWorldBounds(true);
+    this.flag = this.physics.add.sprite(1500, 170, 'flag');
+    this.flag.setCollideWorldBounds(true);
 
-    player = this.physics.add.sprite(100, 800, 'raton');
-    player.setBounce(0.2);
-    player.setCollideWorldBounds(true);
+    this.player = this.physics.add.sprite(100, 800, 'raton');
+    this.player.setBounce(0.2);
+    this.player.setCollideWorldBounds(true);
 
     this.anims.create({
         key: 'left',
@@ -107,9 +108,9 @@ this.caja;
         repeat: -1
     });
 
-    player2 = this.physics.add.sprite(200, 800, 'leon');
-    player2.setBounce(0.2);
-    player2.setCollideWorldBounds(true);
+    this.player2 = this.physics.add.sprite(200, 800, 'leon');
+    this.player2.setBounce(0.2);
+    this.player2.setCollideWorldBounds(true);
     this.physics.add.collider(player2, plataforms);
 
     this.anims.create({
@@ -139,7 +140,7 @@ this.caja;
         repeat: 0 // No se repetirá la animación
     });
 
-    cursors = this.input.keyboard.createCursorKeys();
+    this.cursors = this.input.keyboard.createCursorKeys();
     this.right = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     this.left = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.up = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -159,20 +160,20 @@ this.caja;
         var touching = player2.body.touching;
         caja.body.moves = true;
         if (touching.down || touching.up || touching.left || touching.right) {
-            caja.setVelocityX(0);
-            caja.body.moves = true;
+            this.caja.setVelocityX(0);
+            this.caja.body.moves = true;
         } else {
             var relativeX = player2.x - caja.x;
             var relativeY = player2.y - caja.y; // Corregir esta línea, usar 'caja.y' en lugar de 'caja.x'
             if (relativeX <= 0) {
                 if (relativeY == 0) {
-                    caja.body.moves = true;
-                    caja.setVelocityX(0);
+                    this.caja.body.moves = true;
+                    this.caja.setVelocityX(0);
                 }
             } else {
                 if (relativeY == 0) {
-                    caja.body.moves = true;
-                    caja.setVelocityX(0);
+                    this.caja.body.moves = true;
+                    this.caja.setVelocityX(0);
                 }
             }
         }
@@ -182,20 +183,20 @@ this.caja;
     
         if (touching.down) {
             // El ratón está sobre la caja, detener la velocidad vertical del ratón
-            player.setVelocityY(0);
+            this.player.setVelocityY(0);
             // Además, detener la velocidad de la caja
-            caja.setVelocityY(0);
+            this.caja.setVelocityY(0);
             // Asegurar que el ratón no pueda empujar la caja
-            caja.body.moves = false;
+            this.caja.body.moves = false;
         }
     
         if (touching.left || touching.right) {
             // El ratón choca desde los lados, detener la velocidad horizontal del ratón
-            player.setVelocityX(0);
+            this.player.setVelocityX(0);
             // Además, detener la velocidad de la caja
-            caja.setVelocityX(0);
+            this.caja.setVelocityX(0);
             // Asegurar que el ratón no pueda empujar la caja
-            caja.body.moves = false;
+            this.caja.body.moves = false;
         }
     });
 }
@@ -249,12 +250,12 @@ if (this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E).isDown && check
     }
 }
  collectKey(player, key) {
-key.disableBody(true, true);
-hasKey = true; // Variable para controlar si el jugador tiene la llave
+this.key.disableBody(true, true);
+this.hasKey = true; // Variable para controlar si el jugador tiene la llave
 }
 
  changeScene(player, flag) {
-if (hasKey) {
+if (this.hasKey) {
     // Cambiar a la siguiente escena
     this.scene.start('Credits'); // Reemplaza 'NextSceneKey' con el nombre de tu siguiente escena
 }
