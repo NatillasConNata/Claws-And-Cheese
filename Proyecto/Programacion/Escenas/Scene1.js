@@ -13,7 +13,7 @@ class Scene1 extends Phaser.Scene{
     // los interruptores "llaves" (o keys)
     // y a la salida "flag".
 
-    hasKey1 = false; 
+   /* hasKey1 = false; 
     hasKey2 = false;
 
     config = {
@@ -34,7 +34,7 @@ class Scene1 extends Phaser.Scene{
         }
     };
 
-    game = new Phaser.Game(config);
+    game = new Phaser.Game(config);*/
 
     preload()//Se cargan los recursos
     {
@@ -49,6 +49,9 @@ class Scene1 extends Phaser.Scene{
         this.load.image('Kamaron', 'Arte/Bocetos/kamaron.png');
         this.load.spritesheet('Queso', 'Arte/Bocetos/Sprite/ratonspritesheet.png', { frameWidth: 116 , frameHeight: 97 });
         this.load.spritesheet('Garra', 'Arte/Bocetos/Sprite/leonspritesheet.png', { frameWidth: 125 , frameHeight: 110 });
+
+
+        this.plataforms;
     }
     create ()
     {

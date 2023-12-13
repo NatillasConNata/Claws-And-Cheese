@@ -5,7 +5,7 @@ class Scene2 extends Phaser.Scene{
 
     preload()
     {
-        //camareas
+        //camaras
         this.cameras.main.setBackgroundColor(0x9900e3)
         //this.cameras.main.height = 890
         //this.cameras.main.width = 1000
@@ -20,10 +20,13 @@ class Scene2 extends Phaser.Scene{
         console.log("he llegado hasta Scene2")
         this.load.image('Kamaron', 'Arte/Bocetos/kamaron.png');
         this.load.spritesheet('QuesoPlayer', 'Arte/Bocetos/Sprite/ratonspritesheet.png', { frameWidth: 116 , frameHeight: 97 });
+        this.load.spritesheet('GarrasPlayer', 'Arte/Bocetos/Sprite/leonspritesheet.png', { frameWidth: 127 , frameHeight: 110});
+
         this.load.image('ground', 'Arte/Bocetos/niveles prototipos/Nivel2/plataform.jpg');
 
         //variables
         this.player1
+        this.player2
         this.keys
         this.platforms
 
@@ -57,7 +60,8 @@ class Scene2 extends Phaser.Scene{
 
 
 
-        this.player1 = new Queso(this,200,800,'QuesoPlayer');
+        //PLAYERS
+        this.player1 = new Queso(this,200,1902,'QuesoPlayer');
         //this.player1.allowGravity(true);
         //this.player1 = this.physics.add.sprite(this.player1);
         //this.player1.setCollideWorldBounds(true);
@@ -66,8 +70,10 @@ class Scene2 extends Phaser.Scene{
         this.physics.add.collider(this.player1, this.platforms);
         this.player1.body.setCollideWorldBounds(true);
 
-        //this.physics.add.collider(this.player1,aviario)
-        //this.player1.body.setCollideWorldBounds(true)
+
+        this.player2 = new Garras(this, 250, 1989, 'GarrasPlayer');
+        this.physics.add.collider(this.player2, this.platforms);
+        this.player2.body.setCollideWorldBounds(true);
 
         //Foreground
         var aviario= this.add.image(0, 0, 'AviarioDelante').setOrigin(0,0).setScale(2.0);
@@ -83,6 +89,8 @@ class Scene2 extends Phaser.Scene{
     update (time)
     {
         this.player1.update();
+        this.player2.update();
+
         //console.log(this.player1.body.touching.down)
     }
 }
