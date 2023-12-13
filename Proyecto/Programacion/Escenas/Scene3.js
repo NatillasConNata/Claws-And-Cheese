@@ -11,6 +11,7 @@ this.load.image('caja', 'Arte/Bocetos/niveles prototipos/Nivel3/caja.png');
 this.load.image('key', 'Arte/Bocetos/niveles prototipos/Nivel3/key.png'); // Nueva imagen de la llave
 this.load.image('flag', 'Arte/Bocetos/niveles prototipos/Nivel3/bandera.png'); // Nueva imagen de la bandera
 this.load.spritesheet('QuesoPlayer', 'Arte/Bocetos/Sprite/ratonspritesheet.png', { frameWidth: 116 , frameHeight: 97 });
+        this.load.spritesheet('GarrasPlayer', 'Arte/Bocetos/Sprite/leonspritesheet.png', { frameWidth: 127 , frameHeight: 110});
 this.load.image('escalera', 'Arte/Bocetos/niveles prototipos/Nivel3/escalerainv.png');
 
 //Plataforma de las escenas 
@@ -77,9 +78,9 @@ this.flag;
     this.flag = this.physics.add.sprite(1500, 170, 'flag');
     this.flag.setCollideWorldBounds(true);
 
-    this.player = this.physics.add.sprite(100, 800, 'raton');
-    this.player.setBounce(0.2);
-    this.player.setCollideWorldBounds(true);
+    this.player = new Queso(this,100, 800,'QuesoPlayer');
+    this.physics.add.collider(this.player, this.plataforms);
+    this.player.body.setCollideWorldBounds(true)
 
     this.anims.create({
         key: 'left',
@@ -140,6 +141,8 @@ this.flag;
         repeat: 0 // No se repetirá la animación
     });
 
+    //Funciones
+    
     this.cursors = this.input.keyboard.createCursorKeys();
     this.right = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     this.left = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -152,9 +155,9 @@ this.flag;
     this.physics.add.collider(this.caja, this.plataforms);
     this.physics.add.collider(this.flag, this.plataforms);
     this.physics.add.collider(this.player, this.escalera);
-    this.physics.add.overlap(this.player, this.key, collectKey, null, this);
-    this.physics.add.overlap(this.player2, this.key, collectKey, null, this);
-    this.physics.add.overlap(this.player, this.flag,this.player2, changeScene, null, this);
+    this.physics.add.overlap(this.player, this.key, this.collectKey.call, null, this);
+    this.physics.add.overlap(this.player2, this.key, this.collectKey.call, null, this);
+    this.physics.add.overlap(this.player, this.flag,this.player2, this.changeScene.call, null, this);
 
     this.physics.add.collider(this.player2, this.caja, function (player2, caja) {
         var touching = this.player2.body.touching;
@@ -202,10 +205,12 @@ this.flag;
 }
 
  update() {
-    if (cursors.left.isDown) {
+    this.player.update();
+    /*
+    if (this.cursors.left.isDown) {
         this.player.setVelocityX(-160);
         this.player.anims.play('left', true);
-    } else if (cursors.right.isDown) {
+    } else if (this.cursors.right.isDown) {
         this.player.setVelocityX(160);
         this.player.anims.play('right', true);
     } else {
@@ -213,7 +218,7 @@ this.flag;
         this.player.anims.play('turn');
     }
 
-    if (cursors.up.isDown && player.body.touching.down) {
+    if (this.cursors.up.isDown && this.player.body.touching.down) {
         this.player.setVelocityY(-330);
     }
 
@@ -248,8 +253,9 @@ if (this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E).isDown && check
         this.player.setVelocityY(0);
         this.player.setVelocityX(0);
     }
+    */
 }
- collectKey(player, key) {
+collectKey(player, key) {
 this.key.disableBody(true, true);
 this.hasKey = true; // Variable para controlar si el jugador tiene la llave
 }
