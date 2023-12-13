@@ -70,7 +70,7 @@ this.flag;
 
     this.caja = this.physics.add.sprite(400, 800, 'caja');
     this.caja.setCollideWorldBounds(true);
-    this.physics.add.collider(caja, plataforms);
+    this.physics.add.collider(this.caja, this.plataforms);
 
       // Agregar bandera
 
@@ -147,7 +147,7 @@ this.flag;
 
 
     this.physics.add.collider(this.player, this.plataforms);
-    this.physics.add.collider(player2, plataforms);
+    this.physics.add.collider(this.player2, this.plataforms);
 
     this.physics.add.collider(this.caja, this.plataforms);
     this.physics.add.collider(this.flag, this.plataforms);
