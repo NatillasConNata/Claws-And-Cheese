@@ -16,6 +16,9 @@ class Scene2 extends Phaser.Scene{
         this.load.image('AviarioDelante', 'Arte/Bocetos/niveles prototipos/Nivel2/AviarioForeground.png');
         this.load.image('Platform', 'Arte/Bocetos/niveles prototipos/Nivel2/InvisiblePlatform.png');
         this.load.image('BlockPlatform', 'Arte/Bocetos/niveles prototipos/Nivel2/BlockPlatform.png');
+        this.load.image('PC', 'Arte/Bocetos/niveles prototipos/Nivel2/Pc.png');
+        this.load.image('Puerta', 'Arte/Bocetos/niveles prototipos/Nivel2/puerta.png');
+
 
         console.log("he llegado hasta Scene2")
         this.load.image('Kamaron', 'Arte/Bocetos/kamaron.png');
@@ -29,17 +32,23 @@ class Scene2 extends Phaser.Scene{
         this.player2
         this.keys
         this.platforms
-
+        this.PC
+        this.combo
+        this.door
     }
     create ()
     {
-        this.add.image(0, 0, 'AviarioFondo').setOrigin(0,0).setScale(2.0);
+        
+
+
+        //
+        this.add.image(0, 0, 'AviarioFondo').setOrigin(0,0).setScale(1);
         this.add.image(10, 10, 'Kamaron').setOrigin(0,0).setScale(0.2);
 
         //Platforms y limites
         this.platforms = this.physics.add.staticGroup();
         this.platforms.create(200, 900, 'ground');
-        this.platforms.create(2000, 1999, 'Platform').setScale(40,1).refreshBody();
+        this.platforms.create(2000, 1985, 'Platform').setScale(40,1).refreshBody();
         this.platforms.create(150, 1610, 'Platform').setScale(0.5,1).refreshBody();
         this.platforms.create(1460, 1610, 'Platform').setScale(23,1).refreshBody();
         this.platforms.create(3300, 1410, 'Platform').setScale(10,1).refreshBody();
@@ -58,26 +67,44 @@ class Scene2 extends Phaser.Scene{
         this.platforms.create(2950, 950, 'BlockPlatform').setScale(22,3).refreshBody();
         this.platforms.create(3490, 600, 'BlockPlatform').setScale(1,10).refreshBody();
 
-
+        //pc 
+        this.PC = this.physics.add.staticGroup();
+        this.PC.create(3300, 650, 'PC').setScale(0.5).refreshBody();
 
         //PLAYERS
-        this.player1 = new Queso(this,200,1902,'QuesoPlayer');
-        //this.player1.allowGravity(true);
-        //this.player1 = this.physics.add.sprite(this.player1);
-        //this.player1.setCollideWorldBounds(true);
-        //this.physics.add(this.player1);
-       // this.player1.body.setGravity(0 , 200)
+       // this.player1 = new Queso(this,200,1890,'QuesoPlayer');
+        this.player1 = new Queso(this,3000,650,'QuesoPlayer');
         this.physics.add.collider(this.player1, this.platforms);
         this.player1.body.setCollideWorldBounds(true);
 
 
-        this.player2 = new Garras(this, 250, 1989, 'GarrasPlayer');
+        this.player2 = new Garras(this, 250, 1870, 'GarrasPlayer');
         this.physics.add.collider(this.player2, this.platforms);
         this.player2.body.setCollideWorldBounds(true);
 
-        //Foreground
-        var aviario= this.add.image(0, 0, 'AviarioDelante').setOrigin(0,0).setScale(2.0);
+        //puerta
+        this.door = this.physics.add.staticGroup();
+        this.door.create(3708, 1232, 'Puerta');
+        this.physics.add.collider(this.player1, this.door);
+        this.physics.add.collider(this.player2, this.door);
 
+
+        //combo wombo
+        this.combo = this.input.keyboard.createCombo('zxcv');
+        this.combo.enabled = false //no procesa teclas
+
+        this.input.keyboard.on('keycombomatch', function (event) {
+            console.log('Konami Code entered!');
+            this.door.destroy()
+        });
+
+        //Foreground
+        var aviario= this.add.image(0, 0, 'AviarioDelante').setOrigin(0,0).setScale(1.0);
+
+
+        //interactuabilidad
+        //this.physics.add.overlap(this.player1, this.PC, this.codigo.call(), null, this);
+        //this.physics.add.overlap(this.player2, this.pc, this.codigo.call(), null, this);
 
 
         ///camaras
@@ -86,11 +113,19 @@ class Scene2 extends Phaser.Scene{
 
     }
 
-    update (time)
-    {
+    update(time) {
         this.player1.update();
         this.player2.update();
-
-        //console.log(this.player1.body.touching.down)
+    
+        if (this.physics.overlap(this.player1, this.PC)) {
+            // Verifica si el jugador está cerca de la PC y habilita el combo
+            this.combo.enabled = true;
+            console.log('patata')
+        } else {
+            // Si el jugador no está cerca de la PC, deshabilita el combo
+            this.combo.enabled = false;
+            console.log('patos')
+        }
     }
+
 }

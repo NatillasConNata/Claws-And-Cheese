@@ -123,7 +123,7 @@ update(){
     //salto
     else if (keys.up.isDown && this.body.touching.down)
     {
-        this.body.setVelocityY(-speed*50)
+        this.body.setVelocityY(-speed*100)
     }
    
     else{
