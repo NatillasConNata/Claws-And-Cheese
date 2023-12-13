@@ -40,27 +40,45 @@ this.flag;
 //Creacion de variables nuevas 
 
   create() {
-    this.add.image(975, 475, 'escenario');
-
+    this.add.image(2000, 1000, 'escenario').setScale(2.1);
+    //Plataforma suelo
     this.plataforms = this.physics.add.staticGroup();
-    this.plataforms.create(975, 910, 'suelo').refreshBody();
-    this.plataforms.create(68, 690, 'plataforma1');
-    this.plataforms.create(400, 630, 'plataforma1');//Plataforma de paso 
-    this.plataforms.create(650, 580, 'plataforma1');//Plataforma de paso 
-    this.plataforms.create(850, 550, 'plataforma1');//Plataforma de paso 
-    this.plataforms.create(750, 400, 'plataforma1')
-    this.plataforms.create(590, 300, 'plataforma1')
-    this.plataforms.create(68, 400, 'plataforma1');//Superficie llave 
-    this.plataforms.create(200, 400, 'plataforma1');//Superficie llave 
+    this.plataforms.create(975, 1870, 'suelo');
+    this.plataforms.create(1500, 1870, 'suelo');
+    this.plataforms.create(1800, 1870, 'suelo');
+    this.plataforms.create(2100, 1870, 'suelo');
+    this.plataforms.create(2600, 1870, 'suelo');
+    this.plataforms.create(3000, 1870, 'suelo');
+    //Plataforma del parkour
+    this.plataforms.create(68, 1650, 'plataforma1');//Plataforma 1
+    this.plataforms.create(400, 1600, 'plataforma1');//Plataforma 2
+    this.plataforms.create(590, 1500, 'plataforma1')//Plataforma 3
+    this.plataforms.create(900, 1550, 'plataforma1');//Plataforma 4
+    this.plataforms.create(1100, 1450, 'plataforma1')//Plataforma 5
+    this.plataforms.create(1400, 1400, 'plataforma1')//Plataforma 6
+    this.plataforms.create(1550, 1300, 'plataforma1')//Plataforma 7
+    this.plataforms.create(1650, 1200, 'plataforma1')//Plataforma 8
+    this.plataforms.create(1650, 750, 'plataforma1')//Plataforma 9
+    this.plataforms.create(1400, 650, 'plataforma1')//Plataforma 10
+    this.plataforms.create(1250, 650, 'plataforma1')//Plataforma 11
+
+    this.plataforms.create(1000, 600, 'plataforma1')//Plataforma 11
+    
+    this.plataforms.create(1820, 1120, 'plataforma1');//Plataforma de escalera
+     
     
     
-      // Agregar llave
-    this.key = this.physics.add.sprite(68, 300, 'key');
+    //Superficie llave 
+    this.plataforms.create(68, 800, 'plataforma1');//Superficie llave 
+    this.plataforms.create(200, 800, 'plataforma1');//Superficie llave 
+    
+    
+    // Crear la llave (key) en la plataforma
+    this.key = this.physics.add.sprite(68, 600, 'key');
     this.key.setCollideWorldBounds(true);
     this.physics.add.collider(this.key, this.plataforms);
 
-    this.escalera = this.physics.add.staticGroup();
-    this.escalera.create(970, 448, 'escalera');
+
 
     // Ajustar hitbox horizontalmente
     //escalera.children.iterate(function (child) {
@@ -69,16 +87,16 @@ this.flag;
     //});
 
 
-    this.caja = this.physics.add.sprite(400, 800, 'caja');
+    this.caja = this.physics.add.sprite(400, 1750, 'caja');
     this.caja.setCollideWorldBounds(true);
     this.physics.add.collider(this.caja, this.plataforms);
 
       // Agregar bandera
 
-    this.flag = this.physics.add.sprite(1500, 170, 'flag');
+    this.flag = this.physics.add.sprite(3500, 170, 'flag');
     this.flag.setCollideWorldBounds(true);
 
-    this.player = new Queso(this,100, 800,'QuesoPlayer');
+    this.player = new Queso(this,200,1750,'QuesoPlayer');
     this.physics.add.collider(this.player, this.plataforms);
     this.player.body.setCollideWorldBounds(true)
 
@@ -108,7 +126,7 @@ this.flag;
         frameRate: 10,
         repeat: -1
     });
-    this.player2 = new Garras(this,200, 800, 'GarrasPlayer');
+    this.player2 = new Garras(this,250, 1750, 'GarrasPlayer');
     this.physics.add.collider(this.player2, this.platforms);
     this.player2.body.setCollideWorldBounds(true);
 
