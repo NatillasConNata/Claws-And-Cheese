@@ -108,11 +108,9 @@ this.flag;
         frameRate: 10,
         repeat: -1
     });
-
-    this.player2 = this.physics.add.sprite(200, 800, 'leon');
-    this.player2.setBounce(0.2);
-    this.player2.setCollideWorldBounds(true);
-    this.physics.add.collider(this.player2, this.plataforms);
+    this.player2 = new Garras(this,200, 800, 'GarrasPlayer');
+    this.physics.add.collider(this.player2, this.platforms);
+    this.player2.body.setCollideWorldBounds(true);
 
     this.anims.create({
         key: 'leftLion',
@@ -142,12 +140,10 @@ this.flag;
     });
 
     //Funciones
-    
     this.cursors = this.input.keyboard.createCursorKeys();
     this.right = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     this.left = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.up = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-
 
     this.physics.add.collider(this.player, this.plataforms);
     this.physics.add.collider(this.player2, this.plataforms);
@@ -155,11 +151,11 @@ this.flag;
     this.physics.add.collider(this.caja, this.plataforms);
     this.physics.add.collider(this.flag, this.plataforms);
     this.physics.add.collider(this.player, this.escalera);
-    this.physics.add.overlap(this.player, this.key, this.collectKey.call, null, this);
-    this.physics.add.overlap(this.player2, this.key, this.collectKey.call, null, this);
-    this.physics.add.overlap(this.player, this.flag,this.player2, this.changeScene.call, null, this);
+    this.physics.add.overlap(this.player, this.key, this.collectKey, null, this);
+    this.physics.add.overlap(this.player2, this.key, this.collectKey, null, this);
+    this.physics.add.overlap(this.player, this.flag, this.changeScene, null, this);
 
-    this.physics.add.collider(this.player2, this.caja, function (player2, caja) {
+    this.physics.add.collider(this.player2, this.caja, (player2, caja) => {
         var touching = this.player2.body.touching;
         this.caja.body.moves = true;
         if (touching.down || touching.up || touching.left || touching.right) {
@@ -181,31 +177,25 @@ this.flag;
             }
         }
     });
-    this.physics.add.collider(this.player, this.caja, function (player, caja) {
-        var touching = this.player.body.touching;
-    
-        if (touching.down) {
-            // El ratón está sobre la caja, detener la velocidad vertical del ratón
-            this.player.setVelocityY(0);
-            // Además, detener la velocidad de la caja
-            this.caja.setVelocityY(0);
-            // Asegurar que el ratón no pueda empujar la caja
-            this.caja.body.moves = false;
+
+    this.physics.add.collider(this.player, this.caja, (player, caja) => {
+        if (player.body.touching.down) {
+           
+            caja.setVelocityY(0);
+            caja.body.moves = false;
         }
-    
-        if (touching.left || touching.right) {
-            // El ratón choca desde los lados, detener la velocidad horizontal del ratón
-            this.player.setVelocityX(0);
-            // Además, detener la velocidad de la caja
-            this.caja.setVelocityX(0);
-            // Asegurar que el ratón no pueda empujar la caja
-            this.caja.body.moves = false;
+
+        if (player.body.touching.left || player.body.touching.right) {
+           
+            caja.setVelocityX(0);
+            caja.body.moves = false;
         }
     });
 }
 
  update() {
     this.player.update();
+    this.player2.update();
     /*
     if (this.cursors.left.isDown) {
         this.player.setVelocityX(-160);
@@ -256,17 +246,18 @@ if (this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E).isDown && check
     */
 }
 collectKey(player, key) {
-this.key.disableBody(true, true);
-this.hasKey = true; // Variable para controlar si el jugador tiene la llave
+    this.key.disableBody(true, true);
+    this.hasKey = true; // Variable para controlar si el jugador tiene la llave
 }
 
- changeScene(player, flag) {
-if (this.hasKey) {
-    // Cambiar a la siguiente escena
-    this.scene.start('Credits'); // Reemplaza 'NextSceneKey' con el nombre de tu siguiente escena
+changeScene(player, flag) {
+    if (this.hasKey) {
+        // Cambiar a la siguiente escena
+        this.scene.start('Credits'); // Reemplaza 'NextSceneKey' con el nombre de tu siguiente escena
+    }
 }
-}
- checkOverlap(spriteA, groupB) {
+
+checkOverlap(spriteA, groupB) {
     var boundsA = spriteA.getBounds();
     var objectsB = groupB.getChildren();
 
@@ -280,6 +271,7 @@ if (this.hasKey) {
     return false;
 }
 }
+
 // Constantes de dimensiones
 Scene3.GAME_WIDTH = 720;
 Scene3.GAME_HEIGHT = 640;

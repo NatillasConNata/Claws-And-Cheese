@@ -83,7 +83,7 @@ class Queso extends PlayerModel {
   //MOVE CHARACTER
 update(){
     const {keys} = this
-    const speed = 100
+    const speed = 140
     const previousVelocity = this.body.velocity.clone()
 
     this.body.setVelocity(0)
