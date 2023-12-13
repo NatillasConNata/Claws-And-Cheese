@@ -37,7 +37,6 @@ class Credits extends Phaser.Scene{
         this.add.text(100, 200, 'DESARROLLADORES', {fontFamily: 'bitween' , fontSize: 75 , fill: '#fb7756'} )
         this.add.text(150, 300, 'Miguel Angel Gimenez Montemayor', {fontFamily: 'bitween' , fontSize: 50 , fill: '#fb7756'} )
         this.add.text(200, 400, 'Natalia Martinez Clemente', {fontFamily: 'bitween' , fontSize: 50 , fill: '#fb7756'} )
-        this.add.text(200, 500, 'Santiago Varela Rey', {fontFamily: 'bitween' , fontSize: 50 , fill: '#fb7756'} )
         
         
         this.add.text(150, 600, 'MUSICA', {fontFamily: 'bitween' , fontSize: 75 , fill: '#fb7756'} )

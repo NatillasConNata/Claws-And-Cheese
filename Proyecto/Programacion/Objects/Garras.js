@@ -92,7 +92,7 @@ update(){
     //salto
     else if (keys.w.isDown && this.body.touching.down)
     {
-        this.body.setVelocityY(-speed*50)
+        this.body.setVelocityY(-speed*60)
     }
     //empujar
 

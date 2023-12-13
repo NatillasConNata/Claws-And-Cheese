@@ -5,13 +5,12 @@ class MainScene extends Phaser.Scene{
     
     preload()
     {
-       // game.plugins.add(PhaserNineSlice.Plugin);//usar pluging nineslices
-       //this.load.atlas('Buttons', 'Arte/Bocetos/UI/Buttons.png', 'assets/ui/nine-slice.json');
+        //this.load.audio('MainAudio', 'Musica/komiku/Komiku_-_70_-_Ending(chosic.com).mp3')
 
 
-        this.load.image('Aviario', 'Arte/Bocetos/niveles prototipos/Nivel2/EscenarioAviarioPixelArtV1.jpg');
+        this.load.image('Aviario', 'Arte/Bocetos/Fondo.jpeg');
         this.load.spritesheet('Buttons', 'Arte/Bocetos/UI/Buttons.png', { frameWidth: 24, frameHeight: 23 });
-        this.load.spritesheet('Queso', 'Arte/Bocetos/Sprite/Ratonwalk.png', { frameWidth: 117 , frameHeight: 94 });
+        //this.load.spritesheet('Queso', 'Arte/Bocetos/Sprite/Ratonwalk.png', { frameWidth: 117 , frameHeight: 94 });
 
         console.log("he llegado hasta Main")
         this.load.image('Kamaron', 'Arte/Bocetos/kamaron.png');
@@ -31,6 +30,7 @@ class MainScene extends Phaser.Scene{
            // console.log("DONEEEEEEE")
         })
 
+        
     }
     
     create ()
@@ -49,45 +49,59 @@ class MainScene extends Phaser.Scene{
         var exitButton2 = this.add.nineslice(944, 650, 'Buttons', 35,  144,138,  4,4,4,7).setInteractive();
 
 
+        //AUDIO
+        //let MainAudio = this.sound.add('MainAudio',{loop:true});
+       // MainAudio.play();
+
+        //TEXTOS POR PANTALLA 
+        var tittle = this.add.text(this.sys.game.canvas.width/10, 100, 'Garras y Queso', {fontFamily: 'v5bloques' , fontSize: 75 , fill: '#000000'} )
+        this.add.text(450, 500, 'PLAY', {fontFamily: 'bitween' , fontSize: 40 , fill: '#000000'} )
+        this.add.text(750, 500, 'OPTION', {fontFamily: 'bitween' , fontSize: 40 , fill: '#000000'} )
+        this.add.text(450, 650, 'CREDITS', {fontFamily: 'bitween' , fontSize: 30 , fill: '#000000'} )
+        this.add.text(730, 650, 'EXIT', {fontFamily: 'bitween' , fontSize: 40 , fill: '#000000'} )
+
+
         //pulsar botón cambia de escena
         //START BUTTON
         startButton.on('pointerdown', function () {
-            this.scene.stop('MainScene');/**************** */
+          //  this.scene.stop('MainScene');/**************** */
             this.scene.start('Scene3', Scene3, true, { x: 400, y: 300 });
+            //MainAudio.stop()
         
         },this);
         startButton2.on('pointerdown', function () {
-            this.scene.stop('MainScene');/**************** */
+           // this.scene.stop('MainScene');/**************** */
             this.scene.start('Scene2', Scene2, true, { x: 400, y: 300 });
-        
+            //MainAudio.stop()
         },this);
         //OPTIONS BUTTON
 
         //CREDITS BUTTON
         creditButton.on('pointerdown', function () {
-            this.scene.stop('MainScene');/**************** */
+            //this.scene.stop('MainScene');/**************** */
             this.scene.start('Credits', Credits, true, { x: 400, y: 300 });
-        
+           // MainAudio.stop()
+
         },this);
         creditButton2.on('pointerdown', function () {
-            this.scene.stop('MainScene');/**************** */
+            //this.scene.stop('MainScene');/**************** */
             this.scene.start('Credits', Credits, true, { x: 400, y: 300 });
-        
+          //  MainAudio.stop()
+
         },this);
         //EXIT BUTTON
 
-        //TEXTOS POR PANTALLA 
-        var tittle = this.add.text(this.sys.game.canvas.width/10, 100, 'Garras y Queso', {fontFamily: 'v5bloques' , fontSize: 75 , fill: '#fb7756'} )
+        
 
         
         //animaciones de personajes en pantalla
-        this.anims.create({
+        /*this.anims.create({
             key: 'QuesoLeft',
             frames: this.anims.generateFrameNumbers('Queso', { start: 0, end: 3 }),
             frameRate: 10,
             repeat: -1
         });
-        var Queso = this.add.sprite(200, 300, 'Queso').play('QuesoLeft');
+        var Queso = this.add.sprite(200, 300, 'Queso').play('QuesoLeft');*/
     }
 
     update ()
