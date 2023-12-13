@@ -4,17 +4,14 @@ class Scene1 extends Phaser.Scene{
         super({key: 'Scene1', active:false})
         this.BASE_PATH = 'Proyecto/Arte/Bocetos/';
     }
-
     //DESCRIPCIÓN DEL NIVEL:
     // El león tiene que mover cajas
     // y el ratón apagar interruptores
     // para que ambos consigan pasar
     // al siguiente nivel
-
-    
     //NOTA: En este nivel vamos a llamar a
     // los interruptores "llaves" (o keys)
-    // y la función de estos es abrir las puertas.
+    // y a la salida "flag".
 
     hasKey1 = false; 
     hasKey2 = false;
@@ -43,7 +40,12 @@ class Scene1 extends Phaser.Scene{
     {
         this.load.image('Jaulas', 'Arte/Bocetos/niveles prototipos/EscenarioJaulaPixelArt.png');
         console.log("Se ha llegado a la Escena 1");
+
         this.load.image('suelo', 'Arte/Bocetos/niveles prototipos/suelo.png');
+        this.load.image('caja', 'Arte/Bocetos/niveles prototipos/caja.png');
+        this.load.image('verja1', 'Arte/Bocetos/niveles prototipos/verja.png');
+        this.load.image('verja2', 'Arte/Bocetos/niveles prototipos/verja.png');
+
         this.load.image('Kamaron', 'Arte/Bocetos/kamaron.png');
         this.load.spritesheet('Queso', 'Arte/Bocetos/Sprite/ratonspritesheet.png', { frameWidth: 116 , frameHeight: 97 });
         this.load.spritesheet('Garra', 'Arte/Bocetos/Sprite/leonspritesheet.png', { frameWidth: 125 , frameHeight: 110 });
@@ -66,7 +68,14 @@ class Scene1 extends Phaser.Scene{
         plataforms.create(2120, 625, 'suelo'); //2º contenedor
         plataforms.create(2600, 720, 'suelo'); //2º interruptor
         plataforms.create(3250, 800, 'suelo').setScale(4).refreshBody(); //plat. final
-
+        
+        plataforms.create(1490, 550, 'verja1');
+        plataforms.create(2580, 550, 'verja2');
+        
+        plataforms.create(900, 500, 'caja');
+        plataforms.create(2100, 500, 'caja');
+        
+        
         key.setCollideWorldBounds(true);
         this.physics.add.collider(key, plataforms);
         key1.create(1540, 640, 'key');
@@ -77,7 +86,7 @@ class Scene1 extends Phaser.Scene{
         this.physics.add.collider(caja, plataforms);
             
         // Agregar bandera
-        flag = this.physics.add.sprite(750, 170, 'flag');
+        flag = this.physics.add.sprite(3240, 700, 'flag');
         flag.setCollideWorldBounds(true);
 
         //Físicas y controles del ratón
@@ -112,7 +121,6 @@ class Scene1 extends Phaser.Scene{
             repeat: 0 // No se repetirá la animación
         });
         //como en esta escena no hay escaleras, no pongo la física de escalada
-        
 
         //Físicas y controles del ratón
         player2 = this.physics.add.sprite(200, 450, 'leon');
@@ -164,6 +172,10 @@ class Scene1 extends Phaser.Scene{
         this.physics.add.collider(caja, plataforms);
         this.physics.add.collider(flag, plataforms);
 
+        //crear los colliders (verja)
+        this.physics.add.collider(verja1, plataforms); //esto impide que la verja sea traspasable
+        this.physics.add.collider(verja2, plataforms); //para poder pasar se desactiva el collider
+
         this.physics.add.overlap(player, key1, collectKey, null, this);
         this.physics.add.overlap(player, key2, collectKey, null, this);
         this.physics.add.overlap(player, flag,player2, changeScene, null, this);
@@ -188,9 +200,6 @@ class Scene1 extends Phaser.Scene{
                 }
             }
         });
-        
-        
-    
     }
 
     update ()
@@ -235,7 +244,7 @@ class Scene1 extends Phaser.Scene{
             hasKey1 = true; // Variable para controlar si el jugador tiene la llave
         
             if (hasKey1) {
-                this.physics.world.removeCollider(collider1);
+                this.physics.world.removeCollider(verja1);
             }
         }
 
@@ -244,7 +253,7 @@ class Scene1 extends Phaser.Scene{
             hasKey2 = true; // Variable para controlar si el jugador tiene la llave
         
             if (hasKey2) {
-                this.physics.world.removeCollider(collider2);
+                this.physics.world.removeCollider(verja2);
             }
         }
 
@@ -259,7 +268,7 @@ class Scene1 extends Phaser.Scene{
             }
             return false;
         } 
-
+   
         function pushCaja(player, caja) {
         var touching = player.body.touching;
 
@@ -279,20 +288,17 @@ class Scene1 extends Phaser.Scene{
                 }
             }
         }
-            
+        // Constantes de dimensiones
+            Scene1.GAME_WIDTH = 3744;   //Los píxeles que ocupa
+            Scene1.GAME_HEIGHT = 1080;  // la imagen de fondo
 
-      // Constantes de dimensiones
-        Scene1.GAME_WIDTH = 3744;   //Los píxeles que ocupa
-        Scene1.GAME_HEIGHT = 1080;  // la imagen de fondo
+            Scene1.RATON_WIDTH = 58;   //Los píxeles que ocupa
+            Scene1.RATON_HEIGHT = 47;   // la imagen del ratón
+            //NOTA: He hecho al ratón la mitad de grande de lo que era en la escena 3
+            // porque es un ratón, en el doc ponía que al ser ratón podría pasar por sitios pequeños etc.
 
-        Scene1.RATON_WIDTH = 58;   //Los píxeles que ocupa
-        Scene1.RATON_HEIGHT = 47;   // la imagen del ratón
-        //NOTA: He hecho al ratón la mitad de grande de lo que era en la escena 3
-        // porque es un ratón, en el doc ponía que al ser ratón podría pasar por sitios pequeños etc.
-
-        Scene1.LEON_WIDTH = 127;    //Los píxeles que ocupan
-        Scene1.LEON_HEIGHT = 110;   // la imagen del león
-      
+            Scene1.LEON_WIDTH = 127;    //Los píxeles que ocupan
+            Scene1.LEON_HEIGHT = 110;   // la imagen del león
+        }
     }
-
 }
