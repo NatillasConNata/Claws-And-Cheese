@@ -56,7 +56,7 @@ this.flag;
       // Agregar llave
     this.key = this.physics.add.sprite(68, 300, 'key');
     this.key.setCollideWorldBounds(true);
-    this.physics.add.collider(key, plataforms);
+    this.physics.add.collider(this.key, this.plataforms);
 
     this.escalera = this.physics.add.staticGroup();
     this.escalera.create(970, 448, 'escalera');
@@ -111,7 +111,7 @@ this.flag;
     this.player2 = this.physics.add.sprite(200, 800, 'leon');
     this.player2.setBounce(0.2);
     this.player2.setCollideWorldBounds(true);
-    this.physics.add.collider(player2, plataforms);
+    this.physics.add.collider(this.player2, this.plataforms);
 
     this.anims.create({
         key: 'leftLion',
@@ -146,19 +146,19 @@ this.flag;
     this.up = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
 
 
-    this.physics.add.collider(player, plataforms);
+    this.physics.add.collider(this.player, this.plataforms);
     this.physics.add.collider(player2, plataforms);
 
-    this.physics.add.collider(caja, plataforms);
-    this.physics.add.collider(flag, plataforms);
-    this.physics.add.collider(player, escalera);
-    this.physics.add.overlap(player, key, collectKey, null, this);
-    this.physics.add.overlap(player2, key, collectKey, null, this);
-    this.physics.add.overlap(player, flag,player2, changeScene, null, this);
+    this.physics.add.collider(this.caja, this.plataforms);
+    this.physics.add.collider(this.flag, this.plataforms);
+    this.physics.add.collider(this.player, this.escalera);
+    this.physics.add.overlap(this.player, this.key, collectKey, null, this);
+    this.physics.add.overlap(this.player2, this.key, collectKey, null, this);
+    this.physics.add.overlap(this.player, this.flag,this.player2, changeScene, null, this);
 
-    this.physics.add.collider(player2, caja, function (player2, caja) {
-        var touching = player2.body.touching;
-        caja.body.moves = true;
+    this.physics.add.collider(this.player2, this.caja, function (player2, caja) {
+        var touching = this.player2.body.touching;
+        this.caja.body.moves = true;
         if (touching.down || touching.up || touching.left || touching.right) {
             this.caja.setVelocityX(0);
             this.caja.body.moves = true;
@@ -178,8 +178,8 @@ this.flag;
             }
         }
     });
-    this.physics.add.collider(player, caja, function (player, caja) {
-        var touching = player.body.touching;
+    this.physics.add.collider(this.player, this.caja, function (player, caja) {
+        var touching = this.player.body.touching;
     
         if (touching.down) {
             // El ratón está sobre la caja, detener la velocidad vertical del ratón
@@ -203,33 +203,33 @@ this.flag;
 
  update() {
     if (cursors.left.isDown) {
-        player.setVelocityX(-160);
-        player.anims.play('left', true);
+        this.player.setVelocityX(-160);
+        this.player.anims.play('left', true);
     } else if (cursors.right.isDown) {
-        player.setVelocityX(160);
-        player.anims.play('right', true);
+        this.player.setVelocityX(160);
+        this.player.anims.play('right', true);
     } else {
-        player.setVelocityX(0);
-        player.anims.play('turn');
+        this.player.setVelocityX(0);
+        this.player.anims.play('turn');
     }
 
     if (cursors.up.isDown && player.body.touching.down) {
-        player.setVelocityY(-330);
+        this.player.setVelocityY(-330);
     }
 
     if (this.left.isDown) {
-        player2.setVelocityX(-160);
-        player2.anims.play('leftLion', true);
+        this.player2.setVelocityX(-160);
+        this.player2.anims.play('leftLion', true);
     } else if (this.right.isDown) {
-        player2.setVelocityX(160);
-        player2.anims.play('rightLion', true);
+        this.player2.setVelocityX(160);
+        this.player2.anims.play('rightLion', true);
     } else {
-        player2.setVelocityX(0);
-        player2.anims.play('turnLion');
+        this.player2.setVelocityX(0);
+        this.player2.anims.play('turnLion');
     }
 
     if (this.up.isDown && player2.body.touching.down) {
-        player2.setVelocityY(-330);
+        this.player2.setVelocityY(-330);
     }
 
     // Detectar pulsación de la tecla 'P' para la mordida
@@ -237,16 +237,16 @@ this.flag;
         
 }
 if (this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E).isDown && checkOverlap(player, escalera)) {
-        player.setVelocityY(-160);
-        player.setVelocityX(0);
+        this.player.setVelocityY(-160);
+        this.player.setVelocityX(0);
         
     } else if (this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q).isDown && checkOverlap(player, escalera)) {
-        player.setVelocityY(160);
-        player.setVelocityX(0);
+        this.player.setVelocityY(160);
+        this.player.setVelocityX(0);
         
     } else if (checkOverlap(player, escalera)) {
-        player.setVelocityY(0);
-        player.setVelocityX(0);
+        this.player.setVelocityY(0);
+        this.player.setVelocityX(0);
     }
 }
  collectKey(player, key) {
