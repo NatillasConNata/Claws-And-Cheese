@@ -41,10 +41,10 @@ class Scene1 extends Phaser.Scene{
         this.load.image('Jaulas', 'Arte/Bocetos/niveles prototipos/EscenarioJaulaPixelArt.png');
         console.log("Se ha llegado a la Escena 1");
 
-        this.load.image('suelo', 'Arte/Bocetos/niveles prototipos/suelo.png');
-        this.load.image('caja', 'Arte/Bocetos/niveles prototipos/caja.png');
-        this.load.image('verja1', 'Arte/Bocetos/niveles prototipos/verja.png');
-        this.load.image('verja2', 'Arte/Bocetos/niveles prototipos/verja.png');
+        this.load.image('suelo', 'Arte/Bocetos/niveles prototipos/Nivel 1/suelo.png');
+        this.load.image('caja', 'Arte/Bocetos/niveles prototipos/Nivel 1/caja.png');
+        this.load.image('verja1', 'Arte/Bocetos/niveles prototipos/Nivel 1/verja.png');
+        this.load.image('verja2', 'Arte/Bocetos/niveles prototipos/Nivel 1/verja.png');
 
         this.load.image('Kamaron', 'Arte/Bocetos/kamaron.png');
         this.load.spritesheet('Queso', 'Arte/Bocetos/Sprite/ratonspritesheet.png', { frameWidth: 116 , frameHeight: 97 });
