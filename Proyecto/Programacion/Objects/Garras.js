@@ -1,6 +1,6 @@
 class Garras extends PlayerModel {
-  constructor(scene, x, y, textureKey) {
-    super(scene,x,y,textureKey, 'GarrasPlayer')    
+  constructor(scene, x,y,textureKey, controls, id, players , ground) {
+    super(scene,x,y,textureKey, 'GarrasPlayer', controls, id, players , ground)    
 
     const animFrameRate= 10
     const anims = scene.anims
@@ -70,6 +70,8 @@ class Garras extends PlayerModel {
   }
 
   //MOVE CHARACTER
+
+  /*
 update(){
     const {keys} = this
     const speed = 130
@@ -112,5 +114,5 @@ update(){
     }
 
 
-}
+}*/
 }

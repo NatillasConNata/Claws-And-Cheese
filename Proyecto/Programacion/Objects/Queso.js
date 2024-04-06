@@ -1,7 +1,6 @@
 class Queso extends PlayerModel {
-  constructor(scene, x, y, textureKey) {
-    super(scene,x,y,textureKey, 'QuesoPlayer')    
-
+  constructor(scene, x,y,textureKey, controls, id, players , ground) {
+    super(scene,x,y,textureKey, 'QuesoPlayer', controls, id, players , ground)    
     const animFrameRate= 10
     const anims = scene.anims
 
@@ -60,70 +59,43 @@ class Queso extends PlayerModel {
         frameRate: animFrameRate,
         repeat:-1
     })
+    
 
 
-    this.setFrame(this.idleFrame.front)
+    this.setFrame(this.idleFrame.front);
 
 
 
 
-    //KEYS input
-    //para el leon será ASDW
-    const{LEFT,RIGHT, UP,DOWN,P,O} = Phaser.Input.Keyboard.KeyCodes
-    this.keys = scene.input.keyboard.addKeys({
-        left:LEFT,
-        right:RIGHT,
-        up: UP,
-        down: DOWN,
-        p:P,
-        o:O,
-    })
-  }
-
+ 
   //MOVE CHARACTER
+}
 update(){
-    const {keys} = this
-    const speed = 140
-    const previousVelocity = this.body.velocity.clone()
-
-    this.body.setVelocity(0)
     
     //MOVER PERSONAJE Y ANIMSACIONES
     //pers izda
-    if(keys.left.isDown){
-        this.body.setVelocityX(-speed*2)
+    if(this.controls.left.isDown){
         this.anims.play('queso-left',true)
     }
     //pers drcha
-    else if(keys.right.isDown){
-        this.body.setVelocityX(speed*2)
+    else if(this.controls.right.isDown){
         this.anims.play('queso-right', true);
     }
     //Subir escaleras
-    else if (keys.p.isDown )
+    else if (this.controls.p.isDown )
     {
-        this.body.setVelocityY(-speed*2)
-
         this.anims.play('queso-up', true);
     }
     //bajar escaleras
-    else if (keys.down.isDown )
+    else if (this.controls.down.isDown )
     {
-        this.body.setVelocityY(speed)
-
-        this.anims.play('queso-up', true);
+      this.anims.play('queso-up', true);
     }
     //morder
-    else if (keys.o.isDown)
+    else if (this.controls.o.isDown)
     {
-        this.body.setVelocityY(-1)
         this.anims.play('queso-bite-left', true);
 
-    }
-    //salto
-    else if (keys.up.isDown && this.body.touching.down)
-    {
-        this.body.setVelocityY(-speed*100)
     }
    
     else{
@@ -140,7 +112,6 @@ update(){
         this.setFrame(this.idleFrame.front)
     }
 
-
-}
+    }
 
 }

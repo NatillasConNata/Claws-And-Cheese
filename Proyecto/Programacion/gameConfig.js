@@ -38,8 +38,9 @@ window.addEventListener('load', () => {
     let scenes=[];
     scenes.push(MainScene);
     //scenes.push(Scene1);
-    scenes.push(Scene2);
-    scenes.push(Scene3);
+    //scenes.push(Scene2);
+    //scenes.push(Scene3);
+    scenes.push(Scene4);
     scenes.push(Credits);
     let config = {
         type: Phaser.AUTO,
@@ -49,7 +50,7 @@ window.addEventListener('load', () => {
         physics: {
             default: 'arcade',
             arcade: {
-                debug: false,
+                debug: true,
                 gravity: {
                     y: 5000
                 }
