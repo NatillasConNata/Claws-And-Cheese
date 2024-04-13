@@ -10,7 +10,7 @@ class PlayerModel extends Phaser.Physics.Arcade.Sprite { //modelo base para cual
       this.type = type;
       this.textureKey = textureKey
       this.speed = 500;
-      this.jumpVelocity = -1000;
+      this.jumpVelocity = -1300;
       this.scene.add.existing(this)
       this.scene.physics.world.enableBody(this, 0)//activar body en el personaje
       this.body.setCollideWorldBounds(true);
@@ -22,10 +22,10 @@ class PlayerModel extends Phaser.Physics.Arcade.Sprite { //modelo base para cual
 
       this.body.velocity.x = 0
       if (this.controls.left.isDown) {
-        this.body.velocity.x += this.speed;
+        this.body.velocity.x -= this.speed;
       }
       if (this.controls.right.isDown) {
-        this.body.velocity.x -= this.speed;
+        this.body.velocity.x += this.speed;
       }
       if(this.controls.up.isDown && this.body.onFloor()){
         this.setVelocityY(this.jumpVelocity);

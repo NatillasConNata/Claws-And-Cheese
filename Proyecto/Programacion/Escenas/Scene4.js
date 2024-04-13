@@ -29,8 +29,8 @@ this.scoreText;
 this.right;
 this.left;
 this.up;
-this.escalera;
-this.caja;
+this.ladders;
+this.cajas;
 this.key;
 this.flag;
 }
@@ -59,8 +59,9 @@ this.flag;
      
     
     
-    
-    
+    //ESCALERAS
+    this.ladders = this.physics.add.staticGroup();
+    this.ladders.create(1500, 1750, 'GarrasPlayer').setScale(5);
 
 
 
@@ -70,18 +71,15 @@ this.flag;
         //child.body.setSize(child.width / 2, child.height);
         //child.body.setOffset(child.width / 4, 0);
     //});
+    
 
-
-    this.caja = this.physics.add.sprite(400, 1750, 'caja');
-    this.caja.setCollideWorldBounds(true);
-    this.physics.add.collider(this.caja, this.plataforms);
 
       // Agregar bandera
     
     //CONTROLES
     let keys = Phaser.Input.Keyboard.KeyCodes;
-    let wasd = this.input.keyboard.addKeys({'up': keys.W, 'down': keys.S, 'left': keys.A, 'right': keys.D, 'p': keys.SPACE,'o' : keys.NUMPAD_ZERO});
-        let cursors = this.input.keyboard.addKeys({'up': keys.UP, 'down': keys.DOWN, 'left': keys.LEFT, 'right': keys.RIGHT, 'p': keys.NUMPAD_ZERO,'o': keys.NUMPAD_ZERO});
+    let wasd = this.input.keyboard.addKeys({'up': keys.W, 'down': keys.S, 'left': keys.A, 'right': keys.D, 'p': keys.E,'o' : keys.Q});
+        let cursors = this.input.keyboard.addKeys({'up': keys.UP, 'down': keys.DOWN, 'left': keys.LEFT, 'right': keys.RIGHT, 'p': keys.P,'o': keys.O});
    //Personajes
         this.players = this.add.group({
         classType: PlayerModel,
@@ -91,9 +89,28 @@ this.flag;
 
 
 
-    this.player = new Queso(this,200,1750,'QuesoPlayer',wasd,'01',this.players,this.plataforms);
+    this.player = new Queso(this,200,1750,'QuesoPlayer',wasd,'01',this.players,this.plataforms, this.ladders);
     this.player2 = new Garras(this,250, 1750, 'GarrasPlayer',cursors,'02',this.players,this.plataforms);
 
+
+    //CAJAS
+    this.cajas = this.add.group({
+        classType: Cajas,
+        maxSize: 5,
+        runChildUpdate: true
+        
+    })
+    this.caja = new Cajas(this,400, 1750, 'caja');
+    this.cajas.add(this.caja);
+    this.physics.add.collider(this.cajas, this.plataforms);
+    this.physics.add.collider(this.cajas, this.player, function(caja1, player){
+        caja1.setPushable(false);
+    });
+    this.physics.add.collider(this.cajas, this.player2, function(caja1, player){
+        caja1.setPushable(true);
+    });
+
+    
     //Funciones
 /*
     this.physics.add.collider(this.caja, this.plataforms);

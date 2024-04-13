@@ -9,7 +9,12 @@ class MainScene extends Phaser.Scene{
 
 
         this.load.image('Aviario', 'Arte/Bocetos/Fondo.jpeg');
-        this.load.spritesheet('Buttons', 'Arte/Bocetos/UI/Buttons.png', { frameWidth: 24, frameHeight: 23 });
+        //this.load.spritesheet('ButtonPlay', 'Arte/Bocetos/UI/PixelGUI/PlayBtn.png', { frameWidth: 590, frameHeight: 260 });
+        //this.load.spritesheet('ButtonPlayPressed', 'Arte/Bocetos/UI/PixelGUI/PlayClick.png', { frameWidth: 590, frameHeight: 260 });
+        this.load.image('ButtonPlay', 'Arte/Bocetos/UI/PixelGUI/PlayBtn.png');
+        this.load.image('ButtonPlayPressed', 'Arte/Bocetos/UI/PixelGUI/PlayClick.png');
+
+
         //this.load.spritesheet('Queso', 'Arte/Bocetos/Sprite/Ratonwalk.png', { frameWidth: 117 , frameHeight: 94 });
 
         console.log("he llegado hasta Main")
@@ -39,14 +44,12 @@ class MainScene extends Phaser.Scene{
         //AÑADIR IMÁGENES NORMALES
         this.add.image(0, 0, 'Aviario').setOrigin(0,0).setScale(2);
         //nineslice (poxX, posY, obj, sprite, tamañoX, tamañoY, px mantenidos izq., px mantenidos drch. , px mantenidos arriba, px mantenidos abajo )
-        var startButton =  this.add.nineslice(500, 500, 'Buttons', 36, 144,138,  4,4,4,7).setInteractive();
-        var startButton2 = this.add.nineslice(644, 500, 'Buttons', 37,  144,138,  4,4,4,7).setInteractive();
-        var optionsButton = this.add.nineslice(800, 500, 'Buttons', 38, 144,138,  4,4,4,7).setInteractive();
-        var optionsButton2 = this.add.nineslice(944, 500, 'Buttons', 39,  144,138,  4,4,4,7).setInteractive();
-        var creditButton = this.add.nineslice(500, 650, 'Buttons', 32, 144,138,  4,4,4,7).setInteractive();
-        var creditButton2 = this.add.nineslice(644, 650, 'Buttons', 33,  144,138,  4,4,4,7).setInteractive();
-        var exitButton = this.add.nineslice(800, 650, 'Buttons', 34, 144,138,  4,4,4,7).setInteractive();
-        var exitButton2 = this.add.nineslice(944, 650, 'Buttons', 35,  144,138,  4,4,4,7).setInteractive();
+        this.startButton =  this.add.sprite(500, 500, 'ButtonPlay').setInteractive().setScale(1);
+        var optionsButton = this.add.sprite(800, 500, 'Buttons').setInteractive().setScale(1);
+        var creditButton = this.add.sprite(500, 650, 'Buttons').setInteractive().setScale(1);
+        var exitButton = this.add.sprite(800, 650, 'Buttons').setInteractive().setScale(1);
+        
+        //this.offline = this.add.sprite(this.CONFIG.centerX, this.CONFIG.centerY * 1.25, 'newGameButton').setInteractive().setScale(0.5);
 
 
         //AUDIO
@@ -63,34 +66,26 @@ class MainScene extends Phaser.Scene{
 
         //pulsar botón cambia de escena
         //START BUTTON
-        startButton.on('pointerdown', function () {
-          //  this.scene.stop('MainScene');/**************** */
+        
+        this.startButton.on('pointerdown', function () {
+          //  this.scene.stop('MainScene');
+            this.setTexture('ButtonPlayPressed');
             this.scene.start('Scene4', Scene4, true, { x: 400, y: 300 });
             //MainAudio.stop()
         
         },this);
-        startButton2.on('pointerdown', function () {
-           // this.scene.stop('MainScene');/**************** */
-            this.scene.start('Scene4', Scene4, true, { x: 400, y: 300 });
-            //MainAudio.stop()
-        },this);
+        
         //OPTIONS BUTTON
 
         //CREDITS BUTTON
         creditButton.on('pointerdown', function () {
-            //this.scene.stop('MainScene');/**************** */
+            //this.scene.stop('MainScene');
             this.scene.start('Credits', Credits, true, { x: 400, y: 300 });
            // MainAudio.stop()
 
         },this);
-        creditButton2.on('pointerdown', function () {
-            //this.scene.stop('MainScene');/**************** */
-            this.scene.start('Credits', Credits, true, { x: 400, y: 300 });
-          //  MainAudio.stop()
-
-        },this);
+       
         //EXIT BUTTON
-
         
 
         

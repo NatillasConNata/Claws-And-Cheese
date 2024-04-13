@@ -1,9 +1,11 @@
 class Queso extends PlayerModel {
-  constructor(scene, x,y,textureKey, controls, id, players , ground) {
+  constructor(scene, x,y,textureKey, controls, id, players , ground, ladders) {
     super(scene,x,y,textureKey, 'QuesoPlayer', controls, id, players , ground)    
     const animFrameRate= 10
     const anims = scene.anims
-
+    this.jumpVelocity = -2000
+    this.ladders=ladders
+    this.climbing = false
     anims.create({
         key:'queso-left',
         frames: anims.generateFrameNumbers(this.textureKey,{
@@ -64,12 +66,54 @@ class Queso extends PlayerModel {
 
     this.setFrame(this.idleFrame.front);
 
+//KEYS input
+    //para el leon será ASDW
+    const{W,A,S,D,Q,E} = Phaser.Input.Keyboard.KeyCodes
+    this.keys = scene.input.keyboard.addKeys({
+        w: W,
+        a: A,
+        s: S,
+        d: D,
+        q: Q,
+        e: E,
+    })
+
+} 
 
 
-
- 
-  //MOVE CHARACTER
+update(time,delta){
+    //escalar (PARA ESCALAR HAY QUE PULSAR P Y HACIA ARRIBA SIMULTÁNEAMENTE)
+    if(this.climbing == true){
+        if(this.controls.p.justDown || this.scene.physics.overlap(this, this.ladders) == false){
+            this.setVelocityY(this.jumpVelocity);
+            this.climbing = false
+            this.body.setAllowGravity(true)
+        }
+        else{
+            this.body.velocity.x = 0
+            this.body.velocity.y = 0
+            if (this.controls.up.isDown) {
+                this.body.velocity.y -= this.speed;
+              }
+            if (this.controls.down.isDown) {
+                this.body.velocity.y += this.speed;
+            }
+        }
+    }
+    else{
+        if(this.controls.p.isDown ){
+            if(this.scene.physics.overlap(this, this.ladders)){
+                this.climbing = true
+                this.body.setAllowGravity(false)
+            }
+        }
+        else{
+            super.update(time,delta)
+        }
+    }
 }
+  //MOVE CHARACTER
+/*
 update(){
     
     //MOVER PERSONAJE Y ANIMSACIONES
@@ -113,5 +157,5 @@ update(){
     }
 
     }
-
+*/
 }
