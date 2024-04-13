@@ -44,8 +44,8 @@ window.addEventListener('load', () => {
     scenes.push(Credits);
     let config = {
         type: Phaser.AUTO,
-        width: 4000,
-        height: 2000,
+        width: 1920 ,
+        height: 1080 ,
         backgroundColor: 0x220283,
         physics: {
             default: 'arcade',
@@ -59,8 +59,8 @@ window.addEventListener('load', () => {
         scale: {
             mode: Phaser.Scale.FIT,
             autoCenter: Phaser.Scale.CENTER_BOTH,
-            parent: "thegame"
-        },
+            parent: "thegame",
+            },
         pixelArt: true,
         scene: scenes
     }
