@@ -6,7 +6,11 @@ class Scene4 extends Phaser.Scene {
 
 
 preload() {
-this.load.image('escenario', 'Arte/Bocetos/niveles prototipos/Nivel3/scene.png');
+this.load.image('escenario', 'Arte/Escenario/Scene4/GarrasAndCheeseFondo.png');
+this.load.image('escenarioObjFront', 'Arte/Escenario/Scene4/GarrasAndCheeseObjetosFront.png');
+this.load.image('escenarioPlatforms', 'Arte/Escenario/Scene4/GarrasAndCheesePlataformas.png');///////////////////////////////////////////////////no se si cambiarlo por plataformas individuales
+
+
 this.load.image('caja', 'Arte/Bocetos/niveles prototipos/Nivel3/caja.png');
 this.load.image('key', 'Arte/Bocetos/niveles prototipos/Nivel3/key.png'); // Nueva imagen de la llave
 this.load.image('flag', 'Arte/Bocetos/niveles prototipos/Nivel3/bandera.png'); // Nueva imagen de la bandera
@@ -33,6 +37,8 @@ this.ladders;
 this.cajas;
 this.key;
 this.flag;
+
+this.canvas = this.sys.game.canvas;
 }
 
 
@@ -40,7 +46,10 @@ this.flag;
 //Creacion de variables nuevas 
 
   create() {
-    this.add.image(2000, 1000, 'escenario').setScale(2.1);
+    this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'escenario').setScale(2);    
+    this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'escenarioObjFront').setScale(2);
+    this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'escenarioPlatforms').setScale(2);
+
     //Plataforma suelo
     this.plataforms = this.physics.add.staticGroup();
     this.plataforms.create(975, 1870, 'suelo');

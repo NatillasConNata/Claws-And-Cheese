@@ -58,9 +58,12 @@ class MainScene extends Phaser.Scene{
         //nineslice (poxX, posY, obj, sprite, tamañoX, tamañoY, px mantenidos izq., px mantenidos drch. , px mantenidos arriba, px mantenidos abajo )
         this.startButton =  this.add.sprite(this.canvas.width * 0.3, 500, 'ButtonPlay').setInteractive().setScale(0.5);
         this.optionsButton = this.add.sprite(this.canvas.width * 0.5, 500, 'ButtonOptions').setInteractive().setScale(0.5);
+        this.optionsButton.setTint(0x231d35)
+
         this.creditButton = this.add.sprite(this.canvas.width * 0.3, 760, 'ButtonCredit').setInteractive().setScale(0.5);
         this.exitButton = this.add.sprite(this.canvas.width * 0.5, 760, 'ButtonExit').setInteractive().setScale(0.5);
-        
+        this.exitButton.setTint(0x231d35)
+
         //this.offline = this.add.sprite(this.CONFIG.centerX, this.CONFIG.centerY * 1.25, 'newGameButton').setInteractive().setScale(0.5);
 
 
