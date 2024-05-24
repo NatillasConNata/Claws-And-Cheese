@@ -4,54 +4,60 @@ class Garras extends PlayerModel {
 
     const animFrameRate= 10
     const anims = scene.anims
+    this.pushing =false  /////////
 
     anims.create({
         key:'garras-left',
         frames: anims.generateFrameNumbers(this.textureKey,{
-            start: 0,
-            end: 3
+            start: 39,
+            end: 41
         }),
         frameRate: animFrameRate,
         repeat:-1
     })
 
-    this.idleFrame = {
+    anims.create({
         key:'garras-idle',
-        front: 4
-    }
+        frames: anims.generateFrameNumbers(this.textureKey,{
+            start: 12,
+            end: 23
+        }),
+        frameRate: animFrameRate,
+        repeat:-1
+    })
 
     anims.create({
         key:'garras-right',
         frames: anims.generateFrameNumbers(this.textureKey,{
-            start: 5,
-            end: 8
+            start: 36,
+            end: 38
         }),
         frameRate: animFrameRate,
         repeat:-1
     })
 
     anims.create({
-      key:'garras-empujar-izda',
+      key:'garras-empujar',
       frames: anims.generateFrameNumbers(this.textureKey,{
-          start: 9,
-          end: 12
+          start: 72,
+          end: 74
       }),
       frameRate: animFrameRate,
       repeat:-1
   })
 
-  anims.create({
-    key:'garras-empujar-drcha',
+
+anims.create({
+    key:'garras-jump',
     frames: anims.generateFrameNumbers(this.textureKey,{
-        start: 13,
-        end: 16
+        start: 24,
+        end: 27 
     }),
     frameRate: animFrameRate,
     repeat:-1
 })
 
 
-    this.setFrame(this.idleFrame.front)
 
 
 
@@ -69,8 +75,32 @@ class Garras extends PlayerModel {
     })
   }
 
-  //MOVE CHARACTER
-
+  //ANIMS CHARACTER
+  update(time,delta){
+    super.update(time,delta)
+    //pers salto
+    if (this.controls.up.isDown)
+    {
+        this.anims.play('garras-jump', true);
+    }
+    //pers izda
+    else if(this.controls.left.isDown)
+    {
+        this.anims.play('garras-left',true)
+    }
+    //pers drcha
+    else if(this.controls.right.isDown)
+    {
+        this.anims.play('garras-right', true);
+    }
+    else if(this.pushing == true)
+        {
+            this.anims.play('garras-empujar', true);
+        }
+    else{
+        this.anims.play('garras-idle', true)
+    }
+  }
   /*
 update(){
     const {keys} = this

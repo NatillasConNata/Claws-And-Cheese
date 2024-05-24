@@ -9,23 +9,28 @@ class Queso extends PlayerModel {
     anims.create({
         key:'queso-left',
         frames: anims.generateFrameNumbers(this.textureKey,{
-            start: 0,
-            end: 3
+            start: 7,
+            end: 13
         }),
         frameRate: animFrameRate,
         repeat:-1
     })
-
-    this.idleFrame = {
+ 
+    anims.create ({
         key:'queso-idle',
-        front: 4
-    }
+        frames: anims.generateFrameNumbers(this.textureKey,{
+        start:0,
+        end:6
+    }),
+    frameRate: animFrameRate,
+    repeat:-1
+    })
 
     anims.create({
         key:'queso-right',
         frames: anims.generateFrameNumbers(this.textureKey,{
-            start: 5,
-            end: 8
+            start: 7,
+            end: 13
         }),
         frameRate: animFrameRate,
         repeat:-1
@@ -35,8 +40,8 @@ class Queso extends PlayerModel {
     anims.create({
         key:'queso-bite-left',
         frames: anims.generateFrameNumbers(this.textureKey,{
-            start: 9,
-            end: 13
+            start: 14,
+            end: 19
         }),
         frameRate: animFrameRate,
         repeat:-1
@@ -46,7 +51,7 @@ class Queso extends PlayerModel {
         key:'queso-bite-right',
         frames: anims.generateFrameNumbers(this.textureKey,{
             start: 14,
-            end: 18
+            end: 19
         }),
         frameRate: animFrameRate,
         repeat:-1
@@ -55,18 +60,27 @@ class Queso extends PlayerModel {
     anims.create({
         key:'queso-up',
         frames: anims.generateFrameNumbers(this.textureKey,{
-            start: 19,
-            end: 22
+            start: 32,
+            end: 34
         }),
         frameRate: animFrameRate,
+        repeat:-1
+    })
+
+    anims.create({
+        key:'queso-jump',
+        frames: anims.generateFrameNumbers(this.textureKey,{
+            start: 21,
+            end: 26
+        }),
+        frameRate: animFrameRate*0.5,
         repeat:-1
     })
     
 
 
-    this.setFrame(this.idleFrame.front);
+    //this.setFrame(this.idleFrame.front);
 
-//KEYS input
     //para el leon será ASDW
     const{W,A,S,D,Q,E} = Phaser.Input.Keyboard.KeyCodes
     this.keys = scene.input.keyboard.addKeys({
@@ -111,6 +125,46 @@ update(time,delta){
             super.update(time,delta)
         }
     }
+
+
+    //MOVER PERSONAJE Y ANIMSACIONES
+    //pers izda
+    if(this.controls.left.isDown){
+        //this.queso-left.setFlipX(false)
+        //player.setFlipX(false);
+        this.setFlipX(true);
+        this.anims.play('queso-left',true)
+    }
+    //pers drcha
+    else if(this.controls.right.isDown){
+
+        this.setFlipX(false);
+        this.anims.play('queso-right', true);
+    }
+    //Subir escaleras
+    else if (this.climbing== true && this.controls.up.isDown )
+    {
+        
+        this.anims.play('queso-up', true);
+    }
+    //bajar escaleras
+    else if (this.climbing== true  && this.controls.down.isDown )
+    {
+      this.anims.play('queso-up', true);
+    }
+    //morder
+    else if (this.controls.o.isDown)
+    {
+        this.anims.play('queso-bite-left', true);
+    }
+    else if (this.controls.up.isDown &&  this.climbing== false )
+        {
+            this.anims.play('queso-jump', true);
+        }
+    else{
+        this.anims.play('queso-idle', true)
+    }
+
 }
   //MOVE CHARACTER
 /*

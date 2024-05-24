@@ -7,6 +7,13 @@
 }
 
 @font-face {
+    font-family: 'jorolks';
+    src: url('./Fonts/jorolks/Jorolks.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'bitween';
     src: url('./Fonts/bitween_10/BITWA2___.TTF');
     font-weight: normal;

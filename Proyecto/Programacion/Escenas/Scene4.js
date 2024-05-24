@@ -6,17 +6,27 @@ class Scene4 extends Phaser.Scene {
 
 
 preload() {
+    //this.load.image('escenario', 'Arte/Bocetos/niveles prototipos/Nivel3/scene.png');
+//ESCENARIO
 this.load.image('escenario', 'Arte/Escenario/Scene4/GarrasAndCheeseFondo.png');
 this.load.image('escenarioObjFront', 'Arte/Escenario/Scene4/GarrasAndCheeseObjetosFront.png');
 this.load.image('escenarioPlatforms', 'Arte/Escenario/Scene4/GarrasAndCheesePlataformas.png');///////////////////////////////////////////////////no se si cambiarlo por plataformas individuales
 
+//BOTONES
+this.load.image('ButtonExit', 'Arte/UI/PixelGUI/ExitBtn.png');
+this.load.image('ButtonExitPressed', 'Arte/UI/PixelGUI/ExitClick.png');
 
+//OBJETOS
 this.load.image('caja', 'Arte/Bocetos/niveles prototipos/Nivel3/caja.png');
 this.load.image('key', 'Arte/Bocetos/niveles prototipos/Nivel3/key.png'); // Nueva imagen de la llave
 this.load.image('flag', 'Arte/Bocetos/niveles prototipos/Nivel3/bandera.png'); // Nueva imagen de la bandera
-this.load.spritesheet('QuesoPlayer', 'Arte/Bocetos/Sprite/ratonspritesheet.png', { frameWidth: 116 , frameHeight: 97 });
-        this.load.spritesheet('GarrasPlayer', 'Arte/Bocetos/Sprite/leonspritesheet.png', { frameWidth: 127 , frameHeight: 110});
 this.load.image('escalera', 'Arte/Bocetos/niveles prototipos/Nivel3/escalerainv.png');
+
+//PERSONAJES
+//this.load.spritesheet('QuesoPlayer', 'Arte/Bocetos/Sprite/ratonspritesheet.png', { frameWidth: 116 , frameHeight: 97 });
+//this.load.spritesheet('GarrasPlayer', 'Arte/Bocetos/Sprite/leonspritesheet.png', { frameWidth: 127 , frameHeight: 110});
+this.load.spritesheet('GarrasPlayer', 'Arte/Characters/otter_sprite_pack/Garras.png', { frameWidth: 170 , frameHeight: 86});
+this.load.spritesheet('QuesoPlayer', 'Arte/Characters/FREEVERSION_MrCookies/MRCookies_Complete_48x48.png', { frameWidth: 48 , frameHeight: 48 });
 
 //Plataforma de las escenas 
 this.load.image('suelo','Arte/Bocetos/niveles prototipos/Nivel3/suelo.png');
@@ -46,20 +56,26 @@ this.canvas = this.sys.game.canvas;
 //Creacion de variables nuevas 
 
   create() {
+
     this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'escenario').setScale(2);    
-    this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'escenarioObjFront').setScale(2);
     this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'escenarioPlatforms').setScale(2);
+
+    this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'escenarioObjFront').setScale(2);
+
+    //Botones
+    this.exitButton = this.add.sprite(this.canvas.width * 0.05, this.canvas.height * 0.05, 'ButtonExit').setInteractive().setScale(0.2);
+
 
     //Plataforma suelo
     this.plataforms = this.physics.add.staticGroup();
-    this.plataforms.create(975, 1870, 'suelo');
+    this.plataforms.create(this.canvas.width * 0.5, this.canvas.height, 'suelo');
     this.plataforms.create(1500, 1870, 'suelo');
     this.plataforms.create(1800, 1870, 'suelo');
     this.plataforms.create(2100, 1870, 'suelo');
     this.plataforms.create(2600, 1870, 'suelo');
     this.plataforms.create(3000, 1870, 'suelo');
     //Plataforma del parkour
-    this.plataforms.create(68, 1650, 'plataforma1');//Plataforma 1
+    //this.plataforms.create(this.canvas.width * 0.5, this.canvas.height*0.7, 'plataforma1');//Plataforma 1
     this.plataforms.create(400, 1600, 'plataforma1');//Plataforma 2
     this.plataforms.create(590, 1500, 'plataforma1')//Plataforma 3
     this.plataforms.create(900, 1550, 'plataforma1');//Plataforma 4
@@ -70,7 +86,7 @@ this.canvas = this.sys.game.canvas;
     
     //ESCALERAS
     this.ladders = this.physics.add.staticGroup();
-    this.ladders.create(1500, 1750, 'GarrasPlayer').setScale(5);
+    this.ladders.create(this.canvas.width * 0.5, this.canvas.height*0.7, 'GarrasPlayer').setScale(3);
 
 
 
@@ -88,17 +104,35 @@ this.canvas = this.sys.game.canvas;
     //CONTROLES
     let keys = Phaser.Input.Keyboard.KeyCodes;
     let wasd = this.input.keyboard.addKeys({'up': keys.W, 'down': keys.S, 'left': keys.A, 'right': keys.D, 'p': keys.E,'o' : keys.Q});
-        let cursors = this.input.keyboard.addKeys({'up': keys.UP, 'down': keys.DOWN, 'left': keys.LEFT, 'right': keys.RIGHT, 'p': keys.P,'o': keys.O});
+    let cursors = this.input.keyboard.addKeys({'up': keys.UP, 'down': keys.DOWN, 'left': keys.LEFT, 'right': keys.RIGHT, 'p': keys.P,'o': keys.O});
    //Personajes
         this.players = this.add.group({
         classType: PlayerModel,
         maxSize: 2,
         runChildUpdate: true
     });
+    //BOTONES
+    this.exitButton.on('pointerdown', function () {
+        //this.scene.stop('MainScene');
+        this.exitButton.setTexture('ButtonExitPressed');
+        this.exitButton.setTint(0xc7c7c7)
+        //this.scene.events.on('sleep', listener)
+        this.time.addEvent({
+            delay: 500,
+            callback: function ()
+            {
+                this.scene.start('MainScene', MainScene, true, { x: 400, y: 300 });
+            },
+            callbackScope: this,
+            repeat: 0
+        });
+       // MainAudio.stop()
+
+    },this);
+   
 
 
-
-    this.player = new Queso(this,200,1750,'QuesoPlayer',wasd,'01',this.players,this.plataforms, this.ladders);
+    this.player = new Queso(this,200,1750,'QuesoPlayer',wasd,'01',this.players,this.plataforms, this.ladders).setScale(2);
     this.player2 = new Garras(this,250, 1750, 'GarrasPlayer',cursors,'02',this.players,this.plataforms);
 
 
@@ -119,7 +153,7 @@ this.canvas = this.sys.game.canvas;
         caja1.setPushable(true);
     });
 
-    
+
     //Funciones
 /*
     this.physics.add.collider(this.caja, this.plataforms);
@@ -253,7 +287,7 @@ checkOverlap(spriteA, groupB) {
 // Constantes de dimensiones
 Scene4.GAME_WIDTH = 720;
 Scene4.GAME_HEIGHT = 640;
-Scene4.RATON_WIDTH = 116;
-Scene4.RATON_HEIGHT = 94;
-Scene4.LEON_WIDTH = 127;
-Scene4.LEON_HEIGHT = 110;
+Scene4.RATON_WIDTH = 48;
+Scene4.RATON_HEIGHT = 48;
+Scene4.LEON_WIDTH = 170;
+Scene4.LEON_HEIGHT = 86;
