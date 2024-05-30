@@ -1,6 +1,8 @@
 class MainScene extends Phaser.Scene{
     constructor(){
         super({key: 'MainScene', active:true})
+        this.width= 1920 ,
+        this.height = 1080 
         
     }
     

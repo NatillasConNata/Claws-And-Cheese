@@ -1,6 +1,8 @@
 class Credits extends Phaser.Scene{
     constructor(){
         super({key: 'Credits', active:false})
+        this.width= 1920 ,
+        this.height = 1080 
     }
 
     preload(){

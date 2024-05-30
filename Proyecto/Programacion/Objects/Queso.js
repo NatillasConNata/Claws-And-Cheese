@@ -3,7 +3,7 @@ class Queso extends PlayerModel {
     super(scene,x,y,textureKey, 'QuesoPlayer', controls, id, players , ground)    
     const animFrameRate= 10
     const anims = scene.anims
-    this.jumpVelocity = -2000
+    this.jumpVelocity = -1000
     this.ladders=ladders
     this.climbing = false
     anims.create({
@@ -41,7 +41,7 @@ class Queso extends PlayerModel {
         key:'queso-bite-left',
         frames: anims.generateFrameNumbers(this.textureKey,{
             start: 14,
-            end: 19
+            end: 20
         }),
         frameRate: animFrameRate,
         repeat:-1
@@ -51,7 +51,7 @@ class Queso extends PlayerModel {
         key:'queso-bite-right',
         frames: anims.generateFrameNumbers(this.textureKey,{
             start: 14,
-            end: 19
+            end: 20
         }),
         frameRate: animFrameRate,
         repeat:-1
@@ -73,7 +73,7 @@ class Queso extends PlayerModel {
             start: 21,
             end: 26
         }),
-        frameRate: animFrameRate*0.5,
+        frameRate: animFrameRate,
         repeat:-1
     })
     
