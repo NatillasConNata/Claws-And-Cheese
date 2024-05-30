@@ -208,6 +208,7 @@ this.canvas = this.sys.game.canvas;
         maxSize: 2,
         runChildUpdate: true
     });
+
     //BOTONES
     this.exitButton.on('pointerdown', function () {
         //this.scene.stop('MainScene');
@@ -227,8 +228,12 @@ this.canvas = this.sys.game.canvas;
 
     },this);
    
+    //PC 
+    this.PC = this.physics.add.staticGroup();
+    this.PC.create(this.canvas.width*0.88, this.canvas.height*0.2, 'PC').setScale(0.2).refreshBody();
 
 
+    //PLAYERS
     this.player = new Queso(this,200,this.canvas.height *0.2,'QuesoPlayer',wasd,'01',this.players,this.plataforms, this.ladders).setScale(2);
     this.player2 = new Garras(this,250, this.canvas.height *0.2, 'GarrasPlayer',cursors,'02',this.players,this.plataforms);
 
@@ -288,20 +293,21 @@ this.canvas = this.sys.game.canvas;
     this.physics.add.overlap(this.player2, this.flag, this.changeScene, null, this);
 
 
-    //pc 
-    this.PC = this.physics.add.staticGroup();
-    this.PC.create(this.canvas.width*0.88, this.canvas.height*0.2, 'PC').setScale(0.2).refreshBody();
-
+    
     //COMBO
-    this.combo = this.input.keyboard.createCombo('panc');
+    this.combo = this.input.keyboard.createCombo('Forge');
     this.combo.enabled = false //no procesa teclas
 
     this.input.keyboard.on('keycombomatch', (event) => {
         console.log('Konami Code entered!');
-        if (this.door) {
-            this.door.clear(true,true);
-            this.door = null;
-        }
+        if (this.doors) {
+            //ELIMINAR COLLIDER DE PUERTA
+            this.doors.children.iterate((child) => {
+                child.setTexture('doorOpen');
+            });
+            this.physics.world.removeCollider(this.doorsCol);
+            this.physics.world.removeCollider(this.doorsCol2);
+                }
         //this.enterDoor(); // Llama a la función enterDoor cuando se activa el combo
     });
 
@@ -403,12 +409,7 @@ collectKey(player, key) {
     this.key.disableBody(true, true);
     this.hasKey = true; // Variable para controlar si el jugador tiene la llave
 
-    //ELIMINAR COLLIDER DE PUERTA
-    this.doors.children.iterate((child) => {
-        child.setTexture('doorOpen');
-      });
-    this.physics.world.removeCollider(this.doorsCol);
-    this.physics.world.removeCollider(this.doorsCol2);
+    
 }
 
 changeScene(player, flag) {
@@ -437,14 +438,13 @@ update(time) {
     this.player.update();
     this.player2.update();
 
-    if (this.physics.overlap(this.player, this.PC)) {
+    if (this.physics.overlap(this.player, this.PC) || this.physics.overlap(this.player2, this.PC)) {
         // Verifica si el jugador está cerca de la PC y habilita el combo
         this.combo.enabled = true;
-        console.log('patata')
+        console.log('combo enabled')
     } else {
         // Si el jugador no está cerca de la PC, deshabilita el combo
         this.combo.enabled = false;
-        console.log('patos')
     }
 }
 }
