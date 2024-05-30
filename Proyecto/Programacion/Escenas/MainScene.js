@@ -25,6 +25,11 @@ class MainScene extends Phaser.Scene{
         this.load.image('ButtonCreditPressed', 'Arte/UI/PixelGUI/CredClick.png');
         //this.load.spritesheet('Queso', 'Arte/Bocetos/Sprite/Ratonwalk.png', { frameWidth: 117 , frameHeight: 94 });
 
+        //Creacion del boton tutorial
+        this.load.image('ButtonTutorial', 'Arte/UI/PixelGUI/layer3.png');
+        this.load.image('ButtonTutorialPressed', 'Arte/UI/PixelGUI/layer4.png');
+
+        //
         console.log("he llegado hasta Main")
         this.load.image('Kamaron', 'Arte/Bocetos/kamaron.png');
 
@@ -66,6 +71,8 @@ class MainScene extends Phaser.Scene{
         this.exitButton = this.add.sprite(this.canvas.width * 0.5, 760, 'ButtonExit').setInteractive().setScale(0.5);
         this.exitButton.setTint(0x231d35)
 
+        //Boton tuturial 
+        this.tutorialButton =this.add.sprite(this.canvas.width * 0.7, 630, 'ButtonTutorial').setInteractive().setScale(0.5);
         //this.offline = this.add.sprite(this.CONFIG.centerX, this.CONFIG.centerY * 1.25, 'newGameButton').setInteractive().setScale(0.5);
 
 
@@ -153,6 +160,26 @@ class MainScene extends Phaser.Scene{
             repeat: -1
         });
         var Queso = this.add.sprite(200, 300, 'Queso').play('QuesoLeft');*/
+
+        //Button Tutorial process 
+        this.tutorialButton.on('pointerdown', function () {
+            //this.scene.stop('MainScene');
+            this.tutorialButton.setTexture('ButtonTutorialPressed');
+            this.tutorialButton.setTint(0xc7c7c7)
+            //this.scene.events.on('sleep', listener)
+            this.time.addEvent({
+                delay: 500,
+                callback: function ()
+                {
+                    this.scene.start('Tutorial', Tutorial, true, { x: 400, y: 300 });
+                },
+                callbackScope: this,
+                repeat: 0
+            });
+           // MainAudio.stop()
+
+        },this);
+
     }
 
     update ()

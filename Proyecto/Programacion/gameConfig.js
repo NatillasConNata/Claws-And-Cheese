@@ -42,6 +42,7 @@ window.addEventListener('load', () => {
     //scenes.push(Scene3);
     scenes.push(Scene4);
     scenes.push(Credits);
+    scenes.push(Tutorial);
     let config = {
         type: Phaser.AUTO,
         width: 2400 ,
