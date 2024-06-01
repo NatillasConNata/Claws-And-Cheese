@@ -19,7 +19,7 @@ class Tutorial extends Phaser.Scene{
         const text1 = this.add.text(this.canvas.width * 0.7 , this.canvas.height * 0.5, 'Claws ',
         {fontFamily: 'light_pixel-7' , fontSize: 110,align: 'center' , fill: '#ffffff' ,  stroke:'#eb3f21', strokeThickness:20  } )
         const text2 = this.add.text(this.canvas.width * 0.7, this.canvas.height*0.65, ' and',
-        {fontFamily: 'light_pixel-7' , fontSize: 110,align: 'center' , fill: '#ffffff' ,  stroke:'#21d3eb', strokeThickness:20  } )
+        {fontFamily: 'light_pixel-7' , fontSize: 110,align: 'center' , fill: '#ffffff' ,  stroke:'#59cd90', strokeThickness:20  } )
         const text3 = this.add.text(this.canvas.width * 0.7, this.canvas.height*0.8, 'Cheese',
         {fontFamily: 'light_pixel-7' , fontSize: 110,align: 'center' , fill: '#ffffff' ,  stroke:'#21d3eb', strokeThickness:20   } )
         /*this.add.text(this.canvas.width * 0.7 , this.canvas.height * 0.6, 'Claws \n and\n Cheese' , 

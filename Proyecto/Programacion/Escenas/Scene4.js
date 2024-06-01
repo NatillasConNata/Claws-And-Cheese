@@ -238,35 +238,35 @@ this.canvas = this.sys.game.canvas;
     this.cartel = this.physics.add.staticGroup();
     this.cartel.create(this.canvas.width*0.193, this.canvas.height*0.68, 'Cartel1').refreshBody();
     this.dialogo = this.add.sprite(this.canvas.width*0.193, this.canvas.height *0.63, 'DiagImg').setScale(2).setVisible(false);
-    this.texto = this.add.text(this.canvas.width*0.188, this.canvas.height*0.605, 'k', { fontFamily: 'jorolks',fontSize: '50px', color: '#23154B' }).setVisible(false);
+    this.texto = this.add.text(this.canvas.width*0.188, this.canvas.height*0.595, 'k', { fontFamily: 'light_pixel-7',fontSize: '40px', color: '#EE6352' }).setVisible(false);
     // Cartel 2
     //=      0.05
-    //0.005    0.075
+    //0.005    0.035
     this.cartel2 = this.physics.add.staticGroup();
     this.cartel2.create(this.canvas.width*0.926, this.canvas.height*0.715, 'Cartel1').refreshBody();
     this.dialogo2 = this.add.sprite(this.canvas.width*0.926, this.canvas.height *0.665, 'DiagImg').setScale(2).setVisible(false);
-    this.texto2 = this.add.text(this.canvas.width*0.921, this.canvas.height*0.64, 'f', { fontFamily: 'jorolks',fontSize: '50px', color: '#ff0000' }).setVisible(false);
+    this.texto2 = this.add.text(this.canvas.width*0.921, this.canvas.height*0.63, 'f', { fontFamily: 'light_pixel-7',fontSize: '40px', color: '#59CD90' }).setVisible(false);
     // Cartel 3// Crear el cuadro de diálogo
     //=      0.05
     //0.005    0.075
     this.cartel3 = this.physics.add.staticGroup();
     this.cartel3.create(this.canvas.width*0.953, this.canvas.height*0.445, 'Cartel1').refreshBody();
     this.dialogo3 = this.add.sprite(this.canvas.width*0.953, this.canvas.height *0.395, 'DiagImg').setScale(2).setVisible(false);
-    this.texto3 = this.add.text(this.canvas.width*0.948, this.canvas.height*0.37, 'r', { fontFamily: 'jorolks',fontSize: '50px', color: '#ff00ff' }).setVisible(false);
+    this.texto3 = this.add.text(this.canvas.width*0.948, this.canvas.height*0.36, 'r', { fontFamily: 'light_pixel-7',fontSize: '40px', color: '#3FA7D6' }).setVisible(false);
     // Cartel 4// Crear el cuadro de diálogo
     //=      0.05
     //0.005    0.075
     this.cartel4 = this.physics.add.staticGroup();
     this.cartel4.create(this.canvas.width*0.25, this.canvas.height*0.915, 'Cartel1').refreshBody();
     this.dialogo4 = this.add.sprite(this.canvas.width*0.25 , this.canvas.height * 0.865, 'DiagImg').setScale(2).setVisible(false);
-    this.texto4 = this.add.text(this.canvas.width* 0.245, this.canvas.height* 0.84, 'o', { fontFamily: 'jorolks',fontSize: '50px', color: '#ff00ff' }).setVisible(false);
+    this.texto4 = this.add.text(this.canvas.width* 0.245, this.canvas.height* 0.83, 'o', { fontFamily: 'light_pixel-7',fontSize: '40px', color: '#FAC05E' }).setVisible(false);
     // Cartel 5// Crear el cuadro de diálogo
     //=      0.05
     //0.005    0.075
     this.cartel5 = this.physics.add.staticGroup();
     this.cartel5.create(this.canvas.width*0.905, this.canvas.height*0.118, 'Cartel1').refreshBody();
     this.dialogo5 = this.add.sprite(this.canvas.width*0.905 , this.canvas.height * 0.068, 'DiagImg').setScale(2).setVisible(false);
-    this.texto5 = this.add.text(this.canvas.width* 0.9, this.canvas.height* 0.043, 'y', { fontFamily: 'jorolks',fontSize: '50px', color: '#ff00ff' }).setVisible(false);
+    this.texto5 = this.add.text(this.canvas.width* 0.9, this.canvas.height* 0.033, 'y', { fontFamily: 'light_pixel-7',fontSize: '40px', color: '#F79D84' }).setVisible(false);
 
 
 
@@ -453,6 +453,14 @@ update(time)
         else{
             this.dialogo.setVisible(false);
             this.texto.setVisible(false);
+            this.dialogo2.setVisible(false);
+            this.texto2.setVisible(false);
+            this.dialogo3.setVisible(false);
+            this.texto3.setVisible(false);
+            this.dialogo4.setVisible(false);
+            this.texto4.setVisible(false);
+            this.dialogo5.setVisible(false);
+            this.texto5.setVisible(false);
         }
     }
 }
