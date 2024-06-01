@@ -26,6 +26,10 @@ this.load.image('Platform16Up', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform16
 this.load.image('Block', 'Arte/Escenario/Scene4/GarrasAndCheeseBlock.png');/////////////////////////////////
 this.load.image('Platform16Lat', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform16Lat.png');/////////////////////////////////
 this.load.image('Plank', 'Arte/Escenario/Scene4/GarrasAndCheesePlank.png');/////////////////////////////////
+this.load.image('Cartel1', 'Arte/Escenario/Scene4/Cartel1.png');/////////////////////////////////
+this.load.image('Cartel2', 'Arte/Escenario/Scene4/Cartel2.png');/////////////////////////////////
+this.load.image('DiagImg', 'Arte/Escenario/Scene4/Dialog.png');/////////////////////////////////
+
 
 
 
@@ -36,7 +40,9 @@ this.load.image('ButtonExitPressed', 'Arte/UI/PixelGUI/ExitClick.png');
 //OBJETOS
 this.load.image('caja', 'Arte/Escenario/Scene4/Box.png');
 this.load.image('key', 'Arte/Escenario/Scene4/Key.png'); // Nueva imagen de la llave
-this.load.image('flag', 'Arte/Escenario/Scene4/Flag.png'); // Nueva imagen de la bandera
+this.load.image('flag', 'Arte/Escenario/Scene4/Flag.png'); // Nueva imagen de la bandera(es la puerta brillante)
+this.load.image('flagclose', 'Arte/Escenario/Scene4/FlagClose.png'); // Nueva imagen de la bandera(es la puerta brillante)
+
 this.load.image('doorOpen', 'Arte/Escenario/Scene4/DoorOpen.png'); // puerta abierta
 this.load.image('doorClose', 'Arte/Escenario/Scene4/DoorClose.png'); //puerta cerrada
 
@@ -70,6 +76,7 @@ this.doorsCol;
 this.doorsCol2;
 this.PC;
 this.combo;
+this.cartel
 
 this.canvas = this.sys.game.canvas;
 }
@@ -186,17 +193,7 @@ this.canvas = this.sys.game.canvas;
 
 
 
-
-
-    // Ajustar hitbox horizontalmente
-    //escalera.children.iterate(function (child) {
-        //child.body.setSize(child.width / 2, child.height);
-        //child.body.setOffset(child.width / 4, 0);
-    //});
-    
-
-
-      // Agregar bandera
+    // Agregar bandera
     
     //CONTROLES
     let keys = Phaser.Input.Keyboard.KeyCodes;
@@ -232,9 +229,49 @@ this.canvas = this.sys.game.canvas;
     this.PC = this.physics.add.staticGroup();
     this.PC.create(this.canvas.width*0.88, this.canvas.height*0.2, 'PC').setScale(0.2).refreshBody();
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //CARTELES
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Cartel 1
+    this.cartel = this.physics.add.staticGroup();
+    this.cartel.create(this.canvas.width*0.193, this.canvas.height*0.68, 'Cartel1').refreshBody();
+    this.dialogo = this.add.sprite(this.canvas.width*0.193, this.canvas.height *0.63, 'DiagImg').setScale(2).setVisible(false);
+    this.texto = this.add.text(this.canvas.width*0.188, this.canvas.height*0.605, 'k', { fontFamily: 'jorolks',fontSize: '50px', color: '#23154B' }).setVisible(false);
+    // Cartel 2
+    //=      0.05
+    //0.005    0.075
+    this.cartel2 = this.physics.add.staticGroup();
+    this.cartel2.create(this.canvas.width*0.926, this.canvas.height*0.715, 'Cartel1').refreshBody();
+    this.dialogo2 = this.add.sprite(this.canvas.width*0.926, this.canvas.height *0.665, 'DiagImg').setScale(2).setVisible(false);
+    this.texto2 = this.add.text(this.canvas.width*0.921, this.canvas.height*0.64, 'f', { fontFamily: 'jorolks',fontSize: '50px', color: '#ff0000' }).setVisible(false);
+    // Cartel 3// Crear el cuadro de diálogo
+    //=      0.05
+    //0.005    0.075
+    this.cartel3 = this.physics.add.staticGroup();
+    this.cartel3.create(this.canvas.width*0.953, this.canvas.height*0.445, 'Cartel1').refreshBody();
+    this.dialogo3 = this.add.sprite(this.canvas.width*0.953, this.canvas.height *0.395, 'DiagImg').setScale(2).setVisible(false);
+    this.texto3 = this.add.text(this.canvas.width*0.948, this.canvas.height*0.37, 'r', { fontFamily: 'jorolks',fontSize: '50px', color: '#ff00ff' }).setVisible(false);
+    // Cartel 4// Crear el cuadro de diálogo
+    //=      0.05
+    //0.005    0.075
+    this.cartel4 = this.physics.add.staticGroup();
+    this.cartel4.create(this.canvas.width*0.25, this.canvas.height*0.915, 'Cartel1').refreshBody();
+    this.dialogo4 = this.add.sprite(this.canvas.width*0.25 , this.canvas.height * 0.865, 'DiagImg').setScale(2).setVisible(false);
+    this.texto4 = this.add.text(this.canvas.width* 0.245, this.canvas.height* 0.84, 'o', { fontFamily: 'jorolks',fontSize: '50px', color: '#ff00ff' }).setVisible(false);
+    // Cartel 5// Crear el cuadro de diálogo
+    //=      0.05
+    //0.005    0.075
+    this.cartel5 = this.physics.add.staticGroup();
+    this.cartel5.create(this.canvas.width*0.905, this.canvas.height*0.118, 'Cartel1').refreshBody();
+    this.dialogo5 = this.add.sprite(this.canvas.width*0.905 , this.canvas.height * 0.068, 'DiagImg').setScale(2).setVisible(false);
+    this.texto5 = this.add.text(this.canvas.width* 0.9, this.canvas.height* 0.043, 'y', { fontFamily: 'jorolks',fontSize: '50px', color: '#ff00ff' }).setVisible(false);
+
+
 
     //PLAYERS
-    this.player = new Queso(this,200,this.canvas.height *0.2,'QuesoPlayer',wasd,'01',this.players,this.plataforms, this.ladders).setScale(2);
+    this.player = new Queso(this, 200, this.canvas.height*0.02,'QuesoPlayer',wasd,'01',this.players,this.plataforms, this.ladders).setScale(2);
     this.player2 = new Garras(this,250, this.canvas.height *0.2, 'GarrasPlayer',cursors,'02',this.players,this.plataforms);
 
 
@@ -284,9 +321,15 @@ this.canvas = this.sys.game.canvas;
     this.physics.add.overlap(this.player2, this.key, this.collectKey, null, this);
     this.physics.add.overlap(this.player, this.flag, this.changeScene, null, this);
 
+    
+
+    
+   
+
+
 
     //SALIDA
-    this.flag = this.physics.add.sprite(this.canvas.width*0.98, this.canvas.height * 0.22, 'flag');
+    this.flag = this.physics.add.sprite(this.canvas.width*0.98, this.canvas.height * 0.22, 'flagclose');
     this.flag.setCollideWorldBounds(true);
     this.physics.add.collider(this.flag, this.plataforms);    
     this.physics.add.overlap(this.player, this.flag, this.changeScene, null, this);
@@ -295,7 +338,7 @@ this.canvas = this.sys.game.canvas;
 
     
     //COMBO
-    this.combo = this.input.keyboard.createCombo('Forge');
+    this.combo = this.input.keyboard.createCombo('forky');
     this.combo.enabled = false //no procesa teclas
 
     this.input.keyboard.on('keycombomatch', (event) => {
@@ -311,106 +354,24 @@ this.canvas = this.sys.game.canvas;
         //this.enterDoor(); // Llama a la función enterDoor cuando se activa el combo
     });
 
-   /*
-    this.physics.add.collider(this.player2, this.caja, (player2, caja) => {
-        var touching = this.player2.body.touching;
-        this.caja.body.moves = true;
-        if (touching.down || touching.up || touching.left || touching.right) {
-            this.caja.setVelocityX(0);
-            this.caja.body.moves = true;
-        } else {
-            var relativeX = player2.x - caja.x;
-            var relativeY = player2.y - caja.y; // Corregir esta línea, usar 'caja.y' en lugar de 'caja.x'
-            if (relativeX <= 0) {
-                if (relativeY == 0) {
-                    this.caja.body.moves = true;
-                    this.caja.setVelocityX(0);
-                }
-            } else {
-                if (relativeY == 0) {
-                    this.caja.body.moves = true;
-                    this.caja.setVelocityX(0);
-                }
-            }
-        }
-        
-    });
-    */
-/*
-    this.physics.add.collider(this.player, this.caja, (player, caja) => {
-        if (player.body.touching.down) {
-           
-            caja.setVelocityY(0);
-            caja.body.moves = false;
-        }
-
-        if (player.body.touching.left || player.body.touching.right) {
-           
-            caja.setVelocityX(0);
-            caja.body.moves = false;
-        }
-    });
-    */
+   
 }
 
  update() {
     this.player.update();
     this.player2.update();
-    /*
-    if (this.cursors.left.isDown) {
-        this.player.setVelocityX(-160);
-        this.player.anims.play('left', true);
-    } else if (this.cursors.right.isDown) {
-        this.player.setVelocityX(160);
-        this.player.anims.play('right', true);
-    } else {
-        this.player.setVelocityX(0);
-        this.player.anims.play('turn');
-    }
-
-    if (this.cursors.up.isDown && this.player.body.touching.down) {
-        this.player.setVelocityY(-330);
-    }
-
-    if (this.left.isDown) {
-        this.player2.setVelocityX(-160);
-        this.player2.anims.play('leftLion', true);
-    } else if (this.right.isDown) {
-        this.player2.setVelocityX(160);
-        this.player2.anims.play('rightLion', true);
-    } else {
-        this.player2.setVelocityX(0);
-        this.player2.anims.play('turnLion');
-    }
-
-    if (this.up.isDown && player2.body.touching.down) {
-        this.player2.setVelocityY(-330);
-    }
-
-    // Detectar pulsación de la tecla 'P' para la mordida
-    if (Phaser.Input.Keyboard.JustDown(this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P))) {
-        
-}
-if (this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E).isDown && checkOverlap(player, escalera)) {
-        this.player.setVelocityY(-160);
-        this.player.setVelocityX(0);
-        
-    } else if (this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q).isDown && checkOverlap(player, escalera)) {
-        this.player.setVelocityY(160);
-        this.player.setVelocityX(0);
-        
-    } else if (checkOverlap(player, escalera)) {
-        this.player.setVelocityY(0);
-        this.player.setVelocityX(0);
-    }
-    */
 }
 collectKey(player, key) {
     this.key.disableBody(true, true);
     this.hasKey = true; // Variable para controlar si el jugador tiene la llave
+    if (this.key) {
+        //CAMBIAR IMAGEN PUERTA SALIDA
+        this.flag.setTexture('flag');
+    };
 
-    
 }
+
+
 
 changeScene(player, flag) {
     if (this.hasKey) {
@@ -433,20 +394,67 @@ checkOverlap(spriteA, groupB) {
     return false;
 }
 
-//PC CODE
-update(time) {
-    this.player.update();
-    this.player2.update();
 
-    if (this.physics.overlap(this.player, this.PC) || this.physics.overlap(this.player2, this.PC)) {
-        // Verifica si el jugador está cerca de la PC y habilita el combo
-        this.combo.enabled = true;
-        console.log('combo enabled')
-    } else {
-        // Si el jugador no está cerca de la PC, deshabilita el combo
-        this.combo.enabled = false;
+update(time) 
+    {
+        this.player.update();
+        this.player2.update();
+//PC CODE
+        if (this.physics.overlap(this.player, this.PC) || this.physics.overlap(this.player2, this.PC)) {
+            // Verifica si el jugador está cerca de la PC y habilita el combo
+            this.combo.enabled = true;
+            console.log('combo enabled')
+        } else {
+            // Si el jugador no está cerca de la PC, deshabilita el combo
+            this.combo.enabled = false;
+        }
+
+//CARTELES
+        if (this.physics.overlap(this.player, this.cartel) || this.physics.overlap(this.player2, this.cartel)){
+            console.log("overlap texto");
+            
+            this.texto.setVisible(true);
+            this.dialogo.setVisible(true);
+            this.texto2.setVisible(false);this.texto3.setVisible(false);this.texto4.setVisible(false);this.texto5.setVisible(false);
+            this.dialogo2.setVisible(false);this.dialogo3.setVisible(false); this.dialogo4.setVisible(false);this.dialogo5.setVisible(false);
+        }
+        else if (this.physics.overlap(this.player, this.cartel2) || this.physics.overlap(this.player2, this.cartel2)){
+            console.log("overlap texto");
+            
+            this.texto2.setVisible(true);
+            this.dialogo2.setVisible(true);
+            this.texto.setVisible(false);this.texto3.setVisible(false);this.texto4.setVisible(false);this.texto5.setVisible(false);
+            this.dialogo.setVisible(false);this.dialogo3.setVisible(false); this.dialogo4.setVisible(false);this.dialogo5.setVisible(false);
+        }
+        else if (this.physics.overlap(this.player, this.cartel3) || this.physics.overlap(this.player2, this.cartel3)){
+            console.log("overlap texto");
+            
+            this.texto3.setVisible(true);
+            this.dialogo3.setVisible(true);
+            this.texto2.setVisible(false);this.texto.setVisible(false);this.texto4.setVisible(false);this.texto5.setVisible(false);
+            this.dialogo2.setVisible(false);this.dialogo.setVisible(false); this.dialogo4.setVisible(false);this.dialogo5.setVisible(false);
+        }
+        else if (this.physics.overlap(this.player, this.cartel4) || this.physics.overlap(this.player2, this.cartel4)){
+            console.log("overlap texto");
+            
+            this.texto4.setVisible(true);
+            this.dialogo4.setVisible(true);
+            this.texto2.setVisible(false);this.texto3.setVisible(false);this.texto.setVisible(false);this.texto5.setVisible(false);
+            this.dialogo2.setVisible(false);this.dialogo3.setVisible(false); this.dialogo.setVisible(false);this.dialogo5.setVisible(false);
+        }
+        else if (this.physics.overlap(this.player, this.cartel5) || this.physics.overlap(this.player2, this.cartel5)){
+            console.log("overlap texto");
+            
+            this.texto5.setVisible(true);
+            this.dialogo5.setVisible(true);
+            this.texto2.setVisible(false);this.texto3.setVisible(false);this.texto4.setVisible(false);this.texto.setVisible(false);
+            this.dialogo2.setVisible(false);this.dialogo3.setVisible(false); this.dialogo4.setVisible(false);this.dialogo.setVisible(false);
+        }
+        else{
+            this.dialogo.setVisible(false);
+            this.texto.setVisible(false);
+        }
     }
-}
 }
 
 // Constantes de dimensiones

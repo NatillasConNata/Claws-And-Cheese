@@ -8,14 +8,8 @@ class Tutorial extends Phaser.Scene{
     }
 
     preload(){  
-        this.load.image('Portada', 'Arte/Escenario/MainMenu/Menu2.jpg');
-        this.load.image('Title', 'Arte/Escenario/MainMenu/Title2.png');
-        this.load.spritesheet('QuesoPlayer', './Proyecto/Arte/Characters/FREEVERSION_MrCookies', { frameWidth: 170 , frameHeight: 86});
-        this.load.image('GarraMoveRight', 'Arte/Escenario/MainMenu/Menu2.jpg');//Imagenes de Garra
-        this.load.image('GarraMoveLeft', 'Arte/Escenario/MainMenu/Menu2.jpg');
-        this.load.image('GarraJump', 'Arte/Escenario/MainMenu/Menu2.jpg');
-        this.load.image('ButtonExit', 'Arte/UI/PixelGUI/ExitBtn.png');
-        this.load.image('ButtonExitPressed', 'Arte/UI/PixelGUI/ExitClick.png');
+        this.load.image('escenario', 'Arte/Escenario/Scene4/GarrasAndCheeseFondo.png');
+
         this.canvas = this.sys.game.canvas;
     }
   
