@@ -49,6 +49,7 @@ class MainScene extends Phaser.Scene{
         })
 
         this.canvas = this.sys.game.canvas;
+        
     }
     
     create ()
@@ -57,7 +58,17 @@ class MainScene extends Phaser.Scene{
         //AÑADIR IMÁGENES NORMALES
         //this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'Portada').setOrigin(0,0).setScale(1);
         this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'Portada').setScale(1);
-        this.add.image(this.canvas.width * 0.5, this.canvas.height*0.1, 'Title').setScale(1);
+       // this.add.image(this.canvas.width * 0.5, this.canvas.height*0.1, 'Title').setScale(1);
+
+        
+        //text1.setTint(0xeb3f21,   0x21d3eb);*/
+        const text1 = this.add.text(this.canvas.width * 0.1, this.canvas.height*0.1, 'Claws an',
+        {fontFamily: 'light_pixel-7' , fontSize: 170,align: 'center' , fill: '#ffffff' ,  stroke:'#eb3f21', strokeThickness:20  } )
+        const text2 = this.add.text(this.canvas.width * 0.476, this.canvas.height*0.1, 'd cheese',
+        {fontFamily: 'light_pixel-7' , fontSize: 170,align: 'center' , fill: '#ffffff' ,  stroke:'#21d3eb', strokeThickness:20  } )
+        
+
+
         //const block =this.add.image(this.canvas.width * 0.5, this.canvas.height, 'Portada').setScale(1);
         //Phaser.Display.Align.In.Center(block, this.add.zone(0, 0, this.canvas.width * 0.5, this.canvas.height));
 

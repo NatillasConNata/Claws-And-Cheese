@@ -14,6 +14,14 @@
 }
 
 @font-face {
+    font-family: 'light_pixel-7';
+    src: url('./Fonts/light-pixel-7/light_pixel-7.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*
+@font-face {
     font-family: 'bitween';
     src: url('./Fonts/bitween_10/BITWA2___.TTF');
     font-weight: normal;
@@ -46,4 +54,4 @@
     src: url('./Fonts/v5bloques/V5_bloques.ttf');
     font-weight: normal;
     font-style: normal;
-}
+}*/

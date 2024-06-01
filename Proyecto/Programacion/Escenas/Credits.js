@@ -35,8 +35,13 @@ class Credits extends Phaser.Scene{
 
         //IMAGENES
         this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'PortadaCredits').setScale(1);
-        this.add.image(this.canvas.width * 0.5, this.canvas.height*0.1, 'Title').setScale(1);
+        //this.add.image(this.canvas.width * 0.5, this.canvas.height*0.1, 'Title').setScale(1);
         this.add.image(1750, 750, 'Kamaron').setScale(0.2);
+
+        const text1 = this.add.text(this.canvas.width * 0.1, this.canvas.height*0.05, 'Claws an',
+        {fontFamily: 'light_pixel-7' , fontSize: 170,align: 'center' , fill: '#ffffff' ,  stroke:'#eb3f21', strokeThickness:20  } )
+        const text2 = this.add.text(this.canvas.width * 0.476, this.canvas.height*0.05, 'd cheese',
+        {fontFamily: 'light_pixel-7' , fontSize: 170,align: 'center' , fill: '#ffffff' ,  stroke:'#21d3eb', strokeThickness:20  } )
 
         //AUDIO
         let creditAudio = this.sound.add('CreditsAudio',{loop:true});
@@ -45,7 +50,7 @@ class Credits extends Phaser.Scene{
         //BOTONES
         //nineslice (poxX, posY, obj, sprite, tamañoX, tamañoY, px mantenidos izq., px mantenidos drch. , px mantenidos arriba, px mantenidos abajo )
         //var returnButton = this.add.nineslice(100, 100, 'Buttons', 5, 72,69,  4,4,4,7).setInteractive();
-        this.exitButton = this.add.sprite(this.canvas.width * 0.5, this.canvas.height * 0.9, 'ButtonExit').setInteractive().setScale(0.5);
+        this.exitButton = this.add.sprite(this.canvas.width * 0.1, this.canvas.height * 0.9, 'ButtonExit').setInteractive().setScale(0.5);
 
         this.exitButton.on('pointerdown', function () {
             //scene.scene.stop('Credits');/**************** */
@@ -70,8 +75,8 @@ class Credits extends Phaser.Scene{
         //var tittle = this.add.text(this.sys.game.canvas.width/10, 75, 'Garras y Queso', {fontFamily: 'v5bloques' , fontSize: 75 , fill: '#fb7756'} )
 
         //this.add.text(this.canvas.width * 0.4, 200, 'DESARROLLADORES', {fontFamily: 'jorolks' , fontSize: 75 , fill: '#241f1a' , align: 'center'} )
-        this.add.text(this.canvas.width * 0.3 , 300, 'DESARROLLADORES \n Miguel Angel Gimenez Montemayor \n Natalia Martinez Clemente  \n\n\n  MUSICA \n chosic.com/free-music \n Autor: Komiku' , 
-        {fontFamily: 'jorolks' , fontSize: 50 , fill: '#FF5733 ' , align: 'center'} )
+        this.add.text(this.canvas.width * 0.3 , this.canvas.height*0.3, 'DESARROLLADORES \n Miguel Angel Gimenez Montemayor \n Natalia Martinez Clemente  \n\n  MUSICA \n chosic.com/free-music \n Autor: Komiku' , 
+        {fontFamily: 'light_pixel-7' , fontSize: 50 , fill: '#FF5733 ' , align: 'center',stroke:'#000000', strokeThickness:10} )
        // this.add.text(this.canvas.width * 0.5, 400, 'Natalia Martinez Clemente', {fontFamily: 'jorolks' , fontSize: 50 , fill: '#241f1a' , align: 'center'} )
         
         
