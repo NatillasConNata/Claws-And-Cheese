@@ -8,17 +8,19 @@ class Tutorial extends Phaser.Scene{
     }
 
     preload(){  
-        this.load.image('escenario', 'Arte/Escenario/Scene4/GarrasAndCheeseFondo.png');
+        this.load.image('tuto', 'Arte/Escenario/Tutorial/PruebaTutorial.png');
 
         this.canvas = this.sys.game.canvas;
     }
   
     create (){
-        this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'Portada').setScale(1);
-        this.add.image(this.canvas.width * 0.5, this.canvas.height*0.1, 'Title').setScale(1);
+        this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'tuto');
+        //this.add.image(this.canvas.width * 0.5, this.canvas.height*0.1, 'Title').setScale(1);
 
+        this.add.text(this.canvas.width * 0.7 , this.canvas.height * 0.6, 'Claws \n and\n Cheese' , 
+        {fontFamily: 'jorolks' , fontSize: 130 , fill: '#ffffff ' , align: 'center'} )
 
-        this.exitButton = this.add.sprite(this.canvas.width * 0.5, this.canvas.height * 0.9, 'ButtonExit').setInteractive().setScale(0.5);
+        this.exitButton = this.add.sprite(this.canvas.width * 0.2, this.canvas.height * 0.9, 'ButtonExit').setInteractive().setScale(0.5);
 
         this.exitButton.on('pointerdown', function () {
             //scene.scene.stop('Credits');/**************** */
