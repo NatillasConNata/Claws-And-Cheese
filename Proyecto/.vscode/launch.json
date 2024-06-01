@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ClawsandcheeseApplication<clawsandcheese>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.clawscndcheese.clawsandcheese.ClawsandcheeseApplication",
+            "projectName": "clawsandcheese",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
