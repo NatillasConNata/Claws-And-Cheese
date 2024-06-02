@@ -1,6 +1,6 @@
-class PreLoad extends Phaser.Scene{
+class PreLoadScene extends Phaser.Scene{
     constructor(){
-        super({key: 'PreLoad', active:true})
+        super({key: 'PreLoadScene', active:true})
         this.width= 1920 ,
         this.height = 1080 
     }
@@ -12,6 +12,7 @@ class PreLoad extends Phaser.Scene{
         //this.load.css('light_pixel-7', './Fonts/light_pixel-7/light_pixel-7.ttf');
     }
     create(){
+
 
         console.log(window.location.pathname);        
                 
