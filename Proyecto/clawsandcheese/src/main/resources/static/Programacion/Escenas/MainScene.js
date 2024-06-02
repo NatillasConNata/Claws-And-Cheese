@@ -221,9 +221,11 @@ class MainScene extends Phaser.Scene{
                             if(!exist)
                             {
                                 let account = {
+                                    
                                     name: inputUsername.value,
                                     password: inputPassword.value,
-                                    active: true
+                                    active: true,
+
                                 }
                         
                                 that.createAccount(account, function (account) {

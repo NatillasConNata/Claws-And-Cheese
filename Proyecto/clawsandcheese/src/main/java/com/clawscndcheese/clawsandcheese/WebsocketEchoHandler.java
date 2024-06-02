@@ -56,15 +56,18 @@ public class WebsocketEchoHandler extends TextWebSocketHandler {
                 // CAN MODIFY
                 ObjectNode newNode = mapper.createObjectNode();
                 newNode.put("funcion", "setPlayer");
-                newNode.put("name", actual.jugadores.get(actual.jugadores.size() - 1).getName());
+                newNode.put("name", nombre[contador-1]);
                 newNode.put("id", actual.jugadores.get(actual.jugadores.size() - 1).getId());
                 newNode.put("id_p", actual.getId());
                 actual.jugadores.get(actual.jugadores.size() - 1).getSession().sendMessage(new TextMessage(newNode.toString()));
                 System.out.println("mensaje enviado creo");
 
                 if (contador == 2) {
+					System.out.print("Entra en contador echoHandler");;
                     contador = 0;
                 }
+				System.out.print("sale en contador echoHandler");;
+
             }
 
         } catch (Exception e) {
@@ -105,52 +108,32 @@ public class WebsocketEchoHandler extends TextWebSocketHandler {
         }
     }
 
-    private void sendOtherParticipants(WebSocketSession session, JsonNode node) throws IOException {
+    private void sendOtherParticipants(WebSocketSession session, JsonNode node) throws Exception {
         int idP = node.get("id_p").asInt();
         Long idJ = node.get("id").asLong();
         ObjectNode newNode = mapper.createObjectNode();
-        if (node.get("power") != null) {
-            try {
-                // CAN MODIFY
-                newNode.put("funcion", node.get("power").asText());
-                newNode.put("name", node.get("name").asText());
-                newNode.put("id", node.get("id").asLong());
 
-                System.out.println("Message sent 1: " + newNode.toString());
-                for (Account participant : partidas.get(idP).jugadores) {
-                    if (participant.getId() != idJ) {
-                        System.out.println("Nombre: " + participant.getName() + " id: " + participant.getSession().getId());
-                        System.out.println("Message sent: " + newNode.toString());
-                        participant.getSession().sendMessage(new TextMessage(newNode.toString()));
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-        } else {
-            try {
-                // CAN MODIFY
-                newNode.put("funcion", "update");
-                newNode.put("name", node.get("name").asText());
-                newNode.put("id", node.get("id").asText());
-                newNode.put("posX", node.get("posX").asInt());
-                newNode.put("posY", node.get("posY").asInt());
-                newNode.put("spdX", node.get("spdX").asInt());
-                newNode.put("spdY", node.get("spdY").asInt());
-                newNode.put("state", node.get("state").asText());
-                newNode.put("texture", node.get("texture").asText());
+		newNode.put("funcion", "update");
 
-                System.out.println("Message sent 1: " + newNode.toString());
-                for (Account participant : partidas.get(idP).jugadores) {
-                    if (participant.getId() != idJ) {
-                        System.out.println("Nombre: " + participant.getName() + " id: " + participant.getSession().getId());
-                        System.out.println("Message sent: " + newNode.toString());
-                        participant.getSession().sendMessage(new TextMessage(newNode.toString()));
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-        }
+		newNode.put("characterName",node.get("characterName").asText());
+		newNode.put("name", node.get("name").asText());
+		newNode.put("id", node.get("id").asLong());
+		newNode.put("posX", node.get("posX").asInt());
+		newNode.put("posY", node.get("posY").asInt());
+		newNode.put("key_found", node.get("key_found").asBoolean());
+		newNode.put("door_open", node.get("door_open").asBoolean());
+		newNode.set("listaCajas", node.get("listaCajas")); // Añadir la lista de cajas al mensaje
+
+
+		//newNode.put("spdX", node.get("spdX").asInt());
+		//newNode.put("spdY", node.get("spdY").asInt());
+		//newNode.put("state", node.get("state").asText());
+		//newNode.put("texture", node.get("texture").asText());
+
+		for (Account participant : partidas.get(idP).jugadores) {
+			if (participant.getId() != idJ) {
+				participant.getSession().sendMessage(new TextMessage(newNode.toString()));
+			}
+		}
     }
 }

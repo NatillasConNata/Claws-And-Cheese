@@ -14,6 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.logging.log4j.message.Message;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -42,6 +43,8 @@ public class AccountController {
     public Map<Long, Account> accounts = new ConcurrentHashMap<>();
     private AtomicLong nextId = new AtomicLong(1);
 
+    @Value("${json.file.path}")
+    //private String jsonFilePath;
     private static final String jsonFilePath = "src/main/resources/static/playerscore.json";
     private static final String tempJsonFilePath = "src/main/resources/static/playerscore_temp.json";
 
