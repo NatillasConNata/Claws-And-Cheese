@@ -7,7 +7,7 @@ const App = function(){
 
 App.prototype.start = function(){
     let scenes=[];
-    scenes.push(PreLoad);
+    scenes.push(PreLoadScene);
     scenes.push(MainScene);
     //scenes.push(Scene1);
     //scenes.push(Scene2);
@@ -56,50 +56,4 @@ App.prototype.start = function(){
     //console.log(game.CONFIG)
 
 }
-
-/*
-window.addEventListener('load', () => {
-    let scenes=[];
-    scenes.push(MainScene);
-    //scenes.push(Scene1);
-    //scenes.push(Scene2);
-    //scenes.push(Scene3);
-    scenes.push(Scene4);
-    scenes.push(Credits);
-    scenes.push(Tutorial);
-    let config = {
-        type: Phaser.AUTO,
-        width: 2400 ,
-        height: 960 ,
-        backgroundColor: 0x220283,
-        physics: {
-            default: 'arcade',
-            arcade: {
-                debug: false,
-                gravity: {
-                    y: 5000
-                }
-            }
-        },
-        scale: {
-            mode: Phaser.Scale.FIT,
-            autoCenter: Phaser.Scale.CENTER_BOTH,
-            parent: "thegame",
-            },
-        pixelArt: true,
-        scene: scenes
-    }
-    let game = new Phaser.Game(config)
-
-    game.CONFIG = {
-        width: config.width,
-        height: config.height,
-        gameWidth: (config.width - 60) / 2,
-        centerX: Math.round(0.5*config.width),
-        centerY: Math.round(0.5*config.height),
-    }
-    }) //end load listener
-    */
-    
-
 
