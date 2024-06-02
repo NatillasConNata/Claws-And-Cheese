@@ -33,6 +33,7 @@ preload() {
     this.load.image('Cartel1', 'Arte/Escenario/Scene4/Cartel1.png');/////////////////////////////////
     this.load.image('Cartel2', 'Arte/Escenario/Scene4/Cartel2.png');/////////////////////////////////
     this.load.image('DiagImg', 'Arte/Escenario/Scene4/Dialog.png');/////////////////////////////////
+    this.load.image('DiagPCImg', 'Arte/Escenario/Scene4/DialogServer.png');/////////////////////////////////
 
 
 
@@ -58,8 +59,7 @@ this.load.spritesheet('QuesoPlayer', 'Arte/Characters/FREEVERSION_MrCookies/MRCo
 
 //PC
 this.load.image('PC', 'Arte/Bocetos/niveles prototipos/Nivel2/Pc.png');
-
-
+this.load.image('code', 'Arte/Escenario/Scene4/eNTERcODE.png');
 
 //Variables
 this.plataforms;
@@ -80,7 +80,10 @@ this.doorsCol;
 this.doorsCol2;
 this.PC;
 this.combo;
-this.cartel
+this.cartel;
+this.cartelPC;
+this.pcText
+
 
 this.canvas = this.sys.game.canvas;
 }
@@ -245,9 +248,8 @@ this.canvas = this.sys.game.canvas;
 
     },this);
    
-    //PC 
-    this.PC = this.physics.add.staticGroup();
-    this.PC.create(this.canvas.width*0.88, this.canvas.height*0.2, 'PC').setScale(0.2).refreshBody();
+    
+
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -287,6 +289,12 @@ this.canvas = this.sys.game.canvas;
     this.cartel5.create(this.canvas.width*0.905, this.canvas.height*0.118, 'Cartel1').refreshBody();
     this.dialogo5 = this.add.sprite(this.canvas.width*0.905 , this.canvas.height * 0.068, 'DiagImg').setScale(2).setVisible(false);
     this.texto5 = this.add.text(this.canvas.width* 0.9, this.canvas.height* 0.033, 'y', { fontFamily: 'light_pixel-7',fontSize: '40px', color: '#F79D84' }).setVisible(false);
+
+    //PC 
+    this.PC = this.physics.add.staticGroup();
+    this.PC.create(this.canvas.width*0.88, this.canvas.height*0.2, 'PC').setScale(0.2).refreshBody();
+    this.pcCartel = this.add.sprite(this.canvas.width*0.88, this.canvas.height *0.12, 'DiagPCImg').setScale(2).setVisible(false);
+    this.pcText = this.add.sprite(this.canvas.width*0.88, this.canvas.height *0.12, 'code').setScale(0.8).setVisible(false);
 
 
 
@@ -431,10 +439,15 @@ update(time)
 //PC CODE
         if (this.physics.overlap(this.player, this.PC) || this.physics.overlap(this.player2, this.PC)) {
             // Verifica si el jugador está cerca de la PC y habilita el combo
+            this.pcCartel .setVisible(true);
+            this.pcText.setVisible(true);
             this.combo.enabled = true;
+
             console.log('combo enabled')
         } else {
             // Si el jugador no está cerca de la PC, deshabilita el combo
+            this.pcCartel .setVisible(false);
+            this.pcText.setVisible(false);
             this.combo.enabled = false;
         }
 
