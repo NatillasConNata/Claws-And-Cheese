@@ -71,13 +71,39 @@ class MainScene extends Phaser.Scene{
     create ()
     {
         
+        
+
         //console.log("imagen aviario");
         //AÑADIR IMÁGENES NORMALES
         //this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'Portada').setOrigin(0,0).setScale(1);
         this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'Portada').setScale(1);
        // this.add.image(this.canvas.width * 0.5, this.canvas.height*0.1, 'Title').setScale(1);
-
+        //nineslice (poxX, posY, obj, sprite, tamañoX, tamañoY, px mantenidos izq., px mantenidos drch. , px mantenidos arriba, px mantenidos abajo )
+        this.startButton =  this.add.sprite(this.canvas.width * 0.3, 500, 'ButtonPlay').setInteractive().setScale(0.5);
+        this.logInButton = this.add.sprite(this.canvas.width * 0.5, 500, 'ButtonOptions').setInteractive().setScale(0.5);
+        this.creditButton = this.add.sprite(this.canvas.width * 0.3, 760, 'ButtonCredit').setInteractive().setScale(0.5);
+        this.tutorialButton =this.add.sprite(this.canvas.width * 0.5, 760, 'ButtonTutorial').setInteractive().setScale(0.5);
+        this.logOffButton = this.add.sprite(this.canvas.width * 0.7, 500, 'ButtonLogOut').setInteractive().setScale(0.5); //sustituye a logInButton
+        this.logOffButton.visible=false;
+        this.boardButton =this.add.sprite(this.canvas.width * 0.7, 760, 'ButtonBoard').setInteractive().setScale(0.5);//solo aparece cuando te has logeado
+        this.boardButton.visible=false;
         
+        //CARGAR LAS CUENTAS AL INICIAR LA ESCENA PARA COMPROBAR SI HAY LOGS
+        this.loadAccounts((accounts) => {
+            this.accounts = accounts;
+            
+            if (this.accounts && this.accounts.some(account => account.active === true)) {
+                // Si existe al menos una cuenta con active a true, muestra el board y el botón de desloguearse
+                //y no puede iniciar otra sesión
+                this.boardButton.visible = true;
+                this.logOffButton.visible = true;
+                this.logInButton.visible = false;
+            }
+        });
+        
+
+
+
         //text1.setTint(0xeb3f21,   0x21d3eb);*/
         const text1 = this.add.text(this.canvas.width * 0.1, this.canvas.height*0.1, 'Claws an',
         {fontFamily: 'light_pixel-7' , fontSize: 170,align: 'center' , fill: '#ffffff' ,  stroke:'#eb3f21', strokeThickness:20  } )
@@ -89,16 +115,7 @@ class MainScene extends Phaser.Scene{
         //const block =this.add.image(this.canvas.width * 0.5, this.canvas.height, 'Portada').setScale(1);
         //Phaser.Display.Align.In.Center(block, this.add.zone(0, 0, this.canvas.width * 0.5, this.canvas.height));
 
-        console.log(this.canvas.width * 0.5);
-        //nineslice (poxX, posY, obj, sprite, tamañoX, tamañoY, px mantenidos izq., px mantenidos drch. , px mantenidos arriba, px mantenidos abajo )
-        this.startButton =  this.add.sprite(this.canvas.width * 0.3, 500, 'ButtonPlay').setInteractive().setScale(0.5);
-        this.logInButton = this.add.sprite(this.canvas.width * 0.5, 500, 'ButtonOptions').setInteractive().setScale(0.5);
-        this.creditButton = this.add.sprite(this.canvas.width * 0.3, 760, 'ButtonCredit').setInteractive().setScale(0.5);
-        this.tutorialButton =this.add.sprite(this.canvas.width * 0.5, 760, 'ButtonTutorial').setInteractive().setScale(0.5);
-        this.logOffButton = this.add.sprite(this.canvas.width * 0.7, 500, 'ButtonLogOut').setInteractive().setScale(0.5); //sustituye a logInButton
-        this.logOffButton.visible=false;
-        this.boardButton =this.add.sprite(this.canvas.width * 0.7, 760, 'ButtonBoard').setInteractive().setScale(0.5);//solo aparece cuando te has logeado
-        this.boardButton.visible=false;
+        
 
         //this.offline = this.add.sprite(this.config.centerX, this.config.centerY * 1.25, 'newGameButton').setInteractive().setScale(0.5);
 
