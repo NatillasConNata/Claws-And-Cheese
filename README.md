@@ -103,7 +103,7 @@ El juego tiene un nivel con distintas mecánicas.
 # Estados del Juego 
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211354153-d06018a8-5834-44e7-8d52-87c2440ac7a2.png" width="400" height="400"/>
+ ![Megaman2](InterfacesJuegos/esquema.png "https://pin.it/5t7QzyY")
 </p>
 
 Una vez iniciado el juego, se muestra el menú del juego, desde el cual se puede acceder a distintas escenas que son:
@@ -116,46 +116,46 @@ Una vez iniciado el juego, se muestra el menú del juego, desde el cual se puede
 
 ## Diagrama de clases y navegación
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211353854-3e1b1308-a80d-4cdb-9824-69c4e2258aed.jpeg" width="700" height="700"/>
+  ![Megaman2](InterfacesJuegos/esquemajs.png "https://pin.it/5t7QzyY")>
 </p>
 <p>
 Una vez iniciado el juego, se enseña el menú del juego, desde el cual, si la partida es online puedes acceder a un leaderBoard para ver las mejores puntuaciones(las que son distintas de 0) y luego puedes acceder tambien a la escena de juego. Para el modo APIRest, se ha utilizado el guardado permanente de datos en un JSON. Este guardado mantiene los datos de los usuarios que se han loggeado, sus contraseñas y el tiempo que han tardado en acabar la partida. Al estar en un solo ordenador, solo se podrá loggear una persona y se guardará esa información.<p>
 
 ## Menú principal
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211355132-d1d5a67c-9fe5-4f7e-8eaf-f607e80333b2.png" width="700" height="700"/>
+  ![Megaman2](InterfacesJuegos/escenalogin.png "https://pin.it/5t7QzyY")
 </p>
 
 En el menú principal aparece el logo del juego, los botones para inicializar partida, loguear o desloguear, el tutorial, ranking y los créditos.
 
 ## Board
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211355132-d1d5a67c-9fe5-4f7e-8eaf-f607e80333b2.png" width="700" height="700"/>
+  ![Megaman2](InterfacesJuegos/board.png "https://pin.it/5t7QzyY")
 </p>
 Muestra el tiempo que ha tardado en finalizar el nivel de todos los jugadores de forma ascendente.
 
 ## Login
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211355132-d1d5a67c-9fe5-4f7e-8eaf-f607e80333b2.png" width="700" height="700"/>
+![Megaman2](InterfacesJuegos/login.png "https://pin.it/5t7QzyY")
 </p>
 Pantalla que permite crear la cuenta del usuario guardando sus datos o acceder a otra cuenta ya creada.
 
 ## Pantalla de juego
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211355132-d1d5a67c-9fe5-4f7e-8eaf-f607e80333b2.png" width="700" height="700"/>
+ ![Megaman2](InterfacesJuegos/escenario.png "https://pin.it/5t7QzyY")
 </p>
 Pantalla principal donde los jugadores interactúan para superar los desafíos usando los personajes ya mencionados anteriormente.
 Para jugar, cada jugador tiene unas teclas asignadas. Tendrán que mover cajas, subir escaleras, coger una llave y encontrar un código secreto para poder salir.
 
 ## Tutorial
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211355132-d1d5a67c-9fe5-4f7e-8eaf-f607e80333b2.png" width="700" height="700"/>
+ ![Megaman2](InterfacesJuegos/tutorial2.png "https://pin.it/5t7QzyY")
 </p>
 Pantalla la cual muestra los controles de los personajes además del objetivo del nivel.
 
 ## Credits
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211355132-d1d5a67c-9fe5-4f7e-8eaf-f607e80333b2.png" width="700" height="700"/>
+  ![Megaman2](InterfacesJuegos/credits.png "https://pin.it/5t7QzyY")
 </p>
 Pantalla la cual muestra a los desarrolladores del videojuego y las licencias que se han utilizado para hacer el videojuego.
 
