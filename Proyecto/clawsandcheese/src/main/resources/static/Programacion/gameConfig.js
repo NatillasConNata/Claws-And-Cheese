@@ -7,7 +7,7 @@ const App = function(){
 
 App.prototype.start = function(){
     let scenes=[];
-    scenes.push(PreLoad);
+    scenes.push(PreLoadScene);
     scenes.push(MainScene);
     //scenes.push(Scene1);
     //scenes.push(Scene2);
