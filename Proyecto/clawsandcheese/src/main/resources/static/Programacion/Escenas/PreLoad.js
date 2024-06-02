@@ -14,14 +14,7 @@ class PreLoad extends Phaser.Scene{
     create(){
 
         console.log(window.location.pathname);        
-        
-        /*this.load.once('filecomplete-css-custom-font', () => {
-            // Start your game here
-            const textPrecarga = this.add.text(this.canvas.width * 0.1, this.canvas.height*0.1, '',
-            {fontFamily: 'light_pixel-7' , fontSize: 170,align: 'center' , fill: '#ffffff' ,  stroke:'#eb3f21', strokeThickness:20  } )        });
-    
-        this.load.start();*/
-        
+                
 
         this.time.addEvent({
             delay: 1,
