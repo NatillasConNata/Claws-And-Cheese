@@ -102,9 +102,9 @@ El juego tiene un nivel con distintas mecánicas.
 <a name="item4"></a>  
 # Estados del Juego 
 
-<p align="center">
+
  ![Megaman2](InterfacesJuegos/esquema.png "https://pin.it/5t7QzyY")
-</p>
+
 
 Una vez iniciado el juego, se muestra el menú del juego, desde el cual se puede acceder a distintas escenas que son:
 - **Tutorial**: Enseña los controles que se van a utilizar, además de explicar el objetivo de la escena.
@@ -122,9 +122,9 @@ Una vez iniciado el juego, se muestra el menú del juego, desde el cual se puede
 Una vez iniciado el juego, se enseña el menú del juego, desde el cual, si la partida es online puedes acceder a un leaderBoard para ver las mejores puntuaciones(las que son distintas de 0) y luego puedes acceder tambien a la escena de juego. Para el modo APIRest, se ha utilizado el guardado permanente de datos en un JSON. Este guardado mantiene los datos de los usuarios que se han loggeado, sus contraseñas y el tiempo que han tardado en acabar la partida. Al estar en un solo ordenador, solo se podrá loggear una persona y se guardará esa información.<p>
 
 ## Menú principal
-<p align="center">
+
   ![Megaman2](InterfacesJuegos/escenalogin.png "https://pin.it/5t7QzyY")
-</p>
+
 
 En el menú principal aparece el logo del juego, los botones para inicializar partida, loguear o desloguear, el tutorial, ranking y los créditos.
 
