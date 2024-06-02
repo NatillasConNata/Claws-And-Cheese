@@ -114,10 +114,12 @@ Una vez iniciado el juego, se muestra el menú del juego, desde el cual se puede
 - **Board**: Pantalla que muestra un ranking del tiempo que los jugadores han tardado en superar el nivel.
 - **Log off**: Aparece cuando se ha iniciado la cuenta y sirve para desconectar la cuenta, permitiendo así crear otra cuenta o unirte con otra cuenta.
 
-## Diagrama de clases
+## Diagrama de clases y navegación
 <p align="center">
   <img src="https://user-images.githubusercontent.com/116154873/211353854-3e1b1308-a80d-4cdb-9824-69c4e2258aed.jpeg" width="700" height="700"/>
 </p>
+<p>
+Una vez iniciado el juego, se enseña el menú del juego, desde el cual, si la partida es online puedes acceder a un leaderBoard para ver las mejores puntuaciones(las que son distintas de 0) y luego puedes acceder tambien a la escena de juego. Para el modo APIRest, se ha utilizado el guardado permanente de datos en un JSON. Este guardado mantiene los datos de los usuarios que se han loggeado, sus contraseñas y el tiempo que han tardado en acabar la partida. Al estar en un solo ordenador, solo se podrá loggear una persona y se guardará esa información.<p>
 
 ## Menú principal
 <p align="center">
@@ -143,6 +145,7 @@ Pantalla que permite crear la cuenta del usuario guardando sus datos o acceder a
   <img src="https://user-images.githubusercontent.com/116154873/211355132-d1d5a67c-9fe5-4f7e-8eaf-f607e80333b2.png" width="700" height="700"/>
 </p>
 Pantalla principal donde los jugadores interactúan para superar los desafíos usando los personajes ya mencionados anteriormente.
+Para jugar, cada jugador tiene unas teclas asignadas. Tendrán que mover cajas, subir escaleras, coger una llave y encontrar un código secreto para poder salir.
 
 ## Tutorial
 <p align="center">
@@ -206,6 +209,22 @@ Finalmente, cuando un jugador llega a la meta, manda dos mensajes:
 Tras esto, ambos clientes pasan a la escena Winner, donde se muestra al jugador vencedor. Esta escena carece de cualquier funcionalidad de WebSockets, por lo que ambos jugadores pueden volver al menú principal y volver a buscar partida, en cuyo caso se crean sesiones de WebSocket nuevas, ya que las antiguas se han eliminado.
 
 <a name="item10"></a>  
+# APIRest 
+
+Para implementar la APIRest, primero hemos importado springBoot y las librerías y dependencias necesarias para poder utilizar springboot y el puerto LocalHost:8080 en el archivo pom.
+Luego, hemos creado varios archivos .java, los cuales Accoutns.java tiene la información que se quiere guardar (nombre,id,tiempo,etc), AccountController.java  tiene los métodos CRUD necesarios para poder guardas, actualizar y eliminar la información. Para ello en postConstrucInit inicializamos los datos, comprobando si existe o no el archivo JSON al iniciar el servidor. Si existe, lo lee y lo copia en un archivo temporal, añade los nuevos datos y luego lo copia todo al archivo original. Get simplemente devuelve el mapa de la información. Put comprueba que el id del account y si no es nulo hace put en ese usuario. Delete funciona de forma similar pero eliminando el archivo.
+En el archivo de clawsandcheeseApplication.java simplemente se ejecuta la aplicación con Spring.
+
+Hemos creado también un archivo LeaderBoard para ver las puntuaciones, este archivo utiliza un Dom donde se muestra la información. Para recoger esta información utilizamos loadAccounts, la cual carga las cuentas. Realiza una solicitud AJAX y devuelve las cuentas. Luego ordena las cuentas y las muestra en el dom.
+
+En MainScene utilizamos tambien loadAccounts al inicio para indicar que botones se deben mostrar si ya te has loggeado o no. Para el botóns LogIn (se crea un dom donde se muestra una caja a guardar el usuario y la contraseña y se ocultan los botones, cuando te loggeas, se desocultan los botones y se cierra ese dom), se comprueba una serie de requisitos, como si el jugador no existe o si, si no existe crea un usuario, y si sí, lo carga. Si se mete mal la contraseña no te permitirá entrar (el nombre es único, no hay duplicados), si la cuenta está activa tampoco te podrás loggear.
+Para logOut se cargan y se actualizan las cuentas. Para actualizarlas se llama al método PUT dell CRUD.
+
+En la escena de juego se utiliza la carga de archivos y datos de las cuentas, como anteriormente, igual que la actalización de las cuentas, la cual se realiza al cambiar de escena. 
+
+También se ha implementado el timer que utiliza un evento para actualizar el tiempo, sumando 1 por cada vuelta de loop.
+
+<a name="item11"></a>  
 # Música y Sonidos 
 
 Para la música, alternamos entre música alegre y música ambiental de zoo. 
