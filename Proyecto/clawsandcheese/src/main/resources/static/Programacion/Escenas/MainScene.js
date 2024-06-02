@@ -75,7 +75,6 @@ class MainScene extends Phaser.Scene{
 
         //console.log("imagen aviario");
         //AÑADIR IMÁGENES NORMALES
-        //this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'Portada').setOrigin(0,0).setScale(1);
         this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'Portada').setScale(1);
        // this.add.image(this.canvas.width * 0.5, this.canvas.height*0.1, 'Title').setScale(1);
         //nineslice (poxX, posY, obj, sprite, tamañoX, tamañoY, px mantenidos izq., px mantenidos drch. , px mantenidos arriba, px mantenidos abajo )
@@ -89,6 +88,7 @@ class MainScene extends Phaser.Scene{
         this.boardButton.visible=false;
         
         //CARGAR LAS CUENTAS AL INICIAR LA ESCENA PARA COMPROBAR SI HAY LOGS
+        //SE PRESUPONE QUE ESTO OCURRE EN LOCAL, SI SE LANZA CON UN SERVIDOR, SE CALCULA CON EL CLIENTE ACTUAL(SE HACE EN LA SIG,PARTE)
         this.loadAccounts((accounts) => {
             this.accounts = accounts;
             
