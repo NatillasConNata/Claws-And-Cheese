@@ -168,7 +168,7 @@ Pantalla que permite crear la cuenta del usuario guardando sus datos  o acceder 
 Pantalla principal donde los jugadores interactúan para superar los desafíos usando los personajes ya mencionados anteriormente.
 ## Tutorial
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211355132-d1d5a67c-9fe5-4f7e-8eaf-f607e80333b2.png" width="700" height="700"/>
+  <img src="![image](https://github.com/NatillasConNata/Claws-And-Cheese/assets/99034900/011a8c1e-e34f-48a8-ae34-cae7982bc66f)" width="700" height="700"/>
 </p>
 Pantalla la cual muestra los controles de los personajes ademas del objetivo del nivel.
 ## Credits
