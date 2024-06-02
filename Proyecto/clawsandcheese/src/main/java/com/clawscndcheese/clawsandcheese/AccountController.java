@@ -39,12 +39,16 @@ import jakarta.annotation.PostConstruct;
 @CrossOrigin(origins = "http://localhost:4200")
 public class AccountController {
 
-    private Map<Long, Account> accounts = new ConcurrentHashMap<>();
+    public Map<Long, Account> accounts = new ConcurrentHashMap<>();
     private AtomicLong nextId = new AtomicLong(1);
 
     private static final String jsonFilePath = "src/main/resources/static/playerscore.json";
     private static final String tempJsonFilePath = "src/main/resources/static/playerscore_temp.json";
 
+    // Método para obtener el mapa de cuentas
+    public Map<Long, Account> getAccountMap() {
+        return accounts;
+    }
     //ejecutar codigo de leerJSON al inicio
     @PostConstruct
     public void init() {

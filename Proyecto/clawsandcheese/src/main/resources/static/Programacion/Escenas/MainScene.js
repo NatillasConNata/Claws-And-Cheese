@@ -9,7 +9,7 @@ class MainScene extends Phaser.Scene{
         this.CONFIG = this.sys.game.CONFIG;
         this.accounts = undefined;
         this.user = undefined;
-
+        this.timedEvent=undefined;
     }
 
     preload()
@@ -24,8 +24,7 @@ class MainScene extends Phaser.Scene{
 
         this.load.image('Portada', 'Arte/Escenario/MainMenu/Menu2.jpg');
         this.load.image('Title', 'Arte/Escenario/MainMenu/Title2.png');
-        //this.load.spritesheet('ButtonPlay', 'Arte/Bocetos/UI/PixelGUI/PlayBtn.png', { frameWidth: 590, frameHeight: 260 });
-        //this.load.spritesheet('ButtonPlayPressed', 'Arte/Bocetos/UI/PixelGUI/PlayClick.png', { frameWidth: 590, frameHeight: 260 });
+
         this.load.image('ButtonPlay', 'Arte/UI/PixelGUI/PlayBtn.png');
         this.load.image('ButtonPlayPressed', 'Arte/UI/PixelGUI/PlayClick.png');
         this.load.image('ButtonOptions', 'Arte/UI/PixelGUI/OptBtn.png');
@@ -89,18 +88,19 @@ class MainScene extends Phaser.Scene{
         this.boardButton.visible=false;
         
         //CARGAR LAS CUENTAS AL INICIAR LA ESCENA PARA COMPROBAR SI HAY LOGS
-        this.loadAccounts((accounts) => {
+        /*this.loadAccounts((accounts) => {
             this.accounts = accounts;
             
-            if (this.accounts && this.accounts.some(account => account.active === true)) {
-                // Si existe al menos una cuenta con active a true, muestra el board y el botón de desloguearse
-                //y no puede iniciar otra sesión
-                this.boardButton.visible = true;
-                this.logOffButton.visible = true;
-                this.logInButton.visible = false;
-            }
-        });
-        
+            
+        });*/
+        if(this.CONFIG.ID  != undefined){
+            //this.accounts[this.CONFIG.ID];//obtener la cuenta
+            // Si existe al menos una cuenta con active a true, muestra el board y el botón de desloguearse
+            //y no puede iniciar otra sesión
+            this.boardButton.visible = true;
+            this.logOffButton.visible = true;
+            this.logInButton.visible = false;
+        }
 
 
 
@@ -135,24 +135,33 @@ class MainScene extends Phaser.Scene{
 
         //pulsar botón cambia de escena
         //START BUTTON
-        
         this.startButton.on('pointerdown', function () {
           //  this.scene.stop('MainScene');
-            this.startButton.setTexture('ButtonPlayPressed');
+          this.startButton.setTexture('ButtonPlayPressed');
             this.startButton.setTint(0xc7c7c7)
+            if(this.CONFIG.ID==undefined)//if id is undefined = no hay server
+            {
             //this.scene.events.on('sleep', listener)
-            this.time.addEvent({
-                delay: 500,
-                callback: function ()
-                {
-                    this.scene.start('Scene4', Scene4, true, { x: 400, y: 300 });
+                this.time.addEvent({
+                    delay: 500,
+                    callback: function ()
+                    {
+                        
+                        
+                        
+                        this.scene.start('Scene4', Scene4, true, { x: 400, y: 300 });
 
-                },
-                callbackScope: this,
-                repeat: 0
-            });
-            //MainAudio.stop()
-        
+                    },
+                    callbackScope: this,
+                    repeat: 0
+                });
+                
+                //MainAudio.stop()
+            }
+            else//if id is defined = si hay server
+            {
+                this.scene.start('Scene4Online', Scene4Online, true, { x: 400, y: 300 });
+            }
         },this);
         
         //LOGIN BUTTON
@@ -188,7 +197,14 @@ class MainScene extends Phaser.Scene{
                         let exist = false;
                         let index = undefined;
 
-                        that.loadAccounts(function (accounts) {
+                        that.loadAccounts(function (accounts,result ) {
+                            if(result==false)
+                            {
+                                that.loginText.setText('Servidor desconectado');
+                                return;
+                            }
+
+
                             that.accounts = accounts;
 
                             if(that.accounts != undefined)
@@ -221,6 +237,7 @@ class MainScene extends Phaser.Scene{
                                     that.boardButton.visible=true;
                                     that.loginText.setText('');
                                     that.loggingButton.visible=false;
+                                    that.timedEvent = that.time.addEvent({ delay: 200, callback: that.onEvent, callbackScope: that, loop: true });
 
                                     that.loadAccounts(function (accounts) {
                                         that.accounts = accounts;
@@ -255,6 +272,7 @@ class MainScene extends Phaser.Scene{
                                         that.boardButton.visible=true;
                                         that.loginText.setText('');
                                         that.loggingButton.visible=false;
+                                        that.timedEvent = that.time.addEvent({ delay: 200, callback: that.onEvent, callbackScope: that, loop: true });
 
 
                                         that.loadAccounts(function (accounts) {
@@ -397,10 +415,21 @@ class MainScene extends Phaser.Scene{
 
 
         
-    
     }
 
-
+    onEvent(){
+        let that = this;
+        this.loadAccounts(function(accounts,result)
+        {
+            if(result ==false){
+                that.timedEvent.remove(false);
+                that.CONFIG.ID = undefined;
+                that.logInButton.visible=true;
+                that.boardButton.visible=false;
+                that.logOffButton.visible=false;
+            }            
+        });
+    }
 
 
     loadAccounts(callback) {
@@ -409,9 +438,12 @@ class MainScene extends Phaser.Scene{
 	        $.ajax(u,{
 	            //url: 'http://' + url + '/accounts'
 	        }).done(function (accounts) {
-	            console.log('Accounts loaded: ' + JSON.stringify(accounts));
-	            callback(accounts);
-	        })
+	            //console.log('Accounts loaded: ' + JSON.stringify(accounts));
+	            callback(accounts,true);
+	        }).fail(function(){
+                console.log("Server Disconnected");
+                callback(null,false);
+            })
         })
     }
 

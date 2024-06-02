@@ -1,12 +1,16 @@
 package com.clawscndcheese.clawsandcheese;
 
+import org.springframework.web.socket.WebSocketSession;
+
 public class Account {
-    private long id;
-	private String name;
+    public long id;
+	public String name;
 	private String password;
 	private boolean active;
     private float timer;
-
+	public boolean inGame;
+	int id_partida; 
+    WebSocketSession session; 
 	
 	public Account() {
 	}
@@ -16,6 +20,18 @@ public class Account {
 		this.password=pas;
 		this.active=act;
 		this.timer = time;
+		this.id_partida = -1;
+        this.session = null;
+
+	}
+	public Account(long id, String name, String pas, boolean act, float time , int ip, WebSocketSession s) {
+		this.id= id;
+		this.name=name;
+		this.password=pas;
+		this.active=act;
+		this.timer = time;
+		this.id_partida = ip;
+        this.session = s;
 	}
 	
 	public long getId() {
@@ -56,6 +72,21 @@ public class Account {
 
 	public void setTime(float times) {
 		this.timer = times;
+	}
+    
+	public int getid_partida() {
+		return id_partida;
+	}
+
+	public void setid_partida(int times) {
+		this.id_partida = times;
+	}
+	public WebSocketSession getSession() {
+		return session;
+	}
+
+	public void setSession(WebSocketSession times) {
+		this.session = times;
 	}
 
 	@Override

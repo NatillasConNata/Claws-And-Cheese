@@ -13,6 +13,7 @@ App.prototype.start = function(){
     //scenes.push(Scene2);
     //scenes.push(Scene3);
     scenes.push(Scene4);
+    scenes.push(Scene4Online);
     scenes.push(Credits);
     scenes.push(Tutorial);
     scenes.push(LeaderBoard);
