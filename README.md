@@ -215,21 +215,6 @@ No hay un inventario como tal. Sin embargo, los personajes podrán recoger objet
 
 Algunos de los ítems del escenario que no se podrán recoger, pero si se pueden utilizar serán cajas de
 madera o cables en cajas de luz. 
-
- 
-<a name=item10></a>  
-# Música y Sonidos 
-
-Para la música, alternamos entre música alegre y música ambiental de zoo. 
-
-Todas las licencias de la música serán CC0 o CCBy. (es música de libre uso) 
-
- 
-<a name=item12></a>  
-## Integrantes
-- Miguel Angel Jimenez Montemayor / Correo: ma.jimenez.2021@alumnos.urjc.es / Cuenta: miekl13
-- Natalia Martinez Clemente / Correo: n.martinezc.2020@alumnos.urjc.es / Cuenta: NatillasConNata
-~~~
 ## Protocolo
 La comunicación entre clientes y el servidor usando WebSockets tiene lugar solo en la escena Play del juego.
 
@@ -251,7 +236,20 @@ Finalmente, cuando un jugador llega a la meta, manda dos mensajes:
 
 Tras esto, ambos clientes pasan a la escena Winner, donde se muestra al jugador vencedor. Esta escena carece de cualquier funcionalidad de WebSockets, por lo que ambos jugadores pueden volver al menú principal y volver a buscar partida, en cuyo caso se crean sesiones de WebSocket nuevas, ya que las antiguas se han eliminado.
 
+ 
+<a name=item10></a>  
+# Música y Sonidos 
 
+Para la música, alternamos entre música alegre y música ambiental de zoo. 
+
+Todas las licencias de la música serán CC0 o CCBy. (es música de libre uso) 
+
+ 
+<a name=item12></a>  
+## Integrantes
+- Miguel Angel Jimenez Montemayor / Correo: ma.jimenez.2021@alumnos.urjc.es / Cuenta: miekl13
+- Natalia Martinez Clemente / Correo: n.martinezc.2020@alumnos.urjc.es / Cuenta: NatillasConNata
+~~~
 <a name=item13></a>  
 # Anexos 
 Sprites botones del juego: https://pixellarion-games.itch.io/pixelart-buttons   
