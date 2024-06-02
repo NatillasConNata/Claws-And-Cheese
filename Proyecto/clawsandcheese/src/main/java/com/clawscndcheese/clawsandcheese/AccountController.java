@@ -34,6 +34,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 @RestController
 @RequestMapping("/accounts")
@@ -54,52 +55,34 @@ public class AccountController {
     }
     //ejecutar codigo de leerJSON al inicio
     @PostConstruct
-    public void init() {
-        // Código a ejecutar al inicio
-        if(accounts.size()==0  ){ //si el servidor se acaba de iniciar, pasamos las cuentas existentes a accounts
-            try{
-                File jsonFile = new File(jsonFilePath);
-                FileReader reader = null;            
-                System.out.println(jsonFile.canRead());
-                if (jsonFile.exists()) {
-                    System.out.println("ALGO");
+public void init() {
+    if (accounts.isEmpty()) {
+        try {
+            File jsonFile = new File(jsonFilePath);
+            if (jsonFile.exists()) {
+                FileReader reader = new FileReader(jsonFilePath);
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
 
-                    // Leer el archivo JSON original
-                    reader = new FileReader(jsonFilePath);
-                    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                    JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
+                JsonArray playerScores = jsonObject.getAsJsonArray("playerscores");
+                if (playerScores != null) {
+                    for (JsonElement element : playerScores) {
+                        JsonObject accountJson = element.getAsJsonObject();
+                        long id = accountJson.get("id").getAsLong();
+                        String name = accountJson.get("name").getAsString();
+                        String password = accountJson.get("password").getAsString();
+                        float timer = accountJson.get("time").getAsFloat();
 
-                    // Obtener la lista de puntuaciones de jugadores
-                    JsonArray playerScores = jsonObject.getAsJsonArray("playerscores");
-                    if (playerScores != null) {
-                        //playerScores = new JsonArray();
-                        for (JsonElement element : playerScores) {
-                            JsonObject account = element.getAsJsonObject();
-                            long id = account.get("id").getAsLong();
-                            String name = account.get("name").getAsString();
-                            String password = account.get("password").getAsString();
-                            float timer = account.get("time").getAsFloat();
-            
-                            accounts.put(id, new Account(id,name,password,false,timer));
-                        }
-                    }
-                    try{
-                        reader.close();
-
-                    }catch(IOException e) {
-                        e.printStackTrace();
-
+                        accounts.put(id, new Account(id, name, password, false, timer));
                     }
                 }
+                reader.close();
             }
-            catch (FileNotFoundException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
-            }
-
-            System.out.println(accounts.size());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+}
 
     @GetMapping
     public  Collection<Account> getAccounts() {
@@ -194,16 +177,22 @@ public class AccountController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Account> updateAccount(@PathVariable long id, @RequestBody Account updatedAccount) {
-        Account savedAccount = accounts.get(id);
+public synchronized ResponseEntity<Account> updateAccount(
+    @PathVariable long id, 
+    @RequestBody Account updatedAccount) {
+    Account savedAccount = accounts.get(id);
 
-        if (savedAccount != null) {
-            accounts.put(id, updatedAccount);
-            return new ResponseEntity<>(updatedAccount, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    if (savedAccount != null) {
+        accounts.put(id, updatedAccount);
+
+        // Guardar los cambios en el archivo JSON
+        saveAccountsToFile();
+
+        return new ResponseEntity<>(updatedAccount, HttpStatus.OK);
+    } else {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+}
 
     @GetMapping("/{id}")
     public  ResponseEntity<Account> getAccount(@PathVariable long id) {
@@ -217,14 +206,61 @@ public class AccountController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Account> eraseAccount(@PathVariable long id) {
+    public synchronized ResponseEntity<Account> eraseAccount(@PathVariable long id) {
         Account savedAccount = accounts.get(id);
 
         if (savedAccount != null) {
             accounts.remove(id);
+
+            // Guardar los cambios en el archivo JSON
+            saveAccountsToFile();
+
             return new ResponseEntity<>(savedAccount, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+
+    @PreDestroy
+public void saveAccountsToFile() {
+    // Lógica para guardar la información de las cuentas en el archivo JSON
+    synchronized (this) {
+        FileWriter writer = null;
+        try {
+            File jsonFile = new File(jsonFilePath);
+            if (!jsonFile.exists()) {
+                jsonFile.createNewFile();
+            }
+
+            JsonObject jsonObject = new JsonObject();
+            JsonArray playerScores = new JsonArray();
+            for (Account account : accounts.values()) {
+                JsonObject accountJson = new JsonObject();
+                accountJson.addProperty("id", account.getId());
+                accountJson.addProperty("name", account.getName());
+                accountJson.addProperty("password", account.getPassword());
+                accountJson.addProperty("active", account.getActive());
+                accountJson.addProperty("time", account.getTime());
+                playerScores.add(accountJson);
+            }
+            jsonObject.add("playerscores", playerScores);
+
+            writer = new FileWriter(jsonFilePath);
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            gson.toJson(jsonObject, writer);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (writer != null) {
+                    writer.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
 }

@@ -20,18 +20,18 @@ class Scene4Online extends Phaser.Scene {
 
         this.functions = {
             setPlayer: function (message) {
-                console.log("SET PLAYER");
+                //console.log("SET PLAYER");
                 if(message.name=="Cheese"){
 
                     that.controlled.player= that.player1; 
-                    console.log(that.player1);
-                    console.log(that.player2);
+                    //console.log(that.player1);
+                    //console.log(that.player2);
                 }
                 else if (message.name=="Claws"){
-                    console.log("GarrasControlesInit");
+                    //console.log("GarrasControlesInit");
                     that.controlled.player= that.player2;
-                    console.log(that.player1);
-                    console.log(that.player2);
+                    //console.log(that.player1);
+                    //console.log(that.player2);
                 }
                 that.controlled.id = message.id;
                 that.controlled.gameId = message.id_p;
@@ -47,7 +47,7 @@ class Scene4Online extends Phaser.Scene {
 
                 if (player) {
                     player.setPosition(message.posX, message.posY);
-                    player.setTexture(message.texture);
+                    //player.setTexture(message.texture);
                 } else {
                     console.error("Player not found for name:", message.name);
                 }
@@ -56,7 +56,10 @@ class Scene4Online extends Phaser.Scene {
                 if (that.cajas) {
                     that.cajas.getChildren().forEach((caja, i) => {
                         if (message.listaCajas[i]) {
-                            caja.setPosition(message.listaCajas[i].posX, message.listaCajas[i].posY);
+                            if(that.controlled.player == that.player1)
+                            {
+                                caja.setPosition(message.listaCajas[i].posX, message.listaCajas[i].posY);
+                            }
                         }
                     });
                 }
@@ -339,15 +342,15 @@ class Scene4Online extends Phaser.Scene {
                 this,this.doorsOpen=true;
             }
         });
-        console.log(this.player1);
-        console.log(this.player2);
+        //console.log(this.player1);
+        //console.log(this.player2);
     }
 
     update(time, delta) {
         let that = this;
-    console.log("UPDATEGARAQUESO");
+        //console.log("UPDATEGARAQUESO");
         if (this.controlled.player != null) {
-            console.log("cONTROLLERPLAYERNOTNULL");
+            //console.log("cONTROLLERPLAYERNOTNULL");
             if (this.connected != true) {
                 this.getGame(this.controlled.gameId, function (size) {
                     if (size == 2) {
@@ -369,7 +372,7 @@ class Scene4Online extends Phaser.Scene {
                 this.player2.update();
             }
 
-            const position = [];
+            let position = [];
             this.cajas.children.iterate(caja => {
                 position.push({ posX: caja.x, posY: caja.y });
             });
@@ -396,13 +399,80 @@ class Scene4Online extends Phaser.Scene {
                 door_open: that.doorsOpen,
                 key_found: that.hasKey
             };
-            console.log( update);
+            //console.log( update);
 
             try {
                 this.connection.send(JSON.stringify(update));
             } catch (e) {
                 console.log(e);
             }
+        }
+        if (this.physics.overlap(this.player1, this.PC) || this.physics.overlap(this.player2, this.PC)) {
+            // Verifica si el jugador está cerca de la PC y habilita el combo
+            this.pcCartel .setVisible(true);
+            this.pcText.setVisible(true);
+            this.combo.enabled = true;
+
+            console.log('combo enabled')
+        } else {
+            // Si el jugador no está cerca de la PC, deshabilita el combo
+            this.pcCartel .setVisible(false);
+            this.pcText.setVisible(false);
+            this.combo.enabled = false;
+        }
+
+        //CARTELES
+        if (this.physics.overlap(this.player1, this.cartel) || this.physics.overlap(this.player2, this.cartel)){
+            console.log("overlap texto");
+            
+            this.texto.setVisible(true);
+            this.dialogo.setVisible(true);
+            this.texto2.setVisible(false);this.texto3.setVisible(false);this.texto4.setVisible(false);this.texto5.setVisible(false);
+            this.dialogo2.setVisible(false);this.dialogo3.setVisible(false); this.dialogo4.setVisible(false);this.dialogo5.setVisible(false);
+        }
+        else if (this.physics.overlap(this.player1, this.cartel2) || this.physics.overlap(this.player2, this.cartel2)){
+            console.log("overlap texto");
+            
+            this.texto2.setVisible(true);
+            this.dialogo2.setVisible(true);
+            this.texto.setVisible(false);this.texto3.setVisible(false);this.texto4.setVisible(false);this.texto5.setVisible(false);
+            this.dialogo.setVisible(false);this.dialogo3.setVisible(false); this.dialogo4.setVisible(false);this.dialogo5.setVisible(false);
+        }
+        else if (this.physics.overlap(this.player1, this.cartel3) || this.physics.overlap(this.player2, this.cartel3)){
+            console.log("overlap texto");
+            
+            this.texto3.setVisible(true);
+            this.dialogo3.setVisible(true);
+            this.texto2.setVisible(false);this.texto.setVisible(false);this.texto4.setVisible(false);this.texto5.setVisible(false);
+            this.dialogo2.setVisible(false);this.dialogo.setVisible(false); this.dialogo4.setVisible(false);this.dialogo5.setVisible(false);
+        }
+        else if (this.physics.overlap(this.player1, this.cartel4) || this.physics.overlap(this.player2, this.cartel4)){
+            console.log("overlap texto");
+            
+            this.texto4.setVisible(true);
+            this.dialogo4.setVisible(true);
+            this.texto2.setVisible(false);this.texto3.setVisible(false);this.texto.setVisible(false);this.texto5.setVisible(false);
+            this.dialogo2.setVisible(false);this.dialogo3.setVisible(false); this.dialogo.setVisible(false);this.dialogo5.setVisible(false);
+        }
+        else if (this.physics.overlap(this.player1, this.cartel5) || this.physics.overlap(this.player2, this.cartel5)){
+            console.log("overlap texto");
+            
+            this.texto5.setVisible(true);
+            this.dialogo5.setVisible(true);
+            this.texto2.setVisible(false);this.texto3.setVisible(false);this.texto4.setVisible(false);this.texto.setVisible(false);
+            this.dialogo2.setVisible(false);this.dialogo3.setVisible(false); this.dialogo4.setVisible(false);this.dialogo.setVisible(false);
+        }
+        else{
+            this.dialogo.setVisible(false);
+            this.texto.setVisible(false);
+            this.dialogo2.setVisible(false);
+            this.texto2.setVisible(false);
+            this.dialogo3.setVisible(false);
+            this.texto3.setVisible(false);
+            this.dialogo4.setVisible(false);
+            this.texto4.setVisible(false);
+            this.dialogo5.setVisible(false);
+            this.texto5.setVisible(false);
         }
     }
 
@@ -416,7 +486,52 @@ class Scene4Online extends Phaser.Scene {
 
     changeScene(player, flag) {
         if (this.hasKey) {
+
             let that = this;
+
+            let position = [];
+            this.cajas.children.iterate(caja => {
+                position.push({ posX: caja.x, posY: caja.y });
+            });
+            let characterName;
+            if(this.controlled.player == this.player1){
+                characterName="Cheese";
+            }
+            else if(this.controlled.player == this.player2){
+                characterName="Claws";
+            }
+            else{
+                console.log("JUGADOOR NO ES 1 ni 2");
+            }
+
+
+            let name;
+            if (this.controlled.player == this.player1) {
+                name = "Cheese";
+            } else if (this.controlled.player == this.player2) {
+                name = "Claws";
+            }
+            let update = {
+                characterName : characterName,
+                name: name,
+                id: that.controlled.id,
+                id_p: that.controlled.gameId,
+                posX: that.flag.x,
+                posY: that.flag.y,
+                //texture: that.controlled.player.texture.key,
+                listaCajas: position,
+                door_open: that.doorsOpen,
+                key_found: that.hasKey
+            };
+            console.log("UPDATE");
+
+            console.log(update);
+
+            try {
+                this.connection.send(JSON.stringify(update));
+            } catch (e) {
+                console.log(e);
+            }
             this.loadAccounts(function (accounts) {
                 that.accounts = accounts;
                 if (that.CONFIG.ID != undefined) {
