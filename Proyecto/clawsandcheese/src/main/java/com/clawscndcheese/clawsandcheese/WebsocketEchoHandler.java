@@ -31,6 +31,7 @@ public class WebsocketEchoHandler extends TextWebSocketHandler {
     private AccountController accountController;
 
     void Match(WebSocketSession session, long player_id) throws Exception {
+		Thread.sleep(1000);
         nombre[0] = "Cheese";
         nombre[1] = "Claws";
         try {

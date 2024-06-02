@@ -6,6 +6,8 @@ class Scene4Online extends Phaser.Scene {
 
     init() {
         let that = this;
+        this.player1;
+        this.player2;
 
         this.CONFIG = this.sys.game.CONFIG;
         this.accounts = undefined;
@@ -337,8 +339,8 @@ class Scene4Online extends Phaser.Scene {
                 this,this.doorsOpen=true;
             }
         });
-        console.log(that.player1);
-                    console.log(that.player2);
+        console.log(this.player1);
+        console.log(this.player2);
     }
 
     update(time, delta) {
