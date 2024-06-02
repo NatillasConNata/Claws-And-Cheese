@@ -3,7 +3,6 @@ class LeaderBoard extends Phaser.Scene{
         super({key: 'LeaderBoard', active:false})
         this.width= 1920 ,
         this.height = 1080 
-
     }
     init(){
         this.CONFIG = this.sys.game.CONFIG;
