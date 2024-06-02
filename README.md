@@ -11,11 +11,8 @@ Natalia Martínez Clemente
 ## Índice    
 - [Historial de versiones](#item0)
 - [Introducción](#item1)   
-- [Guión](#item2)   
 - [Mecánicas del juego](#item3)    
 - [Estados del juego](#item4)   
-- [Interfaz](#item5)   
-- [Niveles](#item6)   
 - [Progreso del juego](#item7)   
 - [Personajes](#item8)   
 - [Ítems](#item9)   
@@ -102,9 +99,7 @@ El juego tiene un nivel con distintas mecánicas.
 <a name="item4"></a>  
 # Estados del Juego 
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211354153-d06018a8-5834-44e7-8d52-87c2440ac7a2.png" width="400" height="400"/>
-</p>
+![Megaman2](InterfacesJuegos/esquema.png "https://pin.it/5t7QzyY")
 
 Una vez iniciado el juego, se muestra el menú del juego, desde el cual se puede acceder a distintas escenas que son:
 - **Tutorial**: Enseña los controles que se van a utilizar, además de explicar el objetivo de la escena.
@@ -115,46 +110,35 @@ Una vez iniciado el juego, se muestra el menú del juego, desde el cual se puede
 - **Log off**: Aparece cuando se ha iniciado la cuenta y sirve para desconectar la cuenta, permitiendo así crear otra cuenta o unirte con otra cuenta.
 
 ## Diagrama de clases
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211353854-3e1b1308-a80d-4cdb-9824-69c4e2258aed.jpeg" width="700" height="700"/>
-</p>
+![Megaman2](InterfacesJuegos/esquemajs.png "https://pin.it/5t7QzyY")
 
 ## Menú principal
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211355132-d1d5a67c-9fe5-4f7e-8eaf-f607e80333b2.png" width="700" height="700"/>
-</p>
+![Megaman2](InterfacesJuegos/escenalogin.png "https://pin.it/5t7QzyY")
 
 En el menú principal aparece el logo del juego, los botones para inicializar partida, loguear o desloguear, el tutorial, ranking y los créditos.
 
 ## Board
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211355132-d1d5a67c-9fe5-4f7e-8eaf-f607e80333b2.png" width="700" height="700"/>
+![Megaman2](InterfacesJuegos/board.png "https://pin.it/5t7QzyY")
 </p>
 Muestra el tiempo que ha tardado en finalizar el nivel de todos los jugadores de forma ascendente.
 
 ## Login
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211355132-d1d5a67c-9fe5-4f7e-8eaf-f607e80333b2.png" width="700" height="700"/>
+![Megaman2](InterfacesJuegos/login.png "https://pin.it/5t7QzyY")
 </p>
 Pantalla que permite crear la cuenta del usuario guardando sus datos o acceder a otra cuenta ya creada.
 
 ## Pantalla de juego
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211355132-d1d5a67c-9fe5-4f7e-8eaf-f607e80333b2.png" width="700" height="700"/>
-</p>
+![Megaman2](InterfacesJuegos/escenario.png "https://pin.it/5t7QzyY")
 Pantalla principal donde los jugadores interactúan para superar los desafíos usando los personajes ya mencionados anteriormente.
 
 ## Tutorial
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211355132-d1d5a67c-9fe5-4f7e-8eaf-f607e80333b2.png" width="700" height="700"/>
-</p>
+![Megaman2](InterfacesJuegos/tutorial2.png "https://pin.it/5t7QzyY")
 Pantalla la cual muestra los controles de los personajes además del objetivo del nivel.
 
 ## Credits
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/116154873/211355132-d1d5a67c-9fe5-4f7e-8eaf-f607e80333b2.png" width="700" height="700"/>
-</p>
+!(credits.png "https://pin.it/5t7QzyY")
 Pantalla la cual muestra a los desarrolladores del videojuego y las licencias que se han utilizado para hacer el videojuego.
+![Megaman2](InterfacesJuegos/credits.png "https://pin.it/5t7QzyY")
 
 <a name="item7"></a>  
 # Progreso del Juego 
@@ -219,4 +203,3 @@ Todas las licencias de la música serán CC0 o CCBy (es música de libre uso).
 
 <a name="item13"></a>  
 # Anexos 
-Sprites botones del juego: [https://pixellarion-games.itch.io/pixelart-buttons](https://pixellarion-games.itch.io/pixelart-buttons)
