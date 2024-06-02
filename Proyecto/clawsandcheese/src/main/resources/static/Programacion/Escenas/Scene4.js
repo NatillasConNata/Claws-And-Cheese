@@ -4,31 +4,35 @@ class Scene4 extends Phaser.Scene {
         this.BASE_PATH = 'Proyecto/Arte/';
     }
 
+    init(){
+        this.CONFIG = this.sys.game.CONFIG;
+        this.accounts = undefined;
+    }
 
 preload() {
     //this.load.image('escenario', 'Arte/Bocetos/niveles prototipos/Nivel3/scene.png');
-//ESCENARIO
-this.load.image('escenario', 'Arte/Escenario/Scene4/GarrasAndCheeseFondo.png');
-this.load.image('escenarioObjFront', 'Arte/Escenario/Scene4/GarrasAndCheeseObjetosFront.png');
-//this.load.image('escenarioPlatforms', 'Arte/Escenario/Scene4/GarrasAndCheesePlataformas.png');///////////////////////////////////////////////////no se si cambiarlo por plataformas individuales
+    //ESCENARIO
+    this.load.image('escenario', 'Arte/Escenario/Scene4/GarrasAndCheeseFondo.png');
+    this.load.image('escenarioObjFront', 'Arte/Escenario/Scene4/GarrasAndCheeseObjetosFront.png');
+    //this.load.image('escenarioPlatforms', 'Arte/Escenario/Scene4/GarrasAndCheesePlataformas.png');///////////////////////////////////////////////////no se si cambiarlo por plataformas individuales
 
-this.load.image('SueloBase', 'Arte/Escenario/Scene4/GarrasAndCheeseBase.png');/////////////////////////////////
-this.load.image('Escaleras3', 'Arte/Escenario/Scene4/GarrasAndCheeseEscaleras3.png');/////////////////////////////////
-this.load.image('Escaleras5', 'Arte/Escenario/Scene4/GarrasAndCheeseEscaleras5.png');/////////////////////////////////
-this.load.image('Escaleras8', 'Arte/Escenario/Scene4/GarrasAndCheeseEscaleras8.png');/////////////////////////////////
-this.load.image('sueloBlocks', 'Arte/Escenario/Scene4/SueloBlocks.png');/////////////////////////////////
-this.load.image('Platform1Up', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform1Up.png');/////////////////////////////////
-this.load.image('Platform2Up', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform2Up.png');/////////////////////////////////
-this.load.image('Platform3Up', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform3Up.png');/////////////////////////////////
-this.load.image('Platform19Lat', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform19Lat.png');/////////////////////////////////
-this.load.image('Platform4Lat', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform4Lat.png');/////////////////////////////////
-this.load.image('Platform16Up', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform16Up.png');/////////////////////////////////
-this.load.image('Block', 'Arte/Escenario/Scene4/GarrasAndCheeseBlock.png');/////////////////////////////////
-this.load.image('Platform16Lat', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform16Lat.png');/////////////////////////////////
-this.load.image('Plank', 'Arte/Escenario/Scene4/GarrasAndCheesePlank.png');/////////////////////////////////
-this.load.image('Cartel1', 'Arte/Escenario/Scene4/Cartel1.png');/////////////////////////////////
-this.load.image('Cartel2', 'Arte/Escenario/Scene4/Cartel2.png');/////////////////////////////////
-this.load.image('DiagImg', 'Arte/Escenario/Scene4/Dialog.png');/////////////////////////////////
+    this.load.image('SueloBase', 'Arte/Escenario/Scene4/GarrasAndCheeseBase.png');/////////////////////////////////
+    this.load.image('Escaleras3', 'Arte/Escenario/Scene4/GarrasAndCheeseEscaleras3.png');/////////////////////////////////
+    this.load.image('Escaleras5', 'Arte/Escenario/Scene4/GarrasAndCheeseEscaleras5.png');/////////////////////////////////
+    this.load.image('Escaleras8', 'Arte/Escenario/Scene4/GarrasAndCheeseEscaleras8.png');/////////////////////////////////
+    this.load.image('sueloBlocks', 'Arte/Escenario/Scene4/SueloBlocks.png');/////////////////////////////////
+    this.load.image('Platform1Up', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform1Up.png');/////////////////////////////////
+    this.load.image('Platform2Up', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform2Up.png');/////////////////////////////////
+    this.load.image('Platform3Up', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform3Up.png');/////////////////////////////////
+    this.load.image('Platform19Lat', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform19Lat.png');/////////////////////////////////
+    this.load.image('Platform4Lat', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform4Lat.png');/////////////////////////////////
+    this.load.image('Platform16Up', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform16Up.png');/////////////////////////////////
+    this.load.image('Block', 'Arte/Escenario/Scene4/GarrasAndCheeseBlock.png');/////////////////////////////////
+    this.load.image('Platform16Lat', 'Arte/Escenario/Scene4/GarrasAndCheesePlatform16Lat.png');/////////////////////////////////
+    this.load.image('Plank', 'Arte/Escenario/Scene4/GarrasAndCheesePlank.png');/////////////////////////////////
+    this.load.image('Cartel1', 'Arte/Escenario/Scene4/Cartel1.png');/////////////////////////////////
+    this.load.image('Cartel2', 'Arte/Escenario/Scene4/Cartel2.png');/////////////////////////////////
+    this.load.image('DiagImg', 'Arte/Escenario/Scene4/Dialog.png');/////////////////////////////////
 
 
 
@@ -86,6 +90,22 @@ this.canvas = this.sys.game.canvas;
 //Creacion de variables nuevas 
 
   create() {
+
+
+    // Crear el temporizador
+    this.timerText = this.add.text(this.width / 2, 100, 'Time: 0', {
+        fontSize: '32px',
+        fill: '#ffffff'
+    }).setOrigin(0.5, 0.5);
+    this.timer = 0;
+    this.timerEvent = this.time.addEvent({
+        delay: 1000,                // Cada segundo
+        callback: this.updateTimer,
+        callbackScope: this,
+        loop: true
+    });
+
+
 
     this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'escenario').setScale(2);    
     //this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'escenarioPlatforms').setScale(2).setAlpha(0.3);
@@ -375,6 +395,15 @@ collectKey(player, key) {
 
 changeScene(player, flag) {
     if (this.hasKey) {
+        let that=this
+        this.loadAccounts(function (accounts) {
+            that.accounts=accounts;
+            if(that.CONFIG.ID != undefined){
+                console.log(that.CONFIG.ID)
+                that.accounts[that.CONFIG.ID -1].time= that.timer;
+            }
+            that.updateAccount(that.accounts[that.CONFIG.ID -1]);
+        });
         // Cambiar a la siguiente escena
         this.scene.start('Credits'); // Reemplaza 'NextSceneKey' con el nombre de tu siguiente escena
     }
@@ -462,6 +491,57 @@ update(time)
             this.dialogo5.setVisible(false);
             this.texto5.setVisible(false);
         }
+    }
+
+
+    loadAccounts(callback) {
+		var urls = [window.location.href + 'accounts'];
+        $.each(urls, function(i,u){
+	        $.ajax(u,{
+	            //url: 'http://' + url + '/accounts'
+	        }).done(function (accounts) {
+	            console.log('Accounts loaded: ' + JSON.stringify(accounts));
+	            callback(accounts);
+	        })
+        })
+    }
+
+    updateAccount(account) {
+        console.log(account);
+		var urls = [window.location.href + 'accounts/' + account.id];
+        $.each(urls, function(i,u){
+	        $.ajax(u,{
+	            method: 'PUT',
+	            //url: 'http://' + url + '/accounts/' + account.id,
+	            data: JSON.stringify(account),
+	            processData: false,
+	            headers: {
+	                "Content-Type": "application/json"
+	            }
+	        }).done(function (account) {
+	            console.log("Updated item: " + JSON.stringify(account))
+	        })
+        })
+    }
+    updateTimer() {
+        this.timer++;
+        this.timerText.setText('Time: ' + this.timer);
+
+        // Guardar el tiempo en el servidor (si es necesario)
+        // fetch('saveTimeEndpoint', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({ id: this.playerId, time: this.timer }) // Suponiendo que tienes un `playerId`
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log('Time saved successfully', data);
+        // })
+        // .catch(error => {
+        //     console.error('Error saving time:', error);
+        // });
     }
 }
 

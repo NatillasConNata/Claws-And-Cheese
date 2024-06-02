@@ -6,7 +6,9 @@ class Tutorial extends Phaser.Scene{
 
         this.BASE_PATH = 'Proyecto/Arte/';
     }
-
+    init(){
+        this.CONFIG = this.sys.game.CONFIG;
+    }
     preload(){  
         this.load.image('tuto', 'Arte/Escenario/Tutorial/PruebaTutorial.png');
 

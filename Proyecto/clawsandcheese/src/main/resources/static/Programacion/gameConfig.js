@@ -15,6 +15,7 @@ App.prototype.start = function(){
     scenes.push(Scene4);
     scenes.push(Credits);
     scenes.push(Tutorial);
+    scenes.push(LeaderBoard);
     let config = {
         type: Phaser.AUTO,
         width: 2400 ,
@@ -49,7 +50,7 @@ App.prototype.start = function(){
         gameWidth: (config.width - 60) / 2,
         centerX: Math.round(0.5*config.width),
         centerY: Math.round(0.5*config.height),
-        
+        ID:undefined
     }
 
     //console.log(game.CONFIG)

@@ -7,7 +7,15 @@ public class Account {
 	private boolean active;
     private float timer;
 
+	
 	public Account() {
+	}
+	public Account(long id, String name, String pas, boolean act, float time) {
+		this.id= id;
+		this.name=name;
+		this.password=pas;
+		this.active=act;
+		this.timer = time;
 	}
 	
 	public long getId() {

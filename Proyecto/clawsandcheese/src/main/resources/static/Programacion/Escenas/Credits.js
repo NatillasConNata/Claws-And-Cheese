@@ -4,7 +4,9 @@ class Credits extends Phaser.Scene{
         this.width= 1920 ,
         this.height = 1080 
     }
-
+    init(){
+        this.CONFIG = this.sys.game.CONFIG;
+    }
     preload(){
         //this.load.spritesheet('Buttons', 'Arte/Bocetos/UI/Buttons.png', { frameWidth: 24, frameHeight: 23 });
         this.load.image('PortadaCredits', 'Arte/Escenario/MainMenu/Menu1.jpg');

@@ -8,6 +8,8 @@ class PreLoad extends Phaser.Scene{
     preload()
     {
         this.load.html('login', 'text/login.html');
+        this.load.html('leaderboard', 'text/leaderboard.html');
+
     }
     create(){
         this.time.addEvent({

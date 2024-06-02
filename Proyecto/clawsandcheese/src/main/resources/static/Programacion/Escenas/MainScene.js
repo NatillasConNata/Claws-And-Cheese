@@ -7,7 +7,6 @@ class MainScene extends Phaser.Scene{
     }
     init(){
         this.CONFIG = this.sys.game.CONFIG;
-        console.log(this.CONFIG)
         this.accounts = undefined;
         this.user = undefined;
 
@@ -35,6 +34,10 @@ class MainScene extends Phaser.Scene{
         this.load.image('ButtonExitPressed', 'Arte/UI/PixelGUI/ExitClick.png');
         this.load.image('ButtonCredit', 'Arte/UI/PixelGUI/CredBtn.png');
         this.load.image('ButtonCreditPressed', 'Arte/UI/PixelGUI/CredClick.png');
+        this.load.image('ButtonLogOut', 'Arte/UI/PixelGUI/logoffBtn.png');
+        this.load.image('ButtonLogOutPressed', 'Arte/UI/PixelGUI/logoffClick.png');
+        this.load.image('ButtonBoard', 'Arte/UI/PixelGUI/boardBtn.png');
+        this.load.image('ButtonBoardPressed', 'Arte/UI/PixelGUI/boardClick.png');
         //this.load.spritesheet('Queso', 'Arte/Bocetos/Sprite/Ratonwalk.png', { frameWidth: 117 , frameHeight: 94 });
 
         //Creacion del boton tutorial
@@ -60,8 +63,6 @@ class MainScene extends Phaser.Scene{
            // console.log("DONEEEEEEE")
         })
 
-        
-
 
         this.canvas = this.sys.game.canvas;
         
@@ -69,6 +70,7 @@ class MainScene extends Phaser.Scene{
     
     create ()
     {
+        
         //console.log("imagen aviario");
         //AÑADIR IMÁGENES NORMALES
         //this.add.image(this.canvas.width * 0.5, this.canvas.height*0.5, 'Portada').setOrigin(0,0).setScale(1);
@@ -90,12 +92,13 @@ class MainScene extends Phaser.Scene{
         console.log(this.canvas.width * 0.5);
         //nineslice (poxX, posY, obj, sprite, tamañoX, tamañoY, px mantenidos izq., px mantenidos drch. , px mantenidos arriba, px mantenidos abajo )
         this.startButton =  this.add.sprite(this.canvas.width * 0.3, 500, 'ButtonPlay').setInteractive().setScale(0.5);
-        this.optionsButton = this.add.sprite(this.canvas.width * 0.5, 500, 'ButtonOptions').setInteractive().setScale(0.5);
-        this.optionsButton.setTint(0x231d35)
+        this.logInButton = this.add.sprite(this.canvas.width * 0.5, 500, 'ButtonOptions').setInteractive().setScale(0.5);
         this.creditButton = this.add.sprite(this.canvas.width * 0.3, 760, 'ButtonCredit').setInteractive().setScale(0.5);
-        //this.exitButton = this.add.sprite(this.canvas.width * 0.5, 760, 'ButtonExit').setInteractive().setScale(0.5);
-        //this.exitButton.setTint(0x231d35)
         this.tutorialButton =this.add.sprite(this.canvas.width * 0.5, 760, 'ButtonTutorial').setInteractive().setScale(0.5);
+        this.logOffButton = this.add.sprite(this.canvas.width * 0.7, 500, 'ButtonLogOut').setInteractive().setScale(0.5); //sustituye a logInButton
+        this.logOffButton.visible=false;
+        this.boardButton =this.add.sprite(this.canvas.width * 0.7, 760, 'ButtonBoard').setInteractive().setScale(0.5);//solo aparece cuando te has logeado
+        this.boardButton.visible=false;
 
         //this.offline = this.add.sprite(this.config.centerX, this.config.centerY * 1.25, 'newGameButton').setInteractive().setScale(0.5);
 
@@ -112,14 +115,6 @@ class MainScene extends Phaser.Scene{
         //AUDIO
         //let MainAudio = this.sound.add('MainAudio',{loop:true});
        // MainAudio.play();
-
-        //TEXTOS POR PANTALLA 
-        //var tittle = this.add.text(this.sys.game.canvas.width/10, 100, 'Garras y Queso', {fontFamily: 'v5bloques' , fontSize: 75 , fill: '#000000'} )
-        /*this.add.text(450, 500, 'PLAY', {fontFamily: 'bitween' , fontSize: 40 , fill: '#000000'} )
-        this.add.text(750, 500, 'OPTION', {fontFamily: 'bitween' , fontSize: 40 , fill: '#000000'} )
-        this.add.text(450, 650, 'CREDITS', {fontFamily: 'bitween' , fontSize: 30 , fill: '#000000'} )
-        this.add.text(730, 650, 'EXIT', {fontFamily: 'bitween' , fontSize: 40 , fill: '#000000'} )
-        */
 
         //pulsar botón cambia de escena
         //START BUTTON
@@ -143,12 +138,12 @@ class MainScene extends Phaser.Scene{
         
         },this);
         
-        //OPTIONS BUTTON
+        //LOGIN BUTTON
         let that  =this;
         
-        this.optionsButton.on('pointerdown', function () {
-            this.optionsButton.setTexture('ButtonOptionsPressed');
-            this.optionsButton.setTint(0xc7c7c7)
+        this.logInButton.on('pointerdown', function () {
+            this.logInButton.setTexture('ButtonOptionsPressed');
+            this.logInButton.setTint(0xc7c7c7)
             this.time.addEvent({
                 delay: 500,
                 callbackScope: this,
@@ -158,7 +153,7 @@ class MainScene extends Phaser.Scene{
             this.startButton.visible =false;
             this.creditButton.visible =false;
             this.tutorialButton.visible=false;
-            this.optionsButton.visible=false;
+            this.logInButton.visible=false;
 
             this.loggingButton = that.add.dom(this.canvas.width * 0.5, this.canvas.height * 0.5).createFromCache('login');
 
@@ -201,11 +196,24 @@ class MainScene extends Phaser.Scene{
                                 that.createAccount(account, function (account) {
                                     that.user = account;
 
-                                    //this.scene.start('Chat', {user: this.user});
                                     that.startButton.visible =true;
                                     that.creditButton.visible =true;
                                     that.tutorialButton.visible=true;
+                                    that.logInButton.visible=false;
+                                    that.logOffButton.visible=true;
+                                    that.boardButton.visible=true;
+                                    that.loginText.setText('');
                                     that.loggingButton.visible=false;
+
+                                    that.loadAccounts(function (accounts) {
+                                        that.accounts = accounts;
+                                        for (let i = 0; i < that.accounts.length; i++) {
+                                            if(that.accounts[i].name == inputUsername.value)
+                                            {
+                                                that.CONFIG.ID = that.accounts[i].id
+                                            }
+                                        }
+                                    });
                                 });
                             }
                             else
@@ -219,14 +227,28 @@ class MainScene extends Phaser.Scene{
                                     if(that.accounts[index].password == inputPassword.value)
                                     {
                                         that.accounts[index].active = true;
-                                        that.updateAccount(this.accounts[index]);
-                                        that.user = this.accounts[index];
+                                        that.updateAccount(that.accounts[index]);
+                                        that.user = that.accounts[index];
 
-                                        //this.scene.start('Chat', {user: this.user});
                                         that.startButton.visible =true;
                                         that.creditButton.visible =true;
                                         that.tutorialButton.visible=true;
+                                        that.logInButton.visible=false;
+                                        that.logOffButton.visible=true;
+                                        that.boardButton.visible=true;
+                                        that.loginText.setText('');
                                         that.loggingButton.visible=false;
+
+
+                                        that.loadAccounts(function (accounts) {
+                                            that.accounts = accounts;
+                                            for (let i = 0; i < that.accounts.length; i++) {
+                                                if(that.accounts[i].name == inputUsername.value)
+                                                {
+                                                    that.CONFIG.ID = that.accounts[i].id
+                                                }
+                                            }
+                                        });
                                     }
                                     else
                                     {
@@ -281,8 +303,51 @@ class MainScene extends Phaser.Scene{
 
         },this);
        
-        //EXIT BUTTON
+        //LOG OFF BUTTON
+        this.logOffButton.on('pointerdown', function (){
+            this.creditButton.setTexture('ButtonLogOutPressed');
+            this.creditButton.setTint(0xc7c7c7)
+            //this.scene.events.on('sleep', listener)
+            /*this.time.addEvent({
+                delay: 500,
+                callback: function ()
+                {
+                    
+
+                },
+                callbackScope: this,
+                repeat: 0
+                });*/
+                that.loadAccounts(function (accounts) {
+                    
+                    that.accounts = accounts;
+                    that.accounts[that.CONFIG.ID - 1].active = false;
+                    that.updateAccount(that.accounts[that.CONFIG.ID - 1]);
+                });
+                that.CONFIG.ID = undefined;
+
+                that.logInButton.visible=true;
+                that.logOffButton.visible=false;
+                that.boardButton.visible=false;
+                that.loginText.setText('');
+            
+        },this);
         
+        //LEADERBOARD BUTTON
+        this.boardButton.on('pointerdown', function (){
+            this.creditButton.setTexture('ButtonBoardPressed');
+            this.creditButton.setTint(0xc7c7c7)
+            this.time.addEvent({
+                delay: 50,
+                callback: function ()
+                {
+                    this.scene.start('LeaderBoard', Scene4, true, { x: 400, y: 300 });
+                },
+                callbackScope: this,
+                repeat: 0
+                });
+            
+        },this);
 
         
         //animaciones de personajes en pantalla
